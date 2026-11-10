@@ -57,6 +57,7 @@ section > h2 {
 .when, .proj-head span { color: var(--muted); font-size: 14px; }
 .proj { margin-top: 14px; padding-left: 14px; border-left: 2px solid var(--line); }
 section > .proj { margin-top: 0; }
+section > .proj + .proj { margin-top: 14px; }
 .proj-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 12px; }
 .proj-head h4 { font-size: 16px; }
 .ctx { color: var(--muted); font-size: 14px; margin: 2px 0 6px; }
@@ -122,6 +123,7 @@ section > .proj { margin-top: 0; }
   .head .lead { font-size: 12pt; }
   .company + .company { margin-top: 16px; }
   .proj { margin-top: 10px; break-inside: avoid; }
+  section > .proj + .proj { margin-top: 10px; }
   .company-head, .case h3, .also h3 { break-after: avoid; }
   .highlights { break-inside: avoid; }
   .project { margin-top: 0; break-before: page; }

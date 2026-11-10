@@ -34,6 +34,7 @@
       <a class="btn" href="#chart">GAIA Chart</a>
       <a class="btn" href="#cell">GAIA Cell</a>
       <a class="btn" href="#doit">DoIt2</a>
+      <a class="btn" href="#month">Month</a>
     </nav>
   </header>
 
@@ -256,6 +257,40 @@
       <figure><img src="img/doit-03-done.jpg" alt="함께한 기록" loading="lazy"><figcaption>함께한 기록</figcaption></figure>
       <figure><img src="img/doit-04-map.jpg" alt="지도" loading="lazy"><figcaption>다녀온 곳 지도</figcaption></figure>
       <figure><img src="img/doit-06-memories.jpg" alt="추억" loading="lazy"><figcaption>추억 돌아보기</figcaption></figure>
+    </div>
+  </article>
+
+  <article class="project" id="month">
+    <p class="tag">개인 프로젝트 · 2026.10 – 현재</p>
+    <h2>Month · 복약 알림 앱</h2>
+    <p class="summary">먹을 약과 시간을 등록하면 하루 복용 일정을 보여 주고, 알림과 홈 화면 위젯에서 바로 복용 여부를 체크하는 iOS·Android 앱입니다. 서버 없이 기기에만 저장합니다. Figma 스토리보드를 바탕으로 앱을 혼자 개발했습니다.</p>
+    <div class="facts">
+      <div><b>역할</b>1인 개발</div>
+      <div><b>플랫폼</b>iOS · Android</div>
+      <div><b>스택</b>Expo SDK 58, Expo Router, expo-widgets, Kotlin, expo-sqlite, Zustand, Jest</div>
+    </div>
+    <section class="case">
+      <h3>앱을 열지 않아도 맞는 위젯</h3>
+      <dl>
+        <dt>상황</dt><dd>위젯은 앱이 넘겨 준 값만 그립니다. 그래서 앱을 열지 않으면 자정이 지나도 어제 일정이 그대로 남았고, 위젯에서 누른 "복용완료!"도 앱에 반영되지 않았습니다. Android용 expo-widgets에는 위젯이 저장한 값을 JS에서 읽는 API가 없었습니다.</dd>
+        <dt>판단</dt><dd>하루치가 아닌 7일치 일정을 위젯에 넘기고, 오늘 보여 줄 화면은 위젯이 그려질 때 현재 날짜로 직접 계산하게 했습니다.</dd>
+        <dt>구현</dt><dd>Android는 Kotlin 네이티브 모듈 <code>widget-bridge</code>를 만들어 위젯 저장값을 읽고, 자정 알람으로 위젯을 다시 그리게 했습니다. 재부팅하거나 시간·시간대가 바뀌면 알람을 다시 겁니다. iOS는 매일 0시 타임라인 항목으로 처리했습니다. 위젯 버튼 기록은 위젯 쪽에 쌓아 두었다가 앱이 열릴 때 반영하고, 라이브러리 수정은 patch-package 패치로 관리합니다.</dd>
+        <dt>검증</dt><dd>iOS·Android 위젯 코드를 실제로 변환해 실행하는 테스트를 만들어, 두 파일의 화면 계산이 어긋나지 않게 고정했습니다.</dd>
+      </dl>
+    </section>
+    <section class="case">
+      <h3>알림이 정시에, 빠짐없이 오게</h3>
+      <dl>
+        <dt>상황</dt><dd>iOS는 예약 알림이 64개로 제한되고, Android 14부터는 새로 설치하면 정확한 알람 권한이 꺼져 있어 알림이 몇 분씩 늦을 수 있습니다.</dd>
+        <dt>구현</dt><dd>반복 알림 대신 앞으로 7일치를 날짜별로 예약하고, 앱을 열 때와 기록이 바뀔 때마다 다시 채웁니다. 같은 시간의 약은 알림 하나로 묶었습니다. Android는 알림을 켤 때 권한을 안내한 뒤 시스템 설정으로 보내고, 거부해도 알림은 켠 채 저장합니다.</dd>
+      </dl>
+    </section>
+    <div class="also">
+      <h3>그 외 맡은 일</h3>
+      <ul>
+        <li>Jest 단위 테스트 66개(일정 계산·완료율·알림 예약·위젯), 커밋·push 때 husky 검사, PR마다 GitHub Actions CI</li>
+        <li>Windows 로컬 빌드의 경로 길이 문제를 해결하는 Expo 설정 플러그인</li>
+      </ul>
     </div>
   </article>
 </main>
