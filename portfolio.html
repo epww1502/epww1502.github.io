@@ -98,17 +98,17 @@
   <article class="project" id="admin">
     <p class="tag">관악연구소 · 2026.08 – 2026.09</p>
     <h2>GLAB 관리자 웹</h2>
-    <p class="summary">GLAB 운영을 위한 관리자 웹입니다. 사용자, 공지, 약관, 앱 버전, 추천 질문, 고객지원까지 21개 화면을 설계·구현했습니다. 관리자 API가 나오기 전에 운영 규칙을 먼저 정의하는 단계로, 현재는 목 데이터로 동작합니다.</p>
+    <p class="summary">GLAB 앱 운영을 위한 관리자 웹입니다. 사용자, 공지, 약관, 앱 버전, 추천 질문, 고객 지원까지 21개 화면을 설계·구현하고 실제 API와 연동해 운영에 쓰고 있습니다.</p>
     <div class="facts">
       <div><b>역할</b>기획·설계·구현</div>
       <div><b>스택</b>Vite, React 19, React Router 7, Zustand, React Hook Form, Zod, TipTap</div>
     </div>
 
     <section class="case">
-      <h3>API보다 운영 규칙을 먼저</h3>
+      <h3>운영자의 실수가 앱으로 나가지 않게</h3>
       <dl>
-        <dt>상황</dt><dd>앱 운영은 시작됐는데 관리자 전용 API는 아직 없었습니다.</dd>
-        <dt>판단</dt><dd>API를 기다리기보다 "운영자가 실수하면 안 되는 것"을 먼저 정해 화면에 넣고, 목 데이터로 흐름을 검증했습니다.</dd>
+        <dt>상황</dt><dd>관리자 웹에서 바꾼 공지·약관·앱 버전은 그대로 앱 사용자에게 나갑니다.</dd>
+        <dt>판단</dt><dd>"운영자가 실수하면 안 되는 것"을 먼저 정의하고, 그 규칙을 화면과 입력 검증에 직접 넣었습니다. 목 데이터로 흐름을 먼저 검증한 뒤 실제 API에 연결했습니다.</dd>
         <dt>구현</dt><dd>공지 예약 게시(지난 시각 선택 불가)와 지난 공지의 게시일·푸시 잠금, 사용 중인 약관 유형 삭제 제한, iOS·Android·웹 클라이언트별 버전 등록. 앱 버전은 최신/이전 테이블을 나눠 지금 배포 중인 버전이 묻히지 않게 했습니다. 규칙은 Zod 스키마로 옮겨, 작성과 수정에 다른 규칙을 적용하고 약관 본문은 HTML 안에 실제 글자가 있는지까지 검사했습니다.</dd>
       </dl>
     </section>
@@ -120,6 +120,12 @@
         <dt>구현</dt><dd>TipTap 에디터 하나를 출력 형식만 바꿔 재사용해, 공지는 Markdown, 약관은 앱의 HTML 렌더러에 맞춘 HTML로 저장하게 했습니다. 사용자 목록과 고객지원 화면에서는 이메일·닉네임을 기본으로 가리고, 필요한 행 하나만 열어 볼 수 있게 했습니다.</dd>
       </dl>
     </section>
+    <div class="gallery">
+      <figure><img src="img/admin-users.png" alt="사용자 목록, 이메일·닉네임 마스킹" loading="lazy"><figcaption>사용자 · 개인정보 마스킹</figcaption></figure>
+      <figure><img src="img/admin-versions.png" alt="앱 버전 최신/이전 관리" loading="lazy"><figcaption>앱 버전 · 최신/이전 분리</figcaption></figure>
+      <figure><img src="img/admin-support.png" alt="고객 지원 미처리/처리 완료" loading="lazy"><figcaption>고객 지원 · 처리 상태 관리</figcaption></figure>
+      <figure><img src="img/admin-notice.png" alt="공지 작성, 게시일 예약과 푸시" loading="lazy"><figcaption>공지 작성 · 예약 게시·푸시</figcaption></figure>
+    </div>
   </article>
 
   <article class="project" id="cop">
