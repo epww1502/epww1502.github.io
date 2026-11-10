@@ -91,7 +91,7 @@ section > .proj + .proj { margin-top: 14px; }
 .also { margin-top: 22px; font-size: 14.5px; }
 .also h3 { font-size: 15px; margin-bottom: 6px; }
 
-.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 22px; }
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
 .gallery.phones { grid-template-columns: repeat(4, 1fr); }
 .gallery figure { margin: 0; }
 .gallery img { width: 100%; border: 1px solid var(--line); border-radius: 10px; }
@@ -123,8 +123,11 @@ section > .proj + .proj { margin-top: 14px; }
   section > .proj + .proj { margin-top: 10px; }
   .company-head, .case h3, .also h3 { break-after: avoid; }
   .highlights { break-inside: avoid; }
-  .project { margin-top: 0; break-before: page; }
-  .project:first-of-type { margin-top: 28px; break-before: auto; }
+  .project { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .project:first-of-type { margin-top: 28px; padding-top: 0; border-top: 0; }
+  .project > .tag, .project > h2, .project > .summary, .project > .facts { break-after: avoid; }
+  .gallery { break-inside: avoid; }
+  .gallery.phones img { height: 62mm; object-fit: contain; background: #fff; }
   .project > h2 { font-size: 18pt; }
   .case, .facts, .gallery figure { break-inside: avoid; }
   .gallery { gap: 8px; grid-template-columns: repeat(4, 1fr); }
