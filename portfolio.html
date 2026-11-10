@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이영주 · 포트폴리오</title>
 <link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem('theme');if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 <main class="page">
   <div class="bar no-print">
     <a class="btn" href="https://epww1502.github.io/">← 이력서</a>
+    <button class="btn" id="theme-toggle" type="button">다크 모드</button>
     <a class="btn primary" href="pdf/portfolio.pdf" download="이영주_포트폴리오.pdf">PDF 다운로드</a>
   </div>
 
@@ -332,6 +334,7 @@
   </article>
 </main>
 <!-- phone number lives in private.js (gitignored) so it never ships to the public site; it only appears in PDFs printed locally -->
+<script src="theme.js"></script>
 <script src="private.js"></script>
 </body>
 </html>

@@ -7,6 +7,27 @@
   --soft: #f5f7fa;
   --accent: #2f5bea;
   --bg: #fff;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --fg: #e6e8eb;
+  --muted: #9aa1ab;
+  --line: #2b2f36;
+  --soft: #1a1d22;
+  --accent: #7d9bff;
+  --bg: #111316;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fg: #e6e8eb;
+    --muted: #9aa1ab;
+    --line: #2b2f36;
+    --soft: #1a1d22;
+    --accent: #7d9bff;
+    --bg: #111316;
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -34,7 +55,7 @@ code { font: 0.88em ui-monospace, Menlo, monospace; background: var(--soft); pad
   padding: 7px 14px; border-radius: 8px; font: inherit; font-size: 14px; cursor: pointer;
 }
 .btn:hover { background: var(--soft); text-decoration: none; }
-.btn.primary { background: var(--fg); color: #fff; border-color: var(--fg); }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
 .head h1 { font-size: 32px; letter-spacing: -0.02em; }
 .head .lead { margin-top: 6px; font-size: 18px; font-weight: 500; }
@@ -110,6 +131,7 @@ section > .proj + .proj { margin-top: 14px; }
 
 @page { size: A4; margin: 13mm 14mm; }
 @media print {
+  :root:root:root { --fg: #16181d; --muted: #5d6470; --line: #e6e8ec; --soft: #f5f7fa; --accent: #2f5bea; --bg: #fff; color-scheme: light; }
   body { font-size: 9.6pt; line-height: 1.55; }
   .page { max-width: none; padding: 0; }
   .no-print { display: none !important; }
