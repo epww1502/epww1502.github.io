@@ -15,7 +15,7 @@
 
   <header class="head">
     <h1>이영주</h1>
-    <p class="lead">웹과 앱을 한 코드베이스로 출시하고 운영해 온 5년차 프론트엔드 개발자입니다.</p>
+    <p class="lead">렌더링 성능부터 앱 출시·운영까지 책임지는 5년차 프론트엔드 개발자입니다.</p>
     <div class="contact">
       <span class="print-only" data-phone></span>
       <a href="mailto:epww1502@gmail.com">epww1502@gmail.com</a>
@@ -25,15 +25,6 @@
   </header>
 
   <section>
-    <h2>요약</h2>
-    <ul class="strengths">
-      <li><b>출시하고 운영합니다.</b> AI 투자 앱 GLAB을 iOS·Android·웹으로 만들고 프론트엔드 파트장으로 4개월간 5번 정식 릴리스했습니다. 로그인·배포·OTA 업데이트 같은 기반을 직접 설계했습니다.</li>
-      <li><b>느린 원인을 찾아 고칩니다.</b> 대용량 차트 렌더링을 10,000ms에서 100ms로 줄였고, 시트 전체 병합 시 멈추던 스프레드시트를 복사 범위 최적화로 해결했습니다.</li>
-      <li><b>기획부터 같이 합니다.</b> GLAB 프론트 기획을 맡아 디자인을 검토하고 버튼 위치·화면 이동 흐름까지 직접 점검했으며, 관리자 API가 없을 때는 운영 규칙을 화면으로 먼저 정의해 검증했습니다.</li>
-    </ul>
-  </section>
-
-  <section>
     <h2>경력</h2>
 
     <div class="company">
@@ -41,38 +32,29 @@
 
       <div class="proj">
         <div class="proj-head"><h4>GLAB · AI 디지털 PB 앱</h4><span>2025.11 – 현재</span></div>
-        <p class="ctx">AI 투자 상담 앱. 파트장으로 프론트 기획·디자인 검토·코드리뷰·출시를 맡고, 기능 PR 약 540개 중 278개 작성.</p>
+        <p class="ctx">개인 투자자용 AI 투자 상담 앱. 파트장으로 프론트 기획·코드리뷰·출시를 이끌며 팀 기능 PR의 절반(278개)을 작성.</p>
         <ul>
-          <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 5회 릴리스</li>
-          <li>Kakao·Google·Apple 로그인과 IdP 연결 해제 탈퇴, Android의 Apple 탈퇴는 웹 브릿지·딥링크로 해결</li>
-          <li>EAS Update OTA를 미리 받아 복귀 시 적용, 15분 쿨다운·네이티브 버전 확인으로 잘못된 업데이트 차단</li>
-          <li>AI 채팅 스트리밍 중 토큰마다 화면 전체가 다시 그려지던 문제를 마지막 메시지만 다시 그리도록 개선</li>
-          <li>PR 템플릿 도입과 코드리뷰(다른 개발자 PR 149개 직접 머지), GitHub Actions로 웹·OTA 배포 자동화</li>
+          <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회</li>
+          <li>OTA로 심사 없이 수정을 배포하되, 네이티브 버전이 다른 앱에는 업데이트를 막아 구버전 크래시 방지</li>
+          <li>Kakao·Google·Apple 로그인과 계정 연결 해제를 포함한 탈퇴 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
+          <li>AI 채팅 스트리밍 중 토큰마다 일어나던 화면 전체 리렌더링을 마지막 메시지로 한정</li>
+          <li>코드리뷰·머지(동료 PR 149건)와 GitHub Actions 웹·OTA 배포 자동화로 릴리스 흐름 정비</li>
+          <li>운영 관리자 웹(21개 화면) 설계·구현: API 연동 전에 운영 규칙을 화면과 Zod 스키마로 먼저 정의</li>
         </ul>
         <p class="stack">Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth <a class="more" href="https://epww1502.github.io/portfolio.html#glab">자세히 →</a></p>
       </div>
 
       <div class="proj">
-        <div class="proj-head"><h4>GLAB 관리자 웹</h4><span>2026.08 – 2026.09</span></div>
-        <p class="ctx">앱 운영용 관리자 웹(화면 21개)을 혼자 처음부터 설계·개발. 관리자 API 연동 전 단계.</p>
+        <div class="proj-head"><h4>LG CNS COP · 생성형 AI 이미지 편집 플랫폼</h4><span>2025.01 – 2025.11</span></div>
+        <p class="ctx">LG CNS 고객사 프로젝트. ADMIN 프론트엔드 전체를 설계·구현하고, 서비스 프론트엔드의 공통 기반을 구축.</p>
         <ul>
-          <li>API 없이 예약 게시·지난 공지 잠금·약관 삭제 제한 등 운영 규칙을 화면과 Zod 검증으로 먼저 정의</li>
-          <li>TipTap 에디터 하나를 공지는 Markdown, 약관은 앱이 그리는 HTML로 출력하도록 나눠 재사용</li>
-          <li>사용자·고객지원 화면의 이메일·닉네임을 기본 마스킹하고 한 번에 한 행만 해제</li>
-        </ul>
-        <p class="stack">Vite · React 19 · React Router 7 · Zustand · React Hook Form · Zod · TipTap <a class="more" href="https://epww1502.github.io/portfolio.html#admin">자세히 →</a></p>
-      </div>
-
-      <div class="proj">
-        <div class="proj-head"><h4>LG CNS COP · AI 이미지 생성·편집 플랫폼</h4><span>2025.01 – 2025.11</span></div>
-        <p class="ctx">LG CNS 프로젝트. ADMIN 프론트엔드를 혼자 개발하고, 서비스 프론트엔드의 공통 기반과 Git 자동화를 맡음.</p>
-        <ul>
-          <li>ADMIN 전체(사용 현황·크레딧 발급·계정·그룹·공지·정책) 단독 개발, 역할별 접근 제어와 크레딧 발급 실수 방지</li>
-          <li>서비스·ADMIN 공통 컴포넌트·로그인 구조 설계, 토큰 갱신 대기열과 서버 오류 토스트를 공통 처리로 도입</li>
-          <li>husky로 커밋·push 전 lint·타입 검사, GitHub Actions로 S3·CloudFront 배포 자동화</li>
+          <li>사용 현황·크레딧 발급·계정·그룹·공지·정책 등 ADMIN 전 화면 구현, 역할 4종별 접근 제어</li>
+          <li>크레딧 발급에 권한 제한·발급량 검증·확인 단계를 두어 운영 실수 방지</li>
+          <li>공통 컴포넌트·인증 구조 설계: 401이 동시에 나도 토큰 갱신은 한 번만, 서버 오류 알림은 한곳에서 처리</li>
+          <li>커밋·push 전 lint·타입 검사와 S3·CloudFront 배포 자동화 도입</li>
           <li>AI 페스타에서 공개되어 <a href="https://www.dt.co.kr/article/11674174">언론에 보도</a>, 산돌구름 AI Studio 베타로 오픈</li>
         </ul>
-        <p class="stack">React · TypeScript · TanStack Query · Zustand · Tailwind <a class="more" href="https://epww1502.github.io/portfolio.html#cop">자세히 →</a></p>
+        <p class="stack">React · TypeScript · TanStack Query · Zustand · Zod · Tailwind <a class="more" href="https://epww1502.github.io/portfolio.html#cop">자세히 →</a></p>
       </div>
     </div>
 
@@ -81,19 +63,20 @@
 
       <div class="proj">
         <div class="proj-head"><h4>GAIA OFFICE Chart</h4><span>2022.01 – 2025.01</span></div>
-        <p class="ctx">웹오피스 차트 개발. 2022.09 팀 개편 이후 차트 전 기능을 혼자 유지보수하고 신규 입사자 멘토링.</p>
+        <p class="ctx">웹오피스 차트 개발. 2022.09 팀 개편 이후 차트 기능 전체의 개발·유지보수를 책임지고 신규 입사자 멘토링.</p>
         <ul>
           <li>데이터 포인트마다 그리던 렌더링을 계열 단위로 바꿔 컴포넌트 수를 1/100로 줄이고 <b>대용량 차트 렌더링 10,000ms → 100ms</b></li>
-          <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, 라이브러리가 지원하지 않는 오차 막대를 path 직접 수정으로 구현</li>
+          <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, 라이브러리가 지원하지 않는 오차 막대를 path 수정으로 구현</li>
         </ul>
         <p class="stack">React · TypeScript · MobX · Victory <a class="more" href="https://epww1502.github.io/portfolio.html#chart">자세히 →</a></p>
       </div>
 
       <div class="proj">
         <div class="proj-head"><h4>GAIA OFFICE Cell · 웹 스프레드시트</h4><span>2022.06 – 2025.01</span></div>
+        <p class="ctx">웹오피스 스프레드시트의 표시 형식·병합·피벗 테이블 개발과 유지보수. NTIS 국가 R&amp;D 과제 참여.</p>
         <ul>
-          <li>시트 전체(약 170억 셀) 병합 시 멈추던 문제를 빈 데이터 제외와 실제 데이터 범위만 복사하는 방식으로 해결</li>
-          <li>표시 형식 기능을 혼자 개발하고, 라이브러리에 없는 한국 날짜·경과 시간·통화·소수점 규칙을 직접 구현</li>
+          <li>시트 전체(약 170억 셀) 병합 시 멈추던 문제를 빈 데이터는 건너뛰고 실제 데이터 범위만 복사하도록 바꿔 해결</li>
+          <li>표시 형식 기능에서 라이브러리가 지원하지 않는 한국 날짜·경과 시간·통화·소수점 규칙 구현</li>
           <li>2년간 이슈 약 555건 처리(약 35%는 담당 기능 밖), 문서 자동 완성 TFT에서 구역 관리 구조와 DB 설계</li>
         </ul>
         <p class="stack">React · TypeScript · Canvas · Java <a class="more" href="https://epww1502.github.io/portfolio.html#cell">자세히 →</a></p>
@@ -105,12 +88,12 @@
     <h2>개인 프로젝트</h2>
     <div class="proj">
       <div class="proj-head"><h4>DoIt2 · 함께 쓰는 버킷리스트 앱</h4><span>2026.10 – 현재</span></div>
-      <p class="ctx">기획부터 앱·백엔드(Supabase)까지 혼자 만들고 App Store 심사까지 진행. 여러 명이 동시에 고쳐도 데이터가 사라지지 않게 변경 기록 방식으로 설계하고 테스트로 검증.</p>
+      <p class="ctx">기획부터 앱·Supabase 백엔드까지 만들어 App Store 심사 진행. 여러 사람이 동시에 수정해도 데이터가 유실되지 않도록 변경 단위 동기화를 설계하고 테스트로 검증.</p>
       <p class="stack">Expo SDK 58 · Supabase · Zustand · Jest <a class="more" href="https://epww1502.github.io/portfolio.html#doit">자세히 →</a></p>
     </div>
     <div class="proj">
       <div class="proj-head"><h4>Month · 복약 알림 앱</h4><span>2026.10 – 현재</span></div>
-      <p class="ctx">iOS·Android 앱을 혼자 개발. 앱을 열지 않아도 홈 화면 위젯이 자정에 다음 날로 바뀌고 위젯에서 바로 복용을 기록하도록, Android 네이티브 모듈(Kotlin)을 직접 만들어 해결.</p>
+      <p class="ctx">앱을 열지 않아도 홈 화면 위젯이 날짜에 맞게 갱신되고 바로 복용을 기록하도록 Android 네이티브 모듈(Kotlin) 구현.</p>
       <p class="stack">Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions <a class="more" href="https://epww1502.github.io/portfolio.html#month">자세히 →</a></p>
     </div>
   </section>
@@ -119,7 +102,7 @@
     <h2>기술</h2>
     <dl class="skills">
       <dt>주력</dt><dd>TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind</dd>
-      <dt>경험</dt><dd>MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, husky, Kotlin(Expo 네이티브 모듈), Java·SQL</dd>
+      <dt>경험</dt><dd>MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, Kotlin, Java·SQL</dd>
     </dl>
   </section>
 

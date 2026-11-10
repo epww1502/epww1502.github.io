@@ -47,9 +47,6 @@ section > h2 {
 }
 
 /* resume */
-.strengths { list-style: none; padding: 0; }
-.strengths li + li { margin-top: 8px; }
-.strengths b { margin-right: 4px; }
 
 .company + .company { margin-top: 30px; }
 .company-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
@@ -130,6 +127,9 @@ section > .proj + .proj { margin-top: 14px; }
   .project:first-of-type { margin-top: 28px; break-before: auto; }
   .project > h2 { font-size: 18pt; }
   .case, .facts, .gallery figure { break-inside: avoid; }
-  .gallery { gap: 8px; }
+  .gallery { gap: 8px; grid-template-columns: repeat(4, 1fr); }
+  .gallery .wide { grid-column: span 2; }
+  .gallery:not(.phones) img { height: 30mm; object-fit: contain; background: #fff; }
+  .gallery.phones { grid-template-columns: repeat(4, 1fr); }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
