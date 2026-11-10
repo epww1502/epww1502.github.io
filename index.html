@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이영주 · 이력서</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 <script>try{var t=localStorage.getItem('theme');if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 <main class="page">
   <div class="bar no-print">
-    <a class="btn" href="https://epww1502.github.io/portfolio.html">포트폴리오 보기</a>
-    <button class="btn" id="theme-toggle" type="button">다크 모드</button>
-    <a class="btn primary" href="pdf/resume.pdf" download="이영주_이력서.pdf">PDF 다운로드</a>
+    <a class="btn icon-btn" href="https://epww1502.github.io/portfolio.html" data-tip="포트폴리오 보기" aria-label="포트폴리오 보기"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+    <button class="btn icon-btn" id="theme-toggle" type="button" data-tip="다크 모드" aria-label="다크 모드"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <a class="btn icon-btn primary" href="pdf/resume.pdf" download="이영주_이력서.pdf" data-tip="PDF 다운로드" aria-label="PDF 다운로드"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
   </div>
 
   <header class="head">
@@ -138,7 +138,7 @@
 
 </main>
 <!-- phone number lives in private.js (gitignored) so it never ships to the public site; it only appears in PDFs printed locally -->
-<script src="theme.js"></script>
+<script src="theme.js?v=3"></script>
 <script src="private.js"></script>
 </body>
 </html>
