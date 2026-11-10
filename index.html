@@ -32,13 +32,13 @@
 
       <div class="proj">
         <div class="proj-head"><h4>GLAB · AI 디지털 PB 앱</h4><span>2025.11 – 현재</span></div>
-        <p class="ctx">개인 투자자용 AI 투자 상담 앱. 파트장으로 프론트 기획·코드리뷰·출시를 이끌며 팀 기능 PR의 절반(278개)을 작성.</p>
+        <p class="ctx">개인 투자자용 AI 투자 상담 앱. 파트장으로 프론트 기획·코드리뷰(동료 PR 149건)·출시를 이끌며 팀 기능 PR의 절반(278개)을 작성.</p>
         <ul>
           <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회</li>
           <li>OTA로 심사 없이 수정을 배포하되, 네이티브 버전이 다른 앱에는 업데이트를 막아 구버전 크래시 방지</li>
           <li>Kakao·Google·Apple 로그인과 계정 연결 해제를 포함한 탈퇴 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
           <li>AI 채팅 스트리밍 중 토큰마다 일어나던 화면 전체 리렌더링을 마지막 메시지로 한정</li>
-          <li>코드리뷰·머지(동료 PR 149건)와 GitHub Actions 웹·OTA 배포 자동화로 릴리스 흐름 정비</li>
+          <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 환경 3개의 웹 배포와 OTA 발행을 자동화</li>
           <li>운영 관리자 웹(21개 화면) 설계·구현과 API 연동: 공지 예약·약관·앱 버전 관리, 개인정보 마스킹</li>
         </ul>
         <p class="stack">Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth <a class="more" href="https://epww1502.github.io/portfolio.html#glab">자세히 →</a></p>
@@ -88,7 +88,11 @@
     <h2>개인 프로젝트</h2>
     <div class="proj">
       <div class="proj-head"><h4>DoIt2 · 함께 쓰는 버킷리스트 앱</h4><span>2026.10 – 현재</span></div>
-      <p class="ctx">기획부터 앱·Supabase 백엔드까지 만들어 App Store 심사 진행. 여러 사람이 동시에 수정해도 데이터가 유실되지 않도록 변경 단위 동기화를 설계하고 테스트로 검증.</p>
+      <p class="ctx">기획부터 앱·Supabase 백엔드, 스토어 등록·App Store 심사까지 진행.</p>
+      <ul>
+        <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계하고 Jest로 검증</li>
+        <li>RLS 정책 63개로 공간 멤버만 접근, OTA·강제 업데이트·오류 수집으로 운영 기반 구축</li>
+      </ul>
       <p class="stack">Expo SDK 58 · Supabase · Zustand · Jest <a class="more" href="https://epww1502.github.io/portfolio.html#doit">자세히 →</a></p>
     </div>
     <div class="proj">
@@ -107,10 +111,11 @@
   </section>
 
   <section>
-    <h2>학력</h2>
+    <h2>학력 · 기타</h2>
     <dl class="skills">
       <dt>Oregon State University</dt><dd>Computer Science (Security) · 2017.09 – 2021.09</dd>
       <dt>한국기술교육대학교</dt><dd>컴퓨터공학 · 2013.02 – 2016.12</dd>
+      <dt>어학 · 병역</dt><dd>영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역</dd>
     </dl>
   </section>
 
@@ -128,13 +133,6 @@
     </div>
   </section>
 
-  <section>
-    <h2>기타</h2>
-    <dl class="skills">
-      <dt>어학</dt><dd>영어 일상 회화 가능 (어학연수·유학 5년)</dd>
-      <dt>병역</dt><dd>공군 만기전역</dd>
-    </dl>
-  </section>
 </main>
 <!-- phone number lives in private.js (gitignored) so it never ships to the public site; it only appears in PDFs printed locally -->
 <script src="private.js"></script>
