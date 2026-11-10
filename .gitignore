@@ -2,3 +2,5 @@ private.js
 *.pdf
 .DS_Store
 !pdf/*.pdf
+*.docx
+!pdf/*.docx

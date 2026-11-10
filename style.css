@@ -128,9 +128,23 @@ section > .proj + .proj { margin-top: 14px; }
 .gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
 .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 
+/* career */
+.career .company > .ctx { margin-top: 4px; }
+.career .proj { margin-top: 22px; }
+.career section > .proj + .proj { margin-top: 22px; }
+.meta { display: grid; grid-template-columns: 64px 1fr; gap: 4px 14px; margin: 8px 0 4px; font-size: 14px; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; }
+.label { margin: 14px 0 6px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.strengths { margin-top: 14px; font-size: 14.5px; }
+.career .case { margin-top: 10px; }
+.career .case + .case { margin-top: 14px; }
+.case h5 { font-size: 14.5px; margin: 0 0 6px; }
+.career .case dl { font-size: 14px; }
+
 @media (max-width: 600px) {
   .page { padding-top: 24px; }
-  .skills, .case dl { grid-template-columns: 1fr; }
+  .skills, .case dl, .meta { grid-template-columns: 1fr; }
   .case dt { margin-top: 6px; }
   .highlights, .gallery { grid-template-columns: 1fr; }
   .gallery.phones { grid-template-columns: repeat(2, 1fr); }
@@ -164,5 +178,9 @@ section > .proj + .proj { margin-top: 14px; }
   .gallery .wide { grid-column: span 2; }
   .gallery:not(.phones) img { height: 30mm; object-fit: contain; background: #fff; }
   .gallery.phones { grid-template-columns: repeat(4, 1fr); }
+  .career .proj { break-inside: auto; margin-top: 14px; }
+  .career .proj-head, .career .label, .case h5 { break-after: avoid; }
+  .meta { break-inside: avoid; }
+  .label { margin: 10px 0 4px; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Builds the PDFs.
 # - pdf/resume.pdf, pdf/portfolio.pdf: public copies served by the site's download button (no phone number)
-# - 이영주_이력서.pdf, 이영주_포트폴리오.pdf: private copies with the phone number from private.js (gitignored)
+# - pdf/career.pdf, pdf/career.docx: public 경력기술서 (PDF and Word)
+# - 이영주_이력서.pdf, 이영주_포트폴리오.pdf, 이영주_경력기술서.pdf/.docx: private copies with the phone number from private.js (gitignored)
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -17,9 +18,13 @@ print_pdf() { # $1 = html file, $2 = output pdf
 # Private copies (phone number filled in by private.js, if present)
 print_pdf index.html 이영주_이력서.pdf
 print_pdf portfolio.html 이영주_포트폴리오.pdf
+print_pdf career.html 이영주_경력기술서.pdf
+python build-docx.py 이영주_경력기술서.docx --phone
 
 # Public copies: hide private.js so the phone number is never rendered
 mkdir -p pdf
 if [ -f private.js ]; then mv private.js private.js.off; trap 'mv private.js.off private.js' EXIT; fi
 print_pdf index.html pdf/resume.pdf
 print_pdf portfolio.html pdf/portfolio.pdf
+print_pdf career.html pdf/career.pdf
+python build-docx.py pdf/career.docx
