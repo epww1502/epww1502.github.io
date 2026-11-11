@@ -140,7 +140,7 @@ export default function ResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0 · 2017.09 – 2021.06'],
-            ['한국기술교육대학교', '컴퓨터공학 · 2013.03 – 2016.12 (중퇴 후 OSU 진학)'],
+            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 (OSU 편입으로 제적)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}
         />
