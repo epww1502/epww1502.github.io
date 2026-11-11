@@ -51,7 +51,7 @@ export default function CareerPage() {
       <Section title="경력 상세">
         <Company
           name="관악연구소"
-          when="2025.01 – 현재 · AIX팀 · 프론트엔드 (2026.05부터 파트장)"
+          when="2025.01 – 현재 · GLAB팀 · 프론트엔드 (2026.05부터 파트장)"
           summary="AI 기반 금융 의사결정 솔루션과 개인 투자 상담 앱 GLAB을 만드는 핀테크 스타트업(2023년 설립). 웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음."
         >
           <Project title="GLAB · AI 디지털 PB 앱" period="2025.12 – 현재">
