@@ -98,7 +98,7 @@ export default function ResumePage() {
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 앱·Supabase 백엔드, 스토어 등록·App Store 심사까지 진행."
+          summary="기획부터 앱·Supabase 백엔드, App Store 심사 대응과 출시까지 진행."
           stack="Expo SDK 58 · Supabase · Zustand · Jest"
           detail="doit"
           links={[

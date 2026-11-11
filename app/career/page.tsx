@@ -245,7 +245,7 @@ export default function CareerPage() {
           <Fields
             variant="meta"
             rows={[
-              ['개요', '연인·친구·가족이 공간을 만들어 버킷리스트를 함께 모으고 기록하는 앱. 기획부터 스토어 등록·App Store 심사까지 진행'],
+              ['개요', '연인·친구·가족이 공간을 만들어 버킷리스트를 함께 모으고 기록하는 앱. 기획부터 App Store 심사 대응과 출시까지 진행'],
               [
                 '기술',
                 <>
