@@ -52,7 +52,7 @@ export default function CareerPage() {
         <Company
           name="관악연구소"
           when="2025.01 – 현재 · AIX팀 · 프론트엔드 (2026.05부터 파트장)"
-          summary="웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음."
+          summary="AI 기반 금융 의사결정 솔루션과 개인 투자 상담 앱 GLAB을 만드는 핀테크 스타트업(2023년 설립). 웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음."
         >
           <Project title="GLAB · AI 디지털 PB 앱" period="2025.12 – 현재">
             <Fields
@@ -82,6 +82,7 @@ export default function CareerPage() {
               <li>Kakao·Google·Apple 로그인과 계정 연결 해제를 포함한 탈퇴 구현. Android의 Apple 탈퇴는 웹에서 code와 id_token을 받아 딥링크로 넘기는 브릿지로 해결</li>
               <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
               <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 웹 배포와 OTA 발행 자동화</li>
+              <li>2026.05부터 파트장으로 화면 디자인과 설계, 배포 일정 결정, 코드리뷰 전반, 프론트엔드 2명의 업무 일정 관리</li>
               <li>코드리뷰(동료 PR 149건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 278개 작성</li>
             </ul>
             <Label>문제 해결</Label>
