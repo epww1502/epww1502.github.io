@@ -139,7 +139,7 @@ export default function ResumePage() {
       <Section title="학력 · 기타">
         <Fields
           rows={[
-            ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0 · 2017.09 – 2021.06'],
+            ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0, Summa Cum Laude(최우등 졸업) · 2017.09 – 2021.06'],
             ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 (OSU 편입으로 제적)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}
