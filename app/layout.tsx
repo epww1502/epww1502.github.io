@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
@@ -19,6 +21,10 @@ export const metadata: Metadata = {
   },
 };
 
+// The phone number lives in public/private.js, which is gitignored. It only exists on the author's
+// machine, so it is included in locally printed PDFs and never in the deployed site.
+const HAS_PRIVATE_SCRIPT = fs.existsSync(path.join(process.cwd(), 'public', 'private.js'));
+
 // Runs before paint so a saved theme never flashes the wrong colors.
 const THEME_INIT = `try{var t=localStorage.getItem('theme');if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}`;
 
@@ -34,9 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        {/* The phone number lives in private.js, which is gitignored. It only exists on the
-            author's machine, so it shows up in locally printed PDFs and never on the site. */}
-        <script src="/private.js" async />
+        {HAS_PRIVATE_SCRIPT && <script src="/private.js" async />}
       </body>
     </html>
   );
