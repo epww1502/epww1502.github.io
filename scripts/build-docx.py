@@ -1,9 +1,9 @@
-"""Converts career.html into a .docx (Python standard library only).
+"""Converts the exported career page (out/career.html) into a .docx. Standard library only.
 
-usage: python build-docx.py OUT.docx [--phone]
-  --phone  fill [data-phone] from private.js (private copy only)
+usage: python scripts/build-docx.py OUT.docx [--phone]   (run `npm run build` first)
+  --phone  fill [data-phone] from public/private.js (private copy only)
 
-Handles the small HTML subset career.html uses: h1-h5, p, ul/li, dl/dt/dd, a, b,
+Handles the small HTML subset the career page uses: h1-h5, p, ul/li, dl/dt/dd, a, b,
 and the .company-head/.proj-head rows. Elements with .no-print are skipped.
 """
 import re, sys, zipfile
@@ -11,7 +11,8 @@ from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
+SITE = "https://epww1502.github.io"
 VOID = {"meta", "link", "br", "img", "input", "hr", "path", "rect", "circle"}
 SKIP = {"head", "script", "style", "svg", "title"}
 
@@ -70,8 +71,11 @@ class Doc:
             f = dict(fmt)
             if k.tag in ("b", "strong"):
                 f["b"] = True
-            if k.tag == "a" and k.attrs.get("href", "").startswith("http"):
-                f["link"] = k.attrs["href"]
+            href = k.attrs.get("href", "")
+            if k.tag == "a" and href.startswith("http"):
+                f["link"] = href
+            elif k.tag == "a" and href.startswith("/"):
+                f["link"] = SITE + href  # links to other pages of the site
             if "data-phone" in k.attrs:
                 if self.phone:
                     out.append((self.phone, f))
@@ -234,12 +238,12 @@ NUMBERING = (
 def main():
     out = Path(sys.argv[1])
     phone = None
-    if "--phone" in sys.argv and (HERE / "private.js").exists():
-        m = re.search(r"'([0-9][0-9-]+)'", (HERE / "private.js").read_text(encoding="utf-8"))
+    if "--phone" in sys.argv and (ROOT / "public" / "private.js").exists():
+        m = re.search(r"'([0-9][0-9-]+)'", (ROOT / "public" / "private.js").read_text(encoding="utf-8"))
         phone = m.group(1) if m else None
 
     tree = Tree()
-    tree.feed((HERE / "career.html").read_text(encoding="utf-8"))
+    tree.feed((ROOT / "out" / "career.html").read_text(encoding="utf-8"))
     main_el = next(n for n in _walk(tree.root) if n.tag == "main")
     doc = Doc(phone)
     for k in main_el.kids:

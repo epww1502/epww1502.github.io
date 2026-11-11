@@ -1,0 +1,63 @@
+export const meta = {
+  title: 'DoIt2 · 함께 쓰는 버킷리스트 앱',
+  tag: '개인 프로젝트 · 2026.10 – 현재 · iOS 출시, Android 출시 예정',
+  summary:
+    '연인·친구·가족이 공간을 만들어 가고 싶은 곳과 해보고 싶은 것을 함께 모으고, 다녀온 뒤 사진과 후기를 남기는 앱입니다. 기획, 앱, Supabase 백엔드, 스토어 등록과 App Store 심사 대응까지 2주 반 동안 진행했습니다(커밋 80개).',
+  order: 6,
+  metric: { value: 'RLS 정책 63개', label: '동시 수정에도 유실 없는 동기화와 서버 권한 설계' },
+  stack: 'Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest',
+};
+
+<Facts>
+  <Fact label="역할">기획·설계·개발</Fact>
+  <Fact label="규모">DB 마이그레이션 32개, RLS 정책 63개<br />Edge Function 5개, 테스트 14개 파일</Fact>
+  <Fact label="스택">Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest</Fact>
+  <Fact label="코드">[github.com/epww1502/DoIt2](https://github.com/epww1502/DoIt2)</Fact>
+</Facts>
+
+<Gallery
+  phones
+  shots={[
+    { src: 'doit-01-bucketlist.jpg', caption: '버킷리스트' },
+    { src: 'doit-03-done.jpg', caption: '함께한 기록' },
+    { src: 'doit-04-map.jpg', caption: '다녀온 곳 지도', alt: '지도' },
+    { src: 'doit-06-memories.jpg', caption: '추억 돌아보기', alt: '추억' },
+  ]}
+/>
+
+<Case title="여러 명이 동시에 수정할 때의 동기화">
+  <Step label="문제">한 공간을 여러 명이 같이 쓰기 때문에, 두 사람이 동시에 체크리스트를 고치면 한쪽 변경이 덮어써질 수 있었습니다.</Step>
+  <Step label="해결">목록 전체를 덮어쓰지 않고 체크, 추가 같은 변경 단위로 기록해 서버의 최신 상태 위에 다시 적용했습니다. 같은 변경이 두 번 전송돼도 결과가 달라지지 않고, 오프라인일 때는 변경을 쌓아 두었다가 연결되면 보냅니다.</Step>
+  <Step label="검증">두 사람이 서로 다른 항목을 체크해도 둘 다 남는지, 같은 변경을 두 번 보내도 결과가 같은지를 [Jest 테스트](https://github.com/epww1502/DoIt2/blob/main/__tests__/todoOps.test.ts)로 작성했습니다.</Step>
+</Case>
+
+```ts
+it('두 사람이 다른 할 것을 체크해도 둘 다 남는다', () => {
+  const server = [todo('a'), todo('b')];
+  // 나는 a, 상대는 b를 체크 (어느 쪽이 먼저 반영되든 같은 결과)
+  const result = applyTodoOps(
+    applyTodoOps(server, [{ type: 'check', todoId: 'a', done: true }]),
+    [{ type: 'check', todoId: 'b', done: true }],
+  );
+  expect(result.map((t) => t.done)).toEqual([true, true]);
+});
+
+it('같은 변경을 두 번 보내도 결과가 같다', () => {
+  const ops = [{ type: 'check', todoId: 'a', done: true }, { type: 'add', todo: todo('c') }];
+  const once = applyTodoOps([todo('a')], ops);
+  expect(applyTodoOps(once, ops)).toEqual(once);
+});
+```
+
+<Note>저장소의 `__tests__/todoOps.test.ts`에서 가져와 줄였습니다.</Note>
+
+<Case title="RLS와 Edge Function으로 권한 관리">
+  <Step label="상황">같은 공간 사람끼리만 데이터를 봐야 하는데, 앱 코드만으로 막으면 요청을 직접 보내는 경우를 막을 수 없습니다.</Step>
+  <Step label="구현">모든 표에 RLS를 걸어 공간 멤버만 읽고 쓰게 하고, 공간 참여·공간장 위임처럼 여러 표를 바꾸는 작업은 DB 함수로 묶었습니다. 카카오 API 키는 Edge Function 프록시 뒤에 두고, 링크 미리보기는 내부망 주소를 리다이렉트 이후까지 막았습니다. 푸시 알림과 계정 삭제도 서버 함수로 처리했습니다.</Step>
+  <Step label="심사 대응">App Store 심사에서 신고·차단 기능(가이드라인 1.2)을 요구해, 신고는 쓰기만 가능하고 차단한 사람의 댓글은 보이지 않도록 RLS로 추가했습니다.</Step>
+</Case>
+
+<Case title="업데이트, 오류 수집, 사진 캐시">
+  <Step label="구현">스플래시 동안과 앱으로 돌아올 때 OTA 업데이트를 받고, 서버의 최소 버전보다 낮은 앱은 업데이트 화면으로 막아 서버에 저장된 스토어 주소로 보냅니다. 오류는 기기에 먼저 저장했다가 서버로 보내 앱이 종료돼도 기록이 남게 했고, 화면에서 오류가 나면 앱이 꺼지는 대신 다시 시도 화면을 보여 줍니다.</Step>
+  <Step label="성능">사진은 올리기 전에 줄이고, 매번 바뀌는 임시 링크 대신 저장소 경로를 기준으로 기기에 캐시해 한 번 본 사진은 다시 받지 않게 했습니다. 캐시에 없는 사진의 링크는 모아서 한 번에 요청합니다.</Step>
+</Case>

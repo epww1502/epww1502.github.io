@@ -1,0 +1,59 @@
+export const meta = {
+  title: 'GAIA OFFICE Chart',
+  tag: '티맥스가이아 · 2022.01 – 2025.01',
+  summary:
+    '웹오피스의 차트를 Victory 라이브러리 위에 만들었습니다. 2022년 9월 팀 개편 이후에는 차트 기능 전체의 개발과 유지보수를 책임졌고, 신규 입사자 멘토링도 맡았습니다.',
+  order: 1,
+  featured: true,
+  metric: { value: '10,000 → 100ms', label: '대용량 차트 렌더링을 계열 단위로 바꿔 100배 단축' },
+  stack: 'React, TypeScript, MobX, Victory',
+};
+
+<Facts>
+  <Fact label="역할">차트 모델·컴포넌트 설계, 기능 전체 개발·유지보수</Fact>
+  <Fact label="스택">React, TypeScript, MobX, Victory</Fact>
+  <Fact label="성과">대용량 렌더링 10,000ms → 100ms</Fact>
+</Facts>
+
+<Gallery
+  shots={[
+    { src: 'chart-elements.jpg', caption: '차트 요소 추가 메뉴' },
+    { src: 'chart-errorbar.jpg', caption: '오차 막대 서식' },
+    { src: 'chart-combo.jpg', caption: '차트 종류 변경 · 콤보 차트' },
+    { src: 'chart-dataselect.jpg', caption: '데이터 선택 다이얼로그' },
+  ]}
+/>
+
+<Case title="대용량 차트 렌더링 개선 (2023.01 – 03)">
+  <Step label="문제">데이터가 많은 차트일수록 급격히 느려져, 100×100 차트 하나를 그리는 데 약 10초가 걸렸습니다. 30×30만 넘어도 삽입과 선택, 크기 조절이 느렸고, 서버로 가는 메시지가 몰려 데드락이 생기기도 했습니다.</Step>
+  <Step label="원인">가장 작은 단위인 데이터 포인트마다 컴포넌트와 모델을 만들고 있어서, 100×100 차트면 컴포넌트가 10,000개 생겼습니다.</Step>
+  <Step label="해결">Victory가 포인트마다 계산하는 path를 계열(series) 단위로 모아, 계열 하나를 path 하나로 그리도록 바꿨습니다. 데이터 포인트는 모델의 자식으로 만들지 않고 목록으로 관리해 서버로 보내는 메시지 수도 줄였습니다. 오차 막대, 데이터 레이블, 선택, 행/열 전환, 타입 변경까지 모두 새 구조에 맞췄습니다.</Step>
+  <Step label="결과" result>100×100 차트 렌더링 10,000ms → 100ms, 30×30 차트 삽입 11초 → 2초, 서버 데드락 해결</Step>
+</Case>
+
+<ChartRenderDiagram />
+
+```tsx
+// 변경 전: 포인트마다 컴포넌트를 만든다
+series.points.map((point) => <DataPoint key={point.id} model={point} />);
+
+// 변경 후: 계열의 포인트 path를 모아 한 번에 그린다
+const d = series.points.map(toPath).join(' ');
+<path d={d} />;
+```
+
+<Note>실제 코드가 아니라 구조만 단순화한 예시입니다.</Note>
+
+<Case title="Excel과 같은 오차 막대 구현 (2022.03 – 05)">
+  <Step label="문제">Excel과 같은 오차 막대가 필요했지만, Victory는 cap 없는 형태나 한 축만 보이는 형태를 지원하지 않았습니다. 막대형 차트에서는 계열 사이 간격 때문에 위치도 어긋났습니다.</Step>
+  <Step label="해결">고정값, 백분율, 표준오차, 표준편차 4종을 계열 모델 안에 두고, 차트 위에 별도 그룹으로 겹쳐 그렸습니다. Victory의 Error Bar가 만드는 path 값을 받아 수정해서 그렸고, 오차량 계산식도 구현했습니다.</Step>
+  <Step label="결과" result>MS Excel 2021과 같은 값과 크기로 표시</Step>
+</Case>
+
+<Also>
+  - Chart 모델·컴포넌트 트리·데이터 관리 구조 설계, OOXML 기준 Import/Export
+  - 차트 종류 변경과 행/열 전환. 모델을 복제·전치해 오차 막대, 데이터 레이블, 스타일을 유지하고 Undo/Redo 지원
+  - 데이터 참조를 문자열에서 셀 주소 객체로 바꾸고, 여러 범위 선택(Multi-Range)과 다단계 항목(Multi-Level Category) 지원
+  - 데이터 선택 다이얼로그. 범위를 바꾸면 미리보기에 바로 반영하고, 범위가 맞지 않으면 오류를 띄움
+  - 미니 셀. Word·Point 문서에 차트를 넣기 위해 데이터용 셀 문서를 링크 방식으로 연결하는 구조 설계
+</Also>

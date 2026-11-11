@@ -1,0 +1,81 @@
+export const meta = {
+  title: 'GLAB · AI 디지털 PB 앱',
+  tag: '관악연구소 · 2025.12 – 현재',
+  summary:
+    '개인 투자자에게 AI 투자 상담을 제공하는 앱으로, 2026년 7월 정식 출시 후 머니투데이에 소개됐습니다. 프론트엔드 파트장으로 기획과 디자인 검토부터 빌드, 배포, 운영까지 맡았고, 코드리뷰와 스토어 출시, AWS 웹 인프라와 배포 자동화를 담당했습니다.',
+  order: 2,
+  featured: true,
+  metric: { value: '3개 플랫폼 · 5회', label: 'iOS·Android·웹을 한 코드로, 4개월간 정식 릴리스 5회' },
+  stack: 'Expo, React Native, TanStack Query, Zustand, NativeWind, Firebase Auth',
+};
+
+<Facts>
+  <Fact label="역할">프론트엔드 파트장<br />기획 · 빌드 · 배포 · 운영</Fact>
+  <Fact label="기여">팀 기능 PR 약 540개 중 278개 작성<br />동료 PR 149건 리뷰·머지</Fact>
+  <Fact label="서비스">[App Store](https://apps.apple.com/kr/app/id6761149761) · [Google Play](https://play.google.com/store/apps/details?id=com.gwanak.glab)<br />[glab.gwanaklab.com](https://glab.gwanaklab.com) (웹·PWA) · [머니투데이 보도](https://www.mt.co.kr/future/2026/10/02/2026100209504057390)</Fact>
+  <Fact label="스택">Expo, React Native, TanStack Query, Zustand, NativeWind, Firebase Auth</Fact>
+</Facts>
+
+<Gallery
+  shots={[
+    { src: 'glab-3.jpg', caption: '홈 · 자산 현황', alt: '홈 대시보드' },
+    { src: 'glab-4.jpg', caption: 'AI 채팅' },
+    { src: 'glab-5.jpg', caption: '탐색 · 실시간 랭킹' },
+    { src: 'glab-6.jpg', caption: '포트폴리오 분석' },
+  ]}
+/>
+
+<Case title="AI 채팅 스트리밍 렌더링 최적화">
+  <Step label="문제">답변이 스트리밍되는 동안 토큰이 올 때마다 store와 채팅 화면 전체가 다시 그려졌고, 다른 대화가 스트리밍 중일 때도 보고 있는 화면이 다시 그려졌습니다.</Step>
+  <Step label="원인">이미 있던 throttle은 대기 값이 할당되지 않아 실제로는 동작하지 않았고, 대화 목록 구독이 채팅 화면 전체에 걸려 있었습니다.</Step>
+  <Step label="해결">스트리밍 중에는 store 동기화를 건너뛰고, 메시지 컴포넌트 비교 함수로 마지막 메시지만 다시 그리게 했습니다. 대화 목록 구독은 사이드바로 옮겼습니다. 채팅 화면은 탭 밖 별도 스택으로 올리고 `freezeOnBlur`를 적용해, 보이지 않을 때는 상태를 유지한 채 렌더링만 멈추게 했습니다.</Step>
+</Case>
+
+```tsx
+// 내용이 바뀐 메시지만 다시 그린다. 스트리밍 중에는 마지막 메시지만 해당된다.
+const Message = memo(MessageView, (prev, next) =>
+  prev.message.id === next.message.id && prev.message.text === next.message.text,
+);
+
+// 채팅은 탭 밖 스택에 두고, 보이지 않는 동안에는 렌더링을 멈춘다.
+<Stack screenOptions={{ headerShown: false, freezeOnBlur: true }} />;
+```
+
+<Note>실제 코드가 아니라 구조만 단순화한 예시입니다.</Note>
+
+<Case title="OTA 업데이트와 웹 배포 자동화">
+  <Step label="상황">작은 팀이 iOS·Android·웹을 동시에 운영해야 했고, 스토어 심사를 거치면 작은 수정도 바로 내보낼 수 없었습니다.</Step>
+  <Step label="판단">Expo 한 코드베이스로 세 플랫폼을 만들고, 화면·로직 수정은 EAS Update(OTA)로 바로 내보내기로 했습니다.</Step>
+  <Step label="구현">업데이트는 백그라운드에서 미리 받아 두었다가 앱으로 돌아올 때 적용해 사용 중 화면이 깜빡이지 않게 했고, 복귀할 때의 확인 요청에는 15분 간격을 두었습니다. 네이티브 버전이 다른 앱에는 업데이트를 내려보내지 않아, 옛 앱이 새 네이티브 코드를 찾다가 종료되는 문제를 막았습니다. 웹은 도메인, S3, CloudFront로 AWS 인프라를 구성했습니다. 해시가 붙은 파일은 길게 캐시하고 HTML과 서비스 워커는 매번 확인하도록 나눠, 배포 후에도 옛 화면이 남던 문제를 해결했습니다.</Step>
+  <Step label="결과" result>v1.1 → v1.5까지 4개월간 정식 릴리스 5회, 그 사이 수정은 심사 없이 OTA로 반영</Step>
+</Case>
+
+<Flow
+  caption="개발·운영·디버그 브랜치마다 같은 흐름으로 배포됩니다."
+  steps={[
+    { title: 'git push', detail: '개발 · 운영 · 디버그 브랜치' },
+    { title: 'GitHub Actions', detail: '웹 빌드' },
+    { title: 'S3 업로드', detail: 'CloudFront 캐시 무효화' },
+    { title: 'OTA 발행', detail: '네이티브 버전이 같은 앱만 수신', accent: true },
+  ]}
+/>
+
+<Case title="소셜 로그인과 Android의 Apple 계정 연결 해제">
+  <Step label="상황">Kakao·Google·Apple 로그인을 지원해야 했고, App Store는 탈퇴할 때 Apple 계정 연결까지 해제하도록 요구합니다. 그런데 Android에는 Apple 로그인 SDK가 없습니다.</Step>
+  <Step label="구현">Kakao SDK와 Firebase Auth(Google·Apple)로 로그인을 구성하고, 탈퇴 시 각 IdP의 토큰·코드를 서버에 함께 넘겨 연결을 해제했습니다. Android에서 Apple 인증 창을 띄우면 App Links 없이는 리다이렉트를 기다리다 창이 닫혔고, 쿼리로는 id_token을 받을 수 없었습니다. 그래서 웹 페이지에서 Apple JS로 code와 id_token을 한 번에 받아 `glab://` 딥링크로 앱에 넘기는 브릿지를 만들었습니다.</Step>
+  <Step label="결과" result>세 플랫폼 모두 같은 로그인·탈퇴 흐름으로 스토어 심사 기준 충족</Step>
+</Case>
+
+<Also>
+  - 파트장 업무로 프론트 기획과 디자인 검토, 출시 전 버튼 위치·화면 흐름 점검, 전체 커밋 검토와 코드리뷰(동료 PR 264건 중 149건 머지), PR 템플릿 도입, 스토어 출시·OTA 업데이트 관리
+  - 디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰을 먼저 만들고 화면을 그 위에 구성
+  - 실시간 랭킹에서 연결 전에 보낸 구독 해지가 늦게 도착해 로딩 화면에 멈추던 경쟁 조건 수정, 1초 안에 데이터가 없으면 다시 구독
+  - 실시간 시세 숫자 애니메이션 최적화. 자리마다 29개씩 그리던 행을 바뀌는 구간만 그리게 줄이고(1 차이일 때 3개), 간격을 서버 시세 주기에 맞춤
+  - 홈 개편(관심 종목 접기, 뉴스 필터, 탭 다시 누르면 맨 위로), 추천 질문을 채팅에서 홈으로 이동, 관심 등록 캐시 정합성
+  - 포트폴리오 매수·매도·편집·복사와 도넛·샤프 차트
+  - 로그인 세션 정합성. 서버 로그아웃이 실패하면 로컬 토큰을 지우지 않고 재시도를 안내하고, 로그인 직후 사용자 조회가 실패하면 서버 세션까지 정리
+  - 다국어(i18n) 체계 도입. 하드코딩된 문구를 한국어·영어 리소스로 옮기고, 기기 언어 감지와 개발 중 누락 키 표시·eslint 검사 추가
+  - 운영·개발·디버그 앱 환경 분리(앱 설정, EAS 프로필, Firebase 설정, 배포 대상)
+  - PostHog 분석, PWA, 모바일 웹에서 스토어 설치 유도, 점검 모드
+  - 앱 만족도 피드백 팝업. 설치 후 3일, 사용 2일이 지난 사용자에게 AI 답변 평가나 채팅 5회 같은 시점에 띄우고, 접수된 피드백은 관리자 웹 고객 지원 화면에서 처리
+</Also>

@@ -1,0 +1,53 @@
+export const meta = {
+  title: 'GLAB 관리자 웹',
+  tag: '관악연구소 · 2026.08 – 현재',
+  summary:
+    'GLAB 앱 운영을 위한 관리자 웹입니다. 사용자, 공지, 약관, 앱 버전, 추천 질문, 고객 지원까지 21개 화면을 설계·구현하고 실제 API와 연동해 운영에 쓰고 있습니다.',
+  order: 5,
+  metric: { value: '21개 화면', label: '운영 규칙을 화면과 입력 검증에 반영한 관리자 웹' },
+  stack: 'Vite, React 19, React Router 7, Zustand, React Hook Form, Zod, TipTap',
+};
+
+<Facts>
+  <Fact label="역할">기획·설계·구현</Fact>
+  <Fact label="스택">Vite, React 19, React Router 7, Zustand, React Hook Form, Zod, TipTap</Fact>
+</Facts>
+
+<Gallery
+  shots={[
+    { src: 'admin-users.png', caption: '사용자 · 개인정보 마스킹', alt: '사용자 목록, 이메일·닉네임 마스킹' },
+    { src: 'admin-versions.png', caption: '앱 버전 · 최신/이전 분리', alt: '앱 버전 최신/이전 관리' },
+    { src: 'admin-support.png', caption: '고객 지원 · 처리 상태 관리', alt: '고객 지원 미처리/처리 완료' },
+    { src: 'admin-notice.png', caption: '공지 작성 · 예약 게시·푸시', alt: '공지 작성, 게시일 예약과 푸시' },
+  ]}
+/>
+
+<Case title="운영 규칙을 담은 화면과 입력 검증">
+  <Step label="상황">관리자 웹에서 바꾼 공지·약관·앱 버전은 그대로 앱 사용자에게 나갑니다.</Step>
+  <Step label="판단">운영 중 실수가 나기 쉬운 지점을 먼저 정리해 화면과 입력 검증에 반영했습니다. 목 데이터로 흐름을 확인한 뒤 실제 API에 연결했습니다.</Step>
+  <Step label="구현">공지는 지난 시각으로 예약할 수 없고, 이미 게시된 공지는 게시일과 푸시 설정을 바꿀 수 없게 했습니다. 사용 중인 약관 유형은 삭제를 막고, 앱 버전은 iOS·Android·웹별로 등록합니다. 버전 목록은 최신/이전 테이블을 나눠 지금 배포 중인 버전이 묻히지 않게 했습니다. 규칙은 Zod 스키마로 옮겨, 작성과 수정에 다른 규칙을 적용하고 약관 본문은 HTML 안에 실제 글자가 있는지까지 검사했습니다.</Step>
+</Case>
+
+```ts
+// 예약 게시는 현재 시각 이후만 받는다. 이미 게시된 공지를 고칠 때만 지난 시각을 그대로 둔다.
+const noticeSchema = (options: { allowPast: boolean }) =>
+  baseSchema.superRefine((value, ctx) => {
+    if (!value.scheduled || options.allowPast) return;
+    if (isPast(value.publishAt)) {
+      ctx.addIssue({ code: 'custom', path: ['publishAt'], message: '현재 시각 이후로 선택해 주세요.' });
+    }
+  });
+```
+
+<Note>실제 코드가 아니라 구조만 단순화한 예시입니다.</Note>
+
+<Case title="에디터 재사용과 개인정보 마스킹">
+  <Step label="문제">관리자 웹에서 쓴 글이 앱에서 그대로 보여야 하고, 운영자 화면에 사용자 정보가 그대로 노출되면 안 됩니다.</Step>
+  <Step label="구현">TipTap 에디터 하나를 출력 형식만 바꿔 재사용해, 공지는 Markdown, 약관은 앱의 HTML 렌더러에 맞춘 HTML로 저장하게 했습니다. 사용자 목록과 고객지원 화면에서는 이메일·닉네임을 기본으로 가리고, 필요한 행 하나만 열어 볼 수 있게 했습니다.</Step>
+</Case>
+
+<Also>
+  - 목록 화면은 제목·검색·필터와 표 머리글을 고정하고 행만 스크롤. 검색은 버튼을 눌렀을 때만 제목·본문 조회
+  - 고객 지원은 미처리/처리 완료 목록을 나누고 처리일·처리자 표시
+  - 브라우저 기본 영문 검증 대신 해당 입력 아래에 한국어 오류 표시
+</Also>

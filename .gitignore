@@ -1,6 +1,15 @@
-private.js
-*.pdf
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
 .DS_Store
-!pdf/*.pdf
+
+# phone number, only used for locally printed copies
+public/private.js
+
+# local copies with the phone number; public downloads live in public/pdf
+*.pdf
 *.docx
-!pdf/*.docx
+!public/pdf/*.pdf
+!public/pdf/*.docx
