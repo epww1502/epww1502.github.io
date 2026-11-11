@@ -181,7 +181,7 @@ export default function CareerPage() {
               rows={[
                 ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반). NTIS 국가 R&D 과제(12859502) 참여'],
                 ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 멘토링'],
-                ['팀 구성', '차트 담당 3명'],
+                ['팀 구성', '차트 담당 3명 → 2022.09 팀 개편 이후 1명(본인)'],
                 ['기술', 'React, TypeScript, MobX, Victory'],
               ]}
             />
@@ -246,10 +246,11 @@ export default function CareerPage() {
             variant="meta"
             rows={[
               ['개요', '연인·친구·가족이 공간을 만들어 버킷리스트를 함께 모으고 기록하는 앱. 기획부터 App Store 심사 대응과 출시까지 진행'],
+              ['기술', 'Expo SDK 58, Supabase, Zustand, Jest'],
               [
-                '기술',
+                '링크',
                 <>
-                  Expo SDK 58, Supabase, Zustand, Jest · <a href="https://apps.apple.com/kr/app/id6826993862">App Store</a> ·{' '}
+                  <a href="https://apps.apple.com/kr/app/id6826993862">App Store</a> ·{' '}
                   <a href="https://github.com/epww1502/DoIt2">GitHub</a>
                 </>,
               ],
