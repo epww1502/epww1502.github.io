@@ -249,7 +249,8 @@ export default function CareerPage() {
               [
                 '기술',
                 <>
-                  Expo SDK 58, Supabase, Zustand, Jest · <a href="https://github.com/epww1502/DoIt2">GitHub</a>
+                  Expo SDK 58, Supabase, Zustand, Jest · <a href="https://apps.apple.com/kr/app/id6826993862">App Store</a> ·{' '}
+                  <a href="https://github.com/epww1502/DoIt2">GitHub</a>
                 </>,
               ],
             ]}

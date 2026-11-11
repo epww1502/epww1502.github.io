@@ -101,7 +101,10 @@ export default function ResumePage() {
           summary="기획부터 앱·Supabase 백엔드, 스토어 등록·App Store 심사까지 진행."
           stack="Expo SDK 58 · Supabase · Zustand · Jest"
           detail="doit"
-          links={[{ href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' }]}
+          links={[
+            { href: 'https://apps.apple.com/kr/app/id6826993862', label: 'App Store' },
+            { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
+          ]}
         >
           <ul>
             <li>동시에 고쳐도 유실되지 않고 두 번 전송돼도 결과가 같은 변경 단위 동기화를 설계하고 Jest로 검증</li>
