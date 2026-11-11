@@ -260,7 +260,7 @@ export default function CareerPage() {
             <li>OTA·강제 업데이트·오류 수집, 사진 크기 축소와 저장소 경로 기준 캐시</li>
           </ul>
         </Project>
-        <Project title="Month · 복약 알림 앱" period="2026.10 – 현재">
+        <Project title="Month · 복약 알림 앱" period="2026.10 – 현재 · 개발 중">
           <Fields
             variant="meta"
             rows={[

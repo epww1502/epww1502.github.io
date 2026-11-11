@@ -110,7 +110,7 @@ export default function ResumePage() {
         </Project>
         <Project
           title="Month · 복약 알림 앱"
-          period="2026.10 – 현재"
+          period="2026.10 – 현재 · 개발 중"
           summary="앱을 열지 않아도 홈 화면 위젯이 날짜에 맞게 갱신되도록 Android 네이티브 모듈(Kotlin) 구현. Jest 테스트 66개와 CI로 검증."
           stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
           detail="month"
