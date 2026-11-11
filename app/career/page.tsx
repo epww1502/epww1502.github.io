@@ -60,7 +60,7 @@ export default function CareerPage() {
               rows={[
                 ['개요', '개인 투자자에게 AI 투자 상담과 종목·포트폴리오 분석을 제공하는 앱. 2026.07 정식 출시'],
                 ['역할', '프론트엔드 개발, 2026.05부터 파트장 · 기획, 빌드, 배포, 운영'],
-                ['팀 구성', '프론트엔드 4명, 백엔드 2명, AI 2명'],
+                ['팀 구성', '프론트엔드 3명, 백엔드 2명, AI 2명'],
                 [
                   '기술',
                   'Expo, React Native, TypeScript, TanStack Query, Zustand, NativeWind, Firebase Auth, EAS, AWS S3·CloudFront, GitHub Actions, PostHog',
