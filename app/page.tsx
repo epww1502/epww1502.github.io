@@ -76,7 +76,8 @@ export default function ResumePage() {
                 데이터 포인트마다 그리던 렌더링을 계열 단위로 바꿔 컴포넌트 수를 1/100로 줄이고{' '}
                 <b>대용량 차트 렌더링 10,000ms → 100ms</b>, 30×30 차트 삽입 11초 → 2초
               </li>
-              <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, Excel과 같은 값이 나오는 오차 막대를 라이브러리 path 수정으로 구현</li>
+              <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, Excel과 같은 값이 나오는 오차 막대 구현</li>
+              <li>차트 모델·명령(Undo/Redo)·렌더링 훅을 Jest와 React Testing Library로 테스트 (46개 파일)</li>
             </ul>
           </Project>
 
@@ -129,7 +130,7 @@ export default function ResumePage() {
             ['주력', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               '경험',
-              'Next.js, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, Kotlin, Java·SQL',
+              'Next.js, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
             ],
           ]}
         />

@@ -183,7 +183,7 @@ export default function CareerPage() {
                 ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반). NTIS 국가 R&D 과제(12859502) 참여'],
                 ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 멘토링'],
                 ['팀 구성', '차트 담당 3명 → 2022.09 팀 개편 이후 1명(본인)'],
-                ['기술', 'React, TypeScript, MobX, Victory'],
+                ['기술', 'React, TypeScript, MobX, Victory, Jest, React Testing Library'],
               ]}
             />
             <Label>주요 업무</Label>
@@ -194,6 +194,7 @@ export default function CareerPage() {
               <li>데이터 참조를 문자열에서 셀 주소 객체로 바꾸고, 여러 범위 선택(Multi-Range)과 다단계 항목(Multi-Level Category) 지원</li>
               <li>데이터 선택 다이얼로그: 범위를 바꾸면 미리보기에 바로 반영하고, 범위가 맞지 않으면 오류를 띄우고 미리보기를 멈춤</li>
               <li>미니 셀: Word·Point 문서에 차트를 넣기 위해 데이터용 셀 문서를 링크 방식으로 연결하는 구조 설계</li>
+              <li>테스트: 차트 종류별 모델, 오차 막대·범례·축 명령의 실행/Undo/Redo, 렌더링 훅과 컴포넌트를 Jest와 React Testing Library로 검증 (46개 파일)</li>
             </ul>
             <Label>문제 해결</Label>
             <ul>
