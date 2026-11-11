@@ -16,11 +16,11 @@ export default function ResumePage() {
       />
 
       <Section title="경력">
-        <Company name="관악연구소" when="2025.01 – 현재 · 프론트엔드 파트장">
+        <Company name="관악연구소" when="2025.01 – 현재 · 프론트엔드 (2026.05부터 파트장)">
           <Project
             title="GLAB · AI 디지털 PB 앱"
             period="2025.12 – 현재"
-            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 파트장으로 프론트엔드의 기획부터 빌드·배포·운영까지 맡고, 팀 기능 PR의 절반(278개) 작성과 코드리뷰(동료 PR 149건) 담당."
+            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 프론트엔드의 기획부터 빌드·배포·운영까지 맡고(2026.05부터 파트장), 팀 기능 PR의 절반(278개) 작성과 코드리뷰(동료 PR 149건) 담당."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
           >
@@ -136,7 +136,7 @@ export default function ResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0 · 2017.09 – 2021.06'],
-            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2016.12 (중퇴 후 OSU 진학)'],
+            ['한국기술교육대학교', '컴퓨터공학 · 2013.03 – 2016.12 (중퇴 후 OSU 진학)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}
         />

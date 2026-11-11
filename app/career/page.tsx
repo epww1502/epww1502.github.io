@@ -30,7 +30,7 @@ export default function CareerPage() {
         <Fields
           rows={[
             ['총 경력', '2022.01 – 현재 (5년차)'],
-            ['관악연구소', '2025.01 – 현재 · 프론트엔드 파트장 · GLAB 앱·관리자 웹, LG CNS COP'],
+            ['관악연구소', '2025.01 – 현재 · 프론트엔드 (2026.05부터 파트장) · GLAB 앱·관리자 웹, LG CNS COP'],
             ['티맥스가이아', '2022.01 – 2025.01 · 연구원 · GAIA OFFICE Chart·Cell'],
             ['주력 기술', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
           ]}
@@ -51,15 +51,15 @@ export default function CareerPage() {
       <Section title="경력 상세">
         <Company
           name="관악연구소"
-          when="2025.01 – 현재 · AIX팀 · 프론트엔드 파트장"
-          summary="웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB의 프론트엔드 파트장을 맡음."
+          when="2025.01 – 현재 · AIX팀 · 프론트엔드 (2026.05부터 파트장)"
+          summary="웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음."
         >
           <Project title="GLAB · AI 디지털 PB 앱" period="2025.12 – 현재">
             <Fields
               variant="meta"
               rows={[
                 ['개요', '개인 투자자에게 AI 투자 상담과 종목·포트폴리오 분석을 제공하는 앱. 2026.07 정식 출시'],
-                ['역할', '프론트엔드 파트장 · 기획, 빌드, 배포, 운영'],
+                ['역할', '프론트엔드 개발, 2026.05부터 파트장 · 기획, 빌드, 배포, 운영'],
                 ['팀 구성', '프론트엔드 4명, 백엔드 2명, AI 2명'],
                 [
                   '기술',
