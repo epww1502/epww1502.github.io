@@ -108,7 +108,7 @@ export default function ResumePage() {
         >
           <ul>
             <li>동시에 고쳐도 유실되지 않고 두 번 전송돼도 결과가 같은 변경 단위 동기화를 설계하고 Jest로 검증</li>
-            <li>RLS 정책 63개로 공간 멤버만 접근하도록 설계, OTA·강제 업데이트·오류 수집 구현</li>
+            <li>RLS 정책 53개로 공간 멤버만 접근하도록 설계, OTA·강제 업데이트·오류 수집 구현</li>
           </ul>
         </Project>
         <Project
