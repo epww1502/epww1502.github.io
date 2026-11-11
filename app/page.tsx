@@ -148,11 +148,14 @@ export default function ResumePage() {
 
       <Section title="수상 · 학교 프로젝트">
         <Project
-          title="BeaverHack 2021 (OSU 해커톤 핀테크 부문) 3위 / 17팀"
+          title="BeaverHacks Spring 2021 (OSU 해커톤, 주제 핀테크) 종합 3위 / 17팀"
           period="2021.04"
           summary="암호화폐 자동 매매 봇(2인). 변동성 돌파 전략과 Upbit API 연동을 맡아 자동 매수·매도하고 결과를 Slack으로 보고."
           stack="Python · Upbit API · PyQt5"
-          links={[{ href: 'https://github.com/epww1502/OSUHackathon-2021Sp', label: 'GitHub' }]}
+          links={[
+            { href: 'https://devpost.com/software/kimchi-trading-bot', label: '수상 내역' },
+            { href: 'https://github.com/epww1502/OSUHackathon-2021Sp', label: 'GitHub' },
+          ]}
         />
         <Project
           title="iOS Gesture Alphabet · OSU 졸업 프로젝트"
