@@ -70,7 +70,7 @@ export default function CareerPage() {
                   <>
                     <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
                     <a href="https://play.google.com/store/apps/details?id=com.gwanak.glab">Google Play</a> ·{' '}
-                    <a href="https://glab.gwanaklab.com">glab.gwanaklab.com</a>
+                    <a href="https://glab.gwanaklab.com">웹사이트</a>
                   </>,
                 ],
               ]}

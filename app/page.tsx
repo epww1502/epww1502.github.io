@@ -39,7 +39,7 @@ export default function ResumePage() {
             <p className="stack">
               서비스 <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
               <a href="https://play.google.com/store/apps/details?id=com.gwanak.glab">Google Play</a> ·{' '}
-              <a href="https://glab.gwanaklab.com">glab.gwanaklab.com</a> ·{' '}
+              <a href="https://glab.gwanaklab.com">웹사이트</a> ·{' '}
               <a href="https://www.mt.co.kr/future/2026/10/02/2026100209504057390">머니투데이 보도</a>
             </p>
           </Project>
