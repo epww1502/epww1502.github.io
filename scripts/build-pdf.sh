@@ -26,6 +26,7 @@ print_pdf() { # $1 = page under out/, $2 = output pdf
 
 # Private copies: out/private.js (copied from public/ by the build, if present) fills in the phone number
 print_pdf index.html 이영주_이력서.pdf
+print_pdf en.html Youngjoo_Lee_Resume.pdf
 print_pdf portfolio/print.html 이영주_포트폴리오.pdf
 print_pdf career.html 이영주_경력기술서.pdf
 python scripts/build-docx.py 이영주_경력기술서.docx --phone
@@ -34,6 +35,7 @@ python scripts/build-docx.py 이영주_경력기술서.docx --phone
 rm -f out/private.js
 mkdir -p public/pdf
 print_pdf index.html public/pdf/resume.pdf
+print_pdf en.html public/pdf/resume-en.pdf
 print_pdf portfolio/print.html public/pdf/portfolio.pdf
 print_pdf career.html public/pdf/career.pdf
 python scripts/build-docx.py public/pdf/career.docx

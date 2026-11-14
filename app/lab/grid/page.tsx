@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { GridDemo } from '@/components/lab/GridDemo';
-import { LabPage } from '@/components/lab/LabPage';
+import { LabCode, LabPage } from '@/components/lab/LabPage';
+import { GRID_CODE } from '@/lib/demoCode';
 import { demoBySlug } from '@/lib/demos';
 
 const demo = demoBySlug('grid');
@@ -18,6 +19,7 @@ export default function Page() {
       fix={demo.fix}
     >
       <GridDemo />
+      <LabCode code={GRID_CODE} file="components/lab/GridDemo.tsx" />
     </LabPage>
   );
 }

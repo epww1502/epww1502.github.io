@@ -2,7 +2,7 @@
 
 이력서, 포트폴리오, 경력기술서 사이트입니다. Next.js 정적 빌드로 만들고 GitHub Pages에 배포합니다.
 
-- 이력서: `app/page.tsx`
+- 이력서: `app/page.tsx` (영문: `app/en/page.tsx`. 한쪽을 고치면 다른 쪽도 맞춘다)
 - 경력기술서: `app/career/page.tsx`
 - 포트폴리오 사례: `content/cases/*.mdx`
 - 데모: `app/lab`, `components/lab` (목록과 설명은 `lib/demos.ts`)

@@ -41,6 +41,7 @@ export function Project({
   summary,
   stack,
   detail,
+  detailLabel = '자세히',
   links,
   children,
 }: {
@@ -51,6 +52,7 @@ export function Project({
   stack?: string;
   /** Slug of the portfolio case study this project links to. */
   detail?: string;
+  detailLabel?: string;
   links?: { href: string; label: string }[];
   children?: ReactNode;
 }) {
@@ -67,7 +69,7 @@ export function Project({
           {stack}
           {detail && (
             <Link className="more" href={`/portfolio/${detail}`}>
-              자세히 →
+              {detailLabel} →
             </Link>
           )}
           {links?.map((link) => (

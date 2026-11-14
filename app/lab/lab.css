@@ -1,6 +1,10 @@
 /* Demos under /lab. The page frame and colors come from globals.css. */
 .lab .project-title + .summary { max-width: 60ch; }
 .lab-disclaimer { margin-top: 18px; }
+.lab-section { margin-top: 32px; }
+.lab-section pre { margin-top: 0; }
+.lab-notes { font-size: 14.5px; }
+.lab-notes li + li { margin-top: 8px; }
 .lab-demo { margin-top: 24px; }
 
 .lab-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 10px; }

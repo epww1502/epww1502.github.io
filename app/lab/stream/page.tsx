@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { StreamDemo } from '@/components/lab/StreamDemo';
-import { LabPage } from '@/components/lab/LabPage';
+import { LabCode, LabPage } from '@/components/lab/LabPage';
+import { STREAM_CODE } from '@/lib/demoCode';
 import { demoBySlug } from '@/lib/demos';
 
 const demo = demoBySlug('stream');
@@ -18,6 +19,7 @@ export default function Page() {
       fix={demo.fix}
     >
       <StreamDemo />
+      <LabCode code={STREAM_CODE} file="components/lab/StreamDemo.tsx" />
     </LabPage>
   );
 }

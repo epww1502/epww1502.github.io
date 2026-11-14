@@ -7,6 +7,7 @@ export default function ResumePage() {
     <main className="page">
       <TopBar
         links={['portfolio', 'career', 'lab']}
+        switchTo={{ href: '/en', label: 'EN', name: 'English' }}
         downloads={[{ href: '/pdf/resume.pdf', filename: '이영주_이력서.pdf', kind: 'pdf' }]}
       />
       <PageHeader

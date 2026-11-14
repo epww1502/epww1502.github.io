@@ -95,3 +95,30 @@ export function Stat({ label, value, accent = false }: { label: string; value: R
     </div>
   );
 }
+
+const SOURCE = 'https://github.com/epww1502/epww1502.github.io/blob/main/';
+
+/** The few lines that make the difference, with a link to the full source of the demo. */
+export function LabCode({ code, file }: { code: string; file: string }) {
+  return (
+    <section className="lab-section">
+      <h2>핵심 코드</h2>
+      <pre>
+        <code>{code}</code>
+      </pre>
+      <p className="note">
+        데모 소스에서 줄인 것입니다. 전체 코드는 <a href={SOURCE + file}>{file}</a>에 있습니다.
+      </p>
+    </section>
+  );
+}
+
+/** A titled list, for what the demo leaves out compared with the real product. */
+export function LabNotes({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="lab-section">
+      <h2>{title}</h2>
+      <ul className="lab-notes">{children}</ul>
+    </section>
+  );
+}
