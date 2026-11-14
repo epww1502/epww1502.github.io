@@ -253,6 +253,7 @@ export default function CareerPage() {
                 '링크',
                 <>
                   <a href="https://apps.apple.com/kr/app/id6826993862">App Store</a> ·{' '}
+                  <a href="https://doit2app.github.io">소개 사이트</a> ·{' '}
                   <a href="https://github.com/epww1502/DoIt2">GitHub</a>
                 </>,
               ],
@@ -260,8 +261,9 @@ export default function CareerPage() {
           />
           <ul>
             <li>여러 명이 동시에 고쳐도 유실되지 않도록 변경 단위로 기록해 서버 최신 상태 위에 다시 적용, Jest로 시나리오 검증</li>
-            <li>RLS 정책 53개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
+            <li>RLS 정책 61개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
             <li>OTA·강제 업데이트·오류 수집, 사진 크기 축소와 저장소 경로 기준 캐시</li>
+            <li>소개 사이트와 초대 링크·돌아보기 공유 웹 페이지 제작. 초대 페이지는 코드 추측 방어를 유지하려고 서버 조회 없이 구성하고, 공유 페이지는 고른 사진만 위치 정보를 뺀 사본으로 30일간 공개</li>
           </ul>
         </Project>
         <Project title="Month · 복약 알림 앱" period="2026.10 – 현재 · 개발 중">

@@ -4,15 +4,15 @@ export const meta = {
   summary:
     '연인·친구·가족이 공간을 만들어 가고 싶은 곳과 해보고 싶은 것을 함께 모으고, 다녀온 뒤 사진과 후기를 남기는 앱입니다. 기획, 앱, Supabase 백엔드, App Store 심사 대응과 출시까지 2주 반 동안 진행했습니다(커밋 80개).',
   order: 6,
-  metric: { value: 'RLS 정책 53개', label: '동시 수정에도 유실 없는 동기화와 서버 권한 설계' },
+  metric: { value: 'RLS 정책 61개', label: '동시 수정에도 유실 없는 동기화와 서버 권한 설계' },
   stack: 'Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest',
 };
 
 <Facts>
   <Fact label="역할">기획·설계·개발</Fact>
-  <Fact label="규모">DB 마이그레이션 33개, RLS 정책 53개<br />Edge Function 5개, 테스트 14개 파일</Fact>
+  <Fact label="규모">DB 마이그레이션 41개, RLS 정책 61개<br />Edge Function 6개, 테스트 30개 파일</Fact>
   <Fact label="스택">Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest</Fact>
-  <Fact label="링크">[App Store](https://apps.apple.com/kr/app/id6826993862)<br />[github.com/epww1502/DoIt2](https://github.com/epww1502/DoIt2)</Fact>
+  <Fact label="링크">[App Store](https://apps.apple.com/kr/app/id6826993862) · [소개 사이트](https://doit2app.github.io)<br />[github.com/epww1502/DoIt2](https://github.com/epww1502/DoIt2)</Fact>
 </Facts>
 
 <Gallery
@@ -56,6 +56,23 @@ it('같은 변경을 두 번 보내도 결과가 같다', () => {
   <Step label="구현">모든 표에 RLS를 걸어 공간 멤버만 읽고 쓰게 하고, 공간 참여·공간장 위임처럼 여러 표를 바꾸는 작업은 DB 함수로 묶었습니다. 카카오 API 키는 Edge Function 프록시 뒤에 두고, 링크 미리보기는 내부망 주소를 리다이렉트 이후까지 막았습니다. 푸시 알림과 계정 삭제도 서버 함수로 처리했습니다.</Step>
   <Step label="심사 대응">App Store 심사에서 신고·차단 기능(가이드라인 1.2)을 요구해, 신고는 쓰기만 가능하고 차단한 사람의 댓글은 보이지 않도록 RLS로 추가했습니다.</Step>
 </Case>
+
+<Case title="앱 밖에서 열리는 웹 페이지: 소개 사이트, 초대 링크, 돌아보기 공유">
+  <Step label="상황">초대는 6자리 코드를 메신저로 보내 직접 입력하는 방식이었고, 한 해 돌아보기는 이미지로만 공유할 수 있었습니다. 앱이 없는 사람도 링크로 바로 볼 수 있도록 소개 사이트와 초대·공유 페이지를 정적 페이지로 만들었습니다.</Step>
+  <Step label="판단">초대 페이지에 공간 정보를 보여 주려면 코드만으로 서버를 조회해야 하는데, 그러면 코드 추측을 막으려고 둔 로그인과 시도 횟수 제한을 우회하게 됩니다. 그래서 서버를 조회하지 않고 공간 이름과 이모지를 링크 주소에 실어 그대로 보여 주고, 실제 확인은 앱에서 참여할 때 하도록 했습니다.</Step>
+  <Step label="구현">돌아보기 공유는 맞힐 수 없는 id를 링크로 쓰고, 로그인 없이 읽기만 되는 DB 함수 하나만 열었습니다. 공개되는 것은 통계와 직접 고른 사진뿐이며, 원본은 비공개로 둔 채 촬영 위치 정보(EXIF)를 뺀 사본만 공개 버킷에 올립니다. 링크는 30일 뒤 만료되고, 링크를 끄거나 계정을 지우면 사본도 함께 지웁니다. 페이지는 서버에서 받은 값을 모두 텍스트로만 넣어 스크립트가 실행되지 않게 했습니다.</Step>
+  <Step label="검증">다른 사람의 공유 폴더에 올리거나 지울 수 없는지, 만료된 링크가 열리지 않는지를 로컬 Postgres에서 역할별로 실행해 확인했고, 링크와 공유 내용을 만드는 로직은 Jest로 테스트했습니다.</Step>
+</Case>
+
+<Gallery shots={[{ src: 'doit-web-landing.jpg', caption: '소개 사이트', wide: true }]} />
+
+<Gallery
+  phones
+  shots={[
+    { src: 'doit-web-join.jpg', caption: '초대 링크 페이지' },
+    { src: 'doit-web-memories.jpg', caption: '돌아보기 공유 페이지' },
+  ]}
+/>
 
 <Case title="업데이트, 오류 수집, 사진 캐시">
   <Step label="구현">스플래시 동안과 앱으로 돌아올 때 OTA 업데이트를 받고, 서버의 최소 버전보다 낮은 앱은 업데이트 화면으로 막아 서버에 저장된 스토어 주소로 보냅니다. 오류는 기기에 먼저 저장했다가 서버로 보내 앱이 종료돼도 기록이 남게 했고, 화면에서 오류가 나면 앱이 꺼지는 대신 다시 시도 화면을 보여 줍니다.</Step>
