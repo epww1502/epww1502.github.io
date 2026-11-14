@@ -102,7 +102,7 @@ export default function ResumePage() {
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 앱·Supabase 백엔드, App Store 심사 대응과 출시까지 진행."
+          summary="기획부터 앱·Supabase 백엔드·소개/공유 웹 페이지, App Store 심사 대응과 출시까지 진행."
           stack="Expo SDK 58 · Supabase · Zustand · Jest"
           detail="doit"
           links={[
@@ -114,7 +114,6 @@ export default function ResumePage() {
           <ul>
             <li>동시에 고쳐도 유실되지 않고 두 번 전송돼도 결과가 같은 변경 단위 동기화를 설계하고 Jest로 검증</li>
             <li>RLS 정책 61개로 공간 멤버만 접근하도록 설계, OTA·강제 업데이트·오류 수집 구현</li>
-            <li>소개 사이트와 초대 링크·돌아보기 공유 웹 페이지 제작, 고른 사진만 위치 정보를 뺀 사본으로 30일간 공개</li>
           </ul>
         </Project>
         <Project
