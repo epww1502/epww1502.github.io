@@ -6,13 +6,13 @@ export default function ResumePage() {
   return (
     <main className="page">
       <TopBar
-        links={['portfolio', 'career']}
+        links={['portfolio', 'career', 'lab']}
         downloads={[{ href: '/pdf/resume.pdf', filename: '이영주_이력서.pdf', kind: 'pdf' }]}
       />
       <PageHeader
         title="이영주"
         lead="대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 프론트엔드 개발자입니다."
-        links={['portfolio', 'career']}
+        links={['portfolio', 'career', 'lab']}
       />
 
       <Section title="경력">

@@ -1,0 +1,71 @@
+/* Demos under /lab. The page frame and colors come from globals.css. */
+.lab .project-title + .summary { max-width: 60ch; }
+.lab-disclaimer { margin-top: 18px; }
+.lab-demo { margin-top: 24px; }
+
+.lab-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 10px; }
+.lab-controls .btn { height: 36px; padding: 0 14px; }
+.lab .btn:disabled { opacity: 0.5; cursor: default; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button {
+  border: 0; background: var(--bg); color: var(--muted); font: inherit; font-size: 14px;
+  height: 34px; padding: 0 12px; cursor: pointer;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--fg); color: var(--bg); font-weight: 600; }
+.seg button:disabled { cursor: default; opacity: 0.6; }
+.seg button:focus-visible, .lab .btn:focus-visible, .check input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+.check input { width: 16px; height: 16px; accent-color: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+.stat { padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; min-width: 0; }
+.stat b { display: block; font-size: 20px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat.accent b { color: var(--accent); }
+.stat span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+.lab-stage { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+.lab-result { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+.chart-stage { padding: 8px; }
+.chart-stage svg { display: block; width: 100%; height: auto; }
+.lab-table { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 14px; }
+.lab-table th { text-align: left; font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.lab-table th, .lab-table td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+.lab-table td:nth-child(n + 2) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.grid-stage { position: relative; height: 440px; }
+.grid-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.grid-scroller { position: absolute; inset: 0; overflow: auto; cursor: cell; }
+.grid-job {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(340px, calc(100% - 32px));
+  display: grid; gap: 6px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); font-size: 14px;
+}
+.grid-job span { font-variant-numeric: tabular-nums; }
+.grid-job progress { width: 100%; accent-color: var(--accent); }
+.grid-job small { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+
+.chat-stage { --flash: var(--accent); height: 460px; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: var(--soft); }
+.bubble {
+  position: relative; max-width: 78%; padding: 10px 12px 8px; border-radius: 12px; font-size: 14px;
+  background: var(--bg); border: 1px solid var(--line); outline: 2px solid transparent; outline-offset: 1px;
+}
+.bubble.user { align-self: flex-end; background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.bubble ul { margin: 4px 0; }
+.bubble code { background: var(--soft); }
+.bubble.user code { background: transparent; }
+.bubble-count { display: block; margin-top: 4px; font-size: 11.5px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.bubble.user .bubble-count { color: inherit; opacity: 0.75; }
+.bubble-count:empty { display: none; }
+
+@media (max-width: 600px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .grid-stage { height: 380px; }
+  .chat-stage { height: 400px; }
+  .bubble { max-width: 90%; }
+  .seg button { padding: 0 9px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bubble { outline: 0; }
+}

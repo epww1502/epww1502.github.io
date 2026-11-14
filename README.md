@@ -5,6 +5,7 @@
 - 이력서: `app/page.tsx`
 - 경력기술서: `app/career/page.tsx`
 - 포트폴리오 사례: `content/cases/*.mdx`
+- 데모: `app/lab`, `components/lab` (목록과 설명은 `lib/demos.ts`)
 
 ## 사례 추가
 

@@ -5,6 +5,7 @@ const OTHER_PAGES = {
   resume: { href: '/', label: '이력서 →' },
   portfolio: { href: '/portfolio', label: '포트폴리오 →' },
   career: { href: '/career', label: '경력기술서 →' },
+  lab: { href: '/lab', label: '데모 →' },
 };
 
 export function PageHeader({

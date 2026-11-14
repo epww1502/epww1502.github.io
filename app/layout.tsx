@@ -28,6 +28,10 @@ const HAS_PRIVATE_SCRIPT = fs.existsSync(path.join(process.cwd(), 'public', 'pri
 // Runs before paint so a saved theme never flashes the wrong colors.
 const THEME_INIT = `try{var t=localStorage.getItem('theme');if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}`;
 
+// scripts/build-pdf.sh opens each page with ?pdf. Links inside the site are then pointed at the live
+// site, so the PDFs do not carry links to the local server they were printed from.
+const PDF_LINKS = `if(location.search==='?pdf')addEventListener('load',function(){document.querySelectorAll('a[href^="/"]').forEach(function(a){a.href=${JSON.stringify(SITE)}+a.getAttribute('href')})})`;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko" suppressHydrationWarning>
@@ -37,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+        <script dangerouslySetInnerHTML={{ __html: PDF_LINKS }} />
       </head>
       <body>
         {children}

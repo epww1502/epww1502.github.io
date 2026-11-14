@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { ThemeToggle } from './ThemeToggle';
-import { BackIcon, CareerIcon, DownloadIcon, PortfolioIcon, ResumeIcon, WordIcon } from './icons';
+import { BackIcon, CareerIcon, DownloadIcon, LabIcon, PortfolioIcon, ResumeIcon, WordIcon } from './icons';
 
 const PAGES = {
   resume: { href: '/', label: '이력서', icon: <ResumeIcon /> },
   portfolio: { href: '/portfolio', label: '포트폴리오', icon: <PortfolioIcon /> },
   career: { href: '/career', label: '경력기술서', icon: <CareerIcon /> },
   back: { href: '/portfolio', label: '목록', icon: <BackIcon /> },
+  lab: { href: '/lab', label: '데모', icon: <LabIcon /> },
 } satisfies Record<string, { href: string; label: string; icon: ReactNode }>;
 
 type Download = { href: string; filename: string; kind: 'pdf' | 'word' };

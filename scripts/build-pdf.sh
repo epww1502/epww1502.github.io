@@ -17,9 +17,10 @@ SERVER=$!
 trap 'kill $SERVER 2>/dev/null || true' EXIT
 until curl -s -o /dev/null "http://127.0.0.1:$PORT/index.html"; do sleep 0.3; done
 
+# ?pdf makes the page point its internal links at the live site (see app/layout.tsx)
 print_pdf() { # $1 = page under out/, $2 = output pdf
   "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer --virtual-time-budget=5000 \
-    --print-to-pdf="$ROOT/$2" "http://127.0.0.1:$PORT/$1" 2>/dev/null
+    --print-to-pdf="$ROOT/$2" "http://127.0.0.1:$PORT/$1?pdf" 2>/dev/null
   echo "$2: $(grep -a -o '/Count [0-9]*' "$2" | awk '{print $2}' | sort -n | tail -1) pages"
 }
 
