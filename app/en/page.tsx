@@ -118,7 +118,7 @@ export default function EnglishResumePage() {
           title="DoIt2 · Shared bucket list app"
           period="2026.10 – Present · iOS released, Android planned"
           summary="Planning, app, Supabase backend, intro and share web pages, App Store review and release."
-          stack="Expo SDK 58 · Supabase · Zustand · Jest"
+          stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           detailLabel={CASE}
           links={[
@@ -130,6 +130,7 @@ export default function EnglishResumePage() {
           <ul>
             <li>Change-based sync that survives concurrent edits and repeated sends, verified with Jest</li>
             <li>61 RLS policies restricting access to space members; OTA, forced updates and error collection</li>
+            <li>AI suggestions (Claude API) measured with a 24-request eval set: 97.9% on-request, 8.9 s to first item, about $0.001 per call</li>
           </ul>
         </Project>
         <Project

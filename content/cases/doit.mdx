@@ -5,13 +5,13 @@ export const meta = {
     '연인·친구·가족이 공간을 만들어 가고 싶은 곳과 해보고 싶은 것을 함께 모으고, 다녀온 뒤 사진과 후기를 남기는 앱입니다. 기획, 앱, Supabase 백엔드, App Store 심사 대응과 출시까지 2주 반 동안 진행했습니다(커밋 80개).',
   order: 6,
   metric: { value: 'RLS 정책 61개', label: '동시 수정에도 유실 없는 동기화와 서버 권한 설계' },
-  stack: 'Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest',
+  stack: 'Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Claude API, Jest',
 };
 
 <Facts>
   <Fact label="역할">기획·설계·개발</Fact>
-  <Fact label="규모">DB 마이그레이션 41개, RLS 정책 61개<br />Edge Function 6개, 테스트 30개 파일</Fact>
-  <Fact label="스택">Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Jest</Fact>
+  <Fact label="규모">DB 마이그레이션 41개, RLS 정책 61개<br />Edge Function 7개, 테스트 31개 파일</Fact>
+  <Fact label="스택">Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Claude API, Jest</Fact>
   <Fact label="링크">[App Store](https://apps.apple.com/kr/app/id6826993862) · [소개 사이트](https://doit2app.github.io)<br />[github.com/epww1502/DoIt2](https://github.com/epww1502/DoIt2)</Fact>
 </Facts>
 
@@ -56,6 +56,34 @@ it('같은 변경을 두 번 보내도 결과가 같다', () => {
   <Step label="구현">모든 표에 RLS를 걸어 공간 멤버만 읽고 쓰게 하고, 공간 참여·공간장 위임처럼 여러 표를 바꾸는 작업은 DB 함수로 묶었습니다. 카카오 API 키는 Edge Function 프록시 뒤에 두고, 링크 미리보기는 내부망 주소를 리다이렉트 이후까지 막았습니다. 푸시 알림과 계정 삭제도 서버 함수로 처리했습니다.</Step>
   <Step label="심사 대응">App Store 심사에서 신고·차단 기능(가이드라인 1.2)을 요구해, 신고는 쓰기만 가능하고 차단한 사람의 댓글은 보이지 않도록 RLS로 추가했습니다.</Step>
 </Case>
+
+<Case title="AI 추천: 장소와 할 것까지 채워 주고, 평가 세트로 측정">
+  <Step label="도입">목록이 비어 있거나 무엇을 담을지 떠오르지 않을 때를 위해 넣었습니다. 담아 둔 목록과 사용자가 말한 조건("비 오는 날 실내에서", 이어서 "더 저렴하게")을 보고 새 항목 5개를 장소와 할 것까지 채워 추천합니다. Claude Haiku 5.5를 Edge Function에서 호출해 API 키를 서버에만 두고, 한 사람 하루 20회와 전체 하루 2,000회 한도를 두었습니다.</Step>
+  <Step label="판단">모델의 답을 그대로 쓰지 않도록 했습니다. 답의 모양은 JSON 스키마로 고정하고, 장소는 모델이 적은 이름을 카카오 장소 검색에서 찾아 이름이 맞을 때만 지도에 표시합니다. 맞는 곳이 없으면 지역 글자만 남깁니다. 사용자가 쓴 말은 지시가 아니라 참고할 내용으로만 전달합니다. 첫 추천이 보이기까지 9초쯤 걸려서, 답을 스트리밍으로 받아 진행 단계와 "5개 중 n개"를 보여 줍니다.</Step>
+  <Step label="측정">출시 초기라 실제 사용 기록이 적어, 요청 24개(조건 하나, 조건 여러 개, 이어서 말하기, 요청 없음, 엉뚱한 말)를 직접 만들어 배포된 함수에 2번씩 보내 추천 240개를 채점했습니다. 개수, 길이, 실내/야외, 지역 같은 규칙은 코드로 검사하고, 요청에 맞는지와 할 것이 쓸모 있는지는 다른 모델(Sonnet 5.5)이 항목마다 근거를 쓰고 판정하게 했습니다. 심사 근거는 결과 파일에 남겨 직접 다시 확인할 수 있게 했습니다.</Step>
+  <Step label="결과" result>요청에 맞음 235/240(97.9%), 할 것 쓸모 235/240, 규칙 130/130, 장소 실재 121/123. 첫 추천까지 가운데값 8.9초, 다섯 개 모두 10.9초, 한 번에 약 $0.001. 48번 모두 실패 없이 끝났고, 지시를 바꾸려는 말에도 2번 모두 평소대로 추천했습니다.</Step>
+  <Step label="알게 된 것">모델이 종류를 잘못 적은 10건은 모두 같은 혼동(카테고리 이름 `activity`와 종류 이름 `activity`)이었고, 앱에서 카테고리에 맞춰 종류를 다시 정하는 코드가 전부 바로잡았습니다. 장소 이름은 정확했지만 구 단위 지역은 가끔 틀려서, 장소를 찾으면 모델이 적은 지역 대신 카카오 주소를 씁니다. 조건이 여러 개인 요청이 94.3%로 가장 약해 다음 개선 대상입니다.</Step>
+</Case>
+
+```js
+// 요청 하나: 담아 둔 목록, 사용자가 말한 것, 코드로 검사할 규칙, 심사 기준
+{
+  "id": "follow-busan-sights",
+  "list": "couple",
+  "requests": ["부산 여행", "맛집 말고 구경할 곳 위주로"],
+  "check": { "locationIncludes": ["부산"], "categoryNotIn": ["food", "cafe"] },
+  "rubric": "다섯 개 모두 부산에서 하는 것이고, 먹는 곳이 아니라 구경하는 곳이어야 한다."
+}
+
+// 장소 실재: 앱이 담을 때와 같은 검색, 같은 판정
+async function placeFound(it) {
+  const { places } = await (await call('kakao-search', { query: it.place })).json();
+  const want = norm(it.place);
+  return places.some((p) => norm(p.name).includes(want) || want.includes(norm(p.name)));
+}
+```
+
+<Note>저장소의 [`scripts/ai-eval`](https://github.com/epww1502/DoIt2/tree/main/scripts/ai-eval)에서 가져와 줄였습니다. 요청 24개와 결과, 한계는 그 폴더의 README에 있습니다.</Note>
 
 <Case title="앱 밖에서 열리는 웹 페이지: 소개 사이트, 초대 링크, 돌아보기 공유">
   <Step label="상황">초대는 6자리 코드를 메신저로 보내 직접 입력하는 방식이었고, 한 해 돌아보기는 이미지로만 공유할 수 있었습니다. 앱이 없는 사람도 링크로 바로 볼 수 있도록 소개 사이트와 초대·공유 페이지를 정적 페이지로 만들었습니다.</Step>
