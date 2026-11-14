@@ -1,10 +1,12 @@
 'use client';
 
-import { memo, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Segmented, Stat } from './LabPage';
 
 type Mode = 'point' | 'series';
-type Size = '30' | '100' | '200';
+type Size = '30' | '100' | '200' | '300' | '500';
+/** From this many points on, the slow way holds the page for seconds, so the demo says so first. */
+const HEAVY_POINTS = 90_000;
 
 const WIDTH = 800;
 const HEIGHT = 360;
@@ -92,40 +94,57 @@ const ms = (value: number) => `${value < 10 ? value.toFixed(1) : Math.round(valu
 export function ChartDemo() {
   const [size, setSize] = useState<Size>('100');
   const [mode, setMode] = useState<Mode>('series');
-  /** Bumped on every draw so the chart mounts fresh, the way inserting a chart does. */
-  const [run, setRun] = useState(0);
+  /** What is on screen. Null while the previous chart is being cleared, so clearing it is not part of the measurement. */
+  const [drawn, setDrawn] = useState<{ mode: Mode; count: number; run: number } | null>({ mode: 'series', count: 100, run: 0 });
   const [times, setTimes] = useState<Partial<Record<Mode, number>>>({});
   const [nodes, setNodes] = useState(0);
   const started = useRef<number | null>(null);
+  const runs = useRef(0);
   const box = useRef<HTMLDivElement>(null);
 
   const count = Number(size);
-  const series = useMemo(() => buildSeries(count), [count]);
+  const series = useMemo(() => (drawn ? buildSeries(drawn.count) : []), [drawn?.count]);
 
   const draw = (nextMode: Mode, nextSize: Size = size) => {
-    started.current = performance.now();
     if (nextSize !== size) setTimes({});
     setSize(nextSize);
     setMode(nextMode);
-    setRun((n) => n + 1);
+    setDrawn(null);
   };
 
-  // From the click until the browser has painted the new chart.
+  // Once the old chart is gone and that frame has been painted, start the clock and mount the new one.
+  useEffect(() => {
+    if (drawn) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const frame = requestAnimationFrame(() => {
+      timer = setTimeout(() => {
+        started.current = performance.now();
+        setDrawn({ mode, count, run: ++runs.current });
+      }, 0);
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+    };
+  }, [drawn, mode, count]);
+
+  // From mounting the chart until the browser has painted it.
   useLayoutEffect(() => {
+    if (!drawn) return;
     const t0 = started.current;
+    started.current = null;
     if (t0 === null) {
       setNodes(box.current?.querySelectorAll('svg *').length ?? 0);
       return;
     }
-    started.current = null;
     const frame = requestAnimationFrame(() => {
       setTimeout(() => {
-        setTimes((prev) => ({ ...prev, [mode]: performance.now() - t0 }));
+        setTimes((prev) => ({ ...prev, [drawn.mode]: performance.now() - t0 }));
         setNodes(box.current?.querySelectorAll('svg *').length ?? 0);
       }, 0);
     });
     return () => cancelAnimationFrame(frame);
-  }, [run]);
+  }, [drawn]);
 
   const components = mode === 'point' ? count * count + count : count;
   const ratio = times.point && times.series ? times.point / times.series : null;
@@ -150,12 +169,21 @@ export function ChartDemo() {
             { value: '30', label: '30×30' },
             { value: '100', label: '100×100' },
             { value: '200', label: '200×200' },
+            { value: '300', label: '300×300' },
+            { value: '500', label: '500×500' },
           ]}
         />
         <button className="btn" type="button" onClick={() => draw(mode)}>
           다시 그리기
         </button>
       </div>
+
+      {count * count >= HEAVY_POINTS && (
+        <p className="lab-result">
+          {(count * count).toLocaleString()}개 포인트입니다. 고치기 전 방식은 그리는 동안 화면이 몇 초 멈출 수 있고, 휴대폰에서는 더
+          오래 걸립니다.
+        </p>
+      )}
 
       <div className="stats">
         <Stat label={`${MODE_LABEL[mode]} · 그리는 데 걸린 시간`} value={times[mode] ? ms(times[mode]!) : '–'} accent />
@@ -165,7 +193,7 @@ export function ChartDemo() {
       </div>
 
       <div className="lab-stage chart-stage" ref={box}>
-        <Chart key={run} series={series} mode={mode} />
+        {drawn && <Chart key={drawn.run} series={series} mode={drawn.mode} />}
       </div>
 
       <table className="lab-table">

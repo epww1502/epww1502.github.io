@@ -28,6 +28,9 @@
 .lab-result { margin-top: 10px; font-size: 14px; color: var(--muted); }
 
 .chart-stage { padding: 8px; }
+/* keeps its height while the chart is cleared between two drawings */
+.chart-stage::before { content: ''; display: block; float: left; padding-top: 45%; }
+.chart-stage::after { content: ''; display: block; clear: both; }
 .chart-stage svg { display: block; width: 100%; height: auto; }
 .lab-table { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 14px; }
 .lab-table th { text-align: left; font-size: 12.5px; font-weight: 500; color: var(--muted); }
