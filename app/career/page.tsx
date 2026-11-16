@@ -248,7 +248,7 @@ export default function CareerPage() {
             variant="meta"
             rows={[
               ['개요', '연인·친구·가족이 공간을 만들어 버킷리스트를 함께 모으고 기록하는 앱. 기획부터 App Store 심사 대응과 출시까지 진행'],
-              ['기술', 'Expo SDK 58, Supabase, Zustand, Jest'],
+              ['기술', 'Expo SDK 58, Supabase, Zustand, Claude API, Jest'],
               [
                 '링크',
                 <>
@@ -260,8 +260,28 @@ export default function CareerPage() {
           />
           <ul>
             <li>여러 명이 동시에 고쳐도 유실되지 않도록 변경 단위로 기록해 서버 최신 상태 위에 다시 적용, Jest로 시나리오 검증</li>
-            <li>RLS 정책 53개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
+            <li>RLS 정책 61개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
             <li>OTA·강제 업데이트·오류 수집, 사진 크기 축소와 저장소 경로 기준 캐시</li>
+            <li>Claude API로 장소·할 것까지 붙은 AI 추천을 스트리밍으로 구현. 요청 24개 평가 세트를 만들어 코드 규칙과 다른 모델의 심사로 채점(요청에 맞음 97.9%, 장소 실재 98.4%, 한 번 $0.0011)</li>
+            <li>GoIt2와 연동: 항목에서 여행 일정 짜기, 고잇투 일정을 장소마다 또는 여행 하나로 원하는 공간에 담기</li>
+          </ul>
+        </Project>
+        <Project title="GoIt2 · AI 여행 일정 웹" period="2026.11 – 현재 · 웹 서비스 운영 중">
+          <Fields
+            variant="meta"
+            rows={[
+              ['개요', '어디로, 누구와, 어떻게 가고 싶은지 한 줄로 쓰면 지도 위에 날짜별 동선을 그려 주는 여행 일정 웹. DoIt2와 이어 담아 둔 곳으로 일정을 짜고 다녀온 뒤 기록까지 잇는 것이 목표'],
+              ['기술', 'Next.js 16, React 19, Tailwind, Claude API, Supabase Edge Functions, Kakao Map·Local·Mobility, Jest, Playwright, Vercel'],
+              ['링크', <a href="https://go-it-2.vercel.app">go-it-2.vercel.app</a>],
+            ]}
+          />
+          <ul>
+            <li>AI는 장소 이름과 이유만 정하고 좌표·주소는 카카오 장소 검색에서 이름과 지역이 맞는 곳으로만 채워, 지어낸 장소가 지도에 오르지 않게 함</li>
+            <li>모델이 한 줄에 장소 하나씩 쓰게 하고 줄이 오는 대로 장소 확인을 병렬로 시작해 1박 2일 생성 26초 → 5.8초(첫 장소 약 1초). 장소 수 규칙 때문에 늘어난 생각 시간(첫 줄 13.7초)은 생각을 끄고 해결</li>
+            <li>로그인 없는 공개 웹이라 API 키는 Edge Function 뒤에 두고, 허용 주소와 방문자별·전체 하루 한도로 비용 제한. 방문자는 서명한 해시로만 구분</li>
+            <li>카카오모빌리티로 차 구간의 실제 도로 시간과 주변 주차장, 날짜별 예보, 말로 고치기(바뀔 곳 미리보기), 공유 링크 미리보기 이미지</li>
+            <li>DoIt2 연동: 컴퓨터에서 열어도 담을 수 있게 중간 웹 페이지(QR·링크)를 두고, 두잇투 쪽은 공유 일정 읽기만 허용</li>
+            <li>Jest 102개, Playwright E2E 19개(데스크톱·모바일), PR마다 GitHub Actions CI</li>
           </ul>
         </Project>
         <Project title="Month · 복약 알림 앱" period="2026.10 – 현재 · 개발 중">

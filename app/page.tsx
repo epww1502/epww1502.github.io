@@ -30,9 +30,9 @@ export default function ResumePage() {
             <ul>
               <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
               <li>AI 채팅 스트리밍 중 토큰마다 일어나던 화면 전체 리렌더링을 마지막 메시지로 한정</li>
-              <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 바뀌는 구간(최소 3행)만 렌더링</li>
+              <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션 자리당 29행 → 최소 3행</li>
               <li>Kakao·Google·Apple 로그인과 탈퇴(계정 연결 해제) 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
-              <li>한 코드베이스로 iOS·Android·웹(PWA) 출시, 4개월간 정식 릴리스 5회. OTA는 네이티브 버전이 다른 앱을 제외해 구버전 크래시 방지</li>
+              <li>한 코드베이스로 iOS·Android·웹(PWA) 출시(4개월간 5회), OTA는 네이티브 버전으로 걸러 구버전 크래시 방지</li>
               <li>S3·CloudFront 웹 인프라 구성, GitHub Actions로 환경 3개의 웹 배포와 OTA 발행 자동화</li>
               <li>운영 관리자 웹 21개 화면 설계·구현 및 API 연동 (공지 예약, 약관·앱 버전 관리, 개인정보 마스킹)</li>
             </ul>
@@ -52,7 +52,7 @@ export default function ResumePage() {
             detail="cop"
           >
             <ul>
-              <li>토큰 만료 시 동시에 발생한 401로 갱신이 중복되고 요청이 유실되던 문제를, 갱신은 한 번만 하고 대기 요청을 다시 보내도록 해결</li>
+              <li>토큰 만료 때 동시 401로 갱신이 겹치고 요청이 유실되던 문제를 갱신 한 번과 대기 요청 재전송으로 해결</li>
               <li>사용 현황·크레딧 발급·계정·그룹·공지·정책 등 ADMIN 전 화면과 역할 4종별 접근 제어를 테스트 일정 안에 구현</li>
               <li>크레딧 발급에 권한 제한, 발급량 검증, 확인 단계를 넣어 운영 실수 방지</li>
               <li>커밋·push 전 lint·타입 검사와 S3·CloudFront 배포 자동화 도입</li>
@@ -73,8 +73,7 @@ export default function ResumePage() {
           >
             <ul>
               <li>
-                데이터 포인트마다 그리던 렌더링을 계열 단위로 바꿔 컴포넌트 수를 1/100로 줄이고{' '}
-                <b>대용량 차트 렌더링 10,000ms → 100ms</b>, 30×30 차트 삽입 11초 → 2초
+                렌더링을 계열 단위로 바꿔(컴포넌트 1/100) <b>대용량 차트 10,000ms → 100ms</b>, 삽입 11초 → 2초
               </li>
               <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, Excel과 같은 값이 나오는 오차 막대 구현</li>
               <li>차트 모델·명령(Undo/Redo)·렌더링 훅을 Jest와 React Testing Library로 테스트 (46개 파일)</li>
@@ -89,7 +88,7 @@ export default function ResumePage() {
             detail="cell"
           >
             <ul>
-              <li>시트 전체(약 170억 셀) 병합 시 멈추던 문제를 실제 데이터 범위만 복사하도록 바꿔 2초 안에 처리 (넓은 범위 평균 10초 → 1.5초)</li>
+              <li>시트 전체(약 170억 셀) 병합 멈춤을 데이터 범위만 복사해 2초 안에 처리 (넓은 범위 10초 → 1.5초)</li>
               <li>명령마다 반복되던 Canvas 렌더링을 명령이 끝날 때 한 번으로 모아 렌더 호출 5회 → 1회</li>
               <li>표시 형식 기능에서 라이브러리가 지원하지 않는 한국 날짜·경과 시간·통화·소수점 규칙 구현</li>
               <li>2년간 이슈 약 555건 처리(약 35%는 담당 기능 밖), 문서 자동 완성 TFT에서 구역 관리 구조와 DB 설계</li>
@@ -102,23 +101,25 @@ export default function ResumePage() {
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 앱·Supabase 백엔드, App Store 심사 대응과 출시까지 진행."
-          stack="Expo SDK 58 · Supabase · Zustand · Jest"
+          summary="기획부터 App Store 출시까지 진행. 유실 없는 변경 단위 동기화, RLS 정책 61개, AI 추천 평가(요청에 맞음 97.9%)."
+          stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           links={[
             { href: 'https://apps.apple.com/kr/app/id6826993862', label: 'App Store' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
-        >
-          <ul>
-            <li>동시에 고쳐도 유실되지 않고 두 번 전송돼도 결과가 같은 변경 단위 동기화를 설계하고 Jest로 검증</li>
-            <li>RLS 정책 53개로 공간 멤버만 접근하도록 설계, OTA·강제 업데이트·오류 수집 구현</li>
-          </ul>
-        </Project>
+        />
+        <Project
+          title="GoIt2 · AI 여행 일정 웹"
+          period="2026.11 – 현재 · 운영 중"
+          summary="조건 한 줄로 날짜별 동선을 그리는 AI 여행 일정 웹. 생성 26초 → 5.8초, DoIt2와 연동."
+          detail="goit"
+          links={[{ href: 'https://go-it-2.vercel.app', label: '사이트' }]}
+        />
         <Project
           title="Month · 복약 알림 앱"
           period="2026.10 – 현재 · 개발 중"
-          summary="앱을 열지 않아도 홈 화면 위젯이 날짜에 맞게 갱신되도록 Android 네이티브 모듈(Kotlin) 구현. Jest 테스트 66개와 CI로 검증."
+          summary="앱을 열지 않아도 날짜에 맞게 갱신되는 홈 화면 위젯(Kotlin 네이티브 모듈). Jest 66개와 CI로 검증."
           stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
           detail="month"
         />
