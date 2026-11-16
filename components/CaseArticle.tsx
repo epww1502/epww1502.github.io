@@ -6,9 +6,11 @@ export function CaseArticle({ item, heading = 'h1' }: { item: Case; heading?: 'h
   const Title = heading;
   return (
     <article className="project" id={item.slug}>
-      <p className="tag">{meta.tag}</p>
-      <Title className="project-title">{meta.title}</Title>
-      <p className="summary">{meta.summary}</p>
+      <header className="project-head">
+        <p className="tag">{meta.tag}</p>
+        <Title className="project-title">{meta.title}</Title>
+        <p className="summary">{meta.summary}</p>
+      </header>
       <Content />
     </article>
   );

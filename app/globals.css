@@ -213,16 +213,17 @@ pre code { padding: 0; background: none; font: inherit; }
   .highlights { break-inside: avoid; }
   .project { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
   .project:first-of-type { margin-top: 28px; padding-top: 0; border-top: 0; }
-  /* Each case starts on its own page, like its own page on the site. */
-  .project + .project { break-before: page; margin-top: 0; padding-top: 0; border-top: 0; }
-  .project > .tag, .project-title, .project > .summary { break-after: avoid; }
+  .project-head { break-after: avoid; }
   .gallery { break-inside: avoid; }
-  .gallery.phones img { height: 62mm; object-fit: contain; background: #fff; }
+  .gallery.phones img { height: 50mm; object-fit: contain; background: #fff; }
   .project-title { font-size: 18pt; }
-  .case, .facts, .gallery figure { break-inside: avoid; }
+  /* Let a case flow across pages; keep each step whole and its label with it. */
+  .facts, .gallery figure { break-inside: avoid; }
+  .case dd { break-inside: avoid; }
+  .case dt { break-after: avoid; }
   .gallery { gap: 8px; grid-template-columns: repeat(4, 1fr); }
   .gallery .wide { grid-column: span 2; }
-  .gallery:not(.phones) img { height: 30mm; object-fit: contain; background: #fff; }
+  .gallery:not(.phones) img { height: 26mm; object-fit: contain; background: #fff; }
   .gallery.phones { grid-template-columns: repeat(4, 1fr); }
   .career .proj { break-inside: auto; margin-top: 14px; }
   .career .proj-head, .career .label, .case h5 { break-after: avoid; }
@@ -232,5 +233,46 @@ pre code { padding: 0; background: none; font: inherit; }
   .diagram { padding: 10px; }
   pre { font-size: 8pt; white-space: pre-wrap; }
   .flow { grid-template-columns: repeat(4, 1fr); }
+  /* Portfolio and career read as documents: smaller type than the site, tighter blocks. */
+  .folio, .career { font-size: 8.8pt; line-height: 1.5; }
+  :is(.folio, .career) .head h1 { font-size: 19pt; }
+  :is(.folio, .career) .head .lead { font-size: 10.5pt; }
+  :is(.folio, .career) .contact { font-size: 8.5pt; }
+  .folio .highlights { margin-top: 14px; gap: 8px; }
+  .folio .highlights a { padding: 10px 12px; }
+  .folio .highlights strong { font-size: 13pt; }
+  .folio .highlights span { font-size: 8pt; }
+  .folio .project { margin-top: 20px; padding-top: 14px; }
+  .folio .project:first-of-type { margin-top: 20px; }
+  .folio .project .tag { font-size: 8pt; }
+  .folio .project-title { font-size: 15pt; }
+  .folio .project .summary { margin-top: 6px; font-size: 9.4pt; }
+  /* A case title never sits alone at a page bottom: the head reserves room for what follows. */
+  .folio .project-head { break-inside: avoid; }
+  .folio .project-head::after { content: ''; display: block; height: 45mm; margin-bottom: -45mm; }
+  .folio .facts { margin: 10px 0 4px; padding: 10px 12px; gap: 8px; font-size: 8.2pt; }
+  .folio .facts b { font-size: 7.2pt; }
+  .folio .gallery { margin-top: 10px; }
+  .folio .gallery figcaption { font-size: 7.2pt; margin-top: 3px; }
+  :is(.folio, .career) .case { margin-top: 14px; }
+  :is(.folio, .career) .case h3 { font-size: 10.2pt; margin-bottom: 5px; }
+  :is(.folio, .career) .case dl { grid-template-columns: 44px 1fr; gap: 3px 10px; font-size: 8.8pt; }
+  :is(.folio, .career) .also { margin-top: 12px; font-size: 8.8pt; }
+  :is(.folio, .career) .also h3 { font-size: 9.6pt; }
+  .folio .diagram { margin-top: 10px; }
+  .folio .diagram figcaption, .folio .note { font-size: 7.2pt; }
+  .folio .flow { gap: 8px 18px; }
+  .folio .flow li { padding: 6px 8px; font-size: 7.5pt; }
+  .folio .flow li strong { font-size: 8.2pt; }
+  .folio pre { margin-top: 8px; padding: 8px 10px; font-size: 7pt; }
+  .career section > h2, .folio section > h2 { font-size: 8.5pt; }
+  .career .company-head h3 { font-size: 12pt; }
+  .career .when, .career .proj-head span { font-size: 8.2pt; }
+  .career .proj-head h4 { font-size: 10.2pt; }
+  .career .meta { grid-template-columns: 48px 1fr; gap: 2px 10px; font-size: 8.8pt; }
+  .career .label { margin: 8px 0 3px; font-size: 8.2pt; }
+  .career .strengths { font-size: 8.8pt; }
+  .career .case h5 { font-size: 9.2pt; margin-bottom: 3px; }
+  .career .case dl { font-size: 8.8pt; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
