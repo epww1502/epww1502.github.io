@@ -209,6 +209,8 @@ pre code { padding: 0; background: none; font: inherit; }
   .company + .company { margin-top: 16px; }
   .proj { margin-top: 10px; break-inside: avoid; }
   section > .proj + .proj { margin-top: 10px; }
+  .resume .proj, .resume section > .proj + .proj { margin-top: 8px; }
+  .resume section { margin-top: 14px; }
   .company-head, .case h3, .also h3 { break-after: avoid; }
   .highlights { break-inside: avoid; }
   .project { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
