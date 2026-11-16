@@ -90,7 +90,7 @@ export default function ResumePage() {
             detail="cell"
           >
             <ul>
-              <li>시트 전체(약 170억 셀) 병합 시 멈추던 문제를 실제 데이터 범위만 복사하도록 바꿔 2초 안에 처리 (넓은 범위 평균 10초 → 1.5초)</li>
+              <li>시트 전체(약 170억 셀) 병합 멈춤을 데이터 범위만 복사해 2초 안에 처리 (넓은 범위 10초 → 1.5초)</li>
               <li>명령마다 반복되던 Canvas 렌더링을 명령이 끝날 때 한 번으로 모아 렌더 호출 5회 → 1회</li>
               <li>표시 형식 기능에서 라이브러리가 지원하지 않는 한국 날짜·경과 시간·통화·소수점 규칙 구현</li>
               <li>2년간 이슈 약 555건 처리(약 35%는 담당 기능 밖), 문서 자동 완성 TFT에서 구역 관리 구조와 DB 설계</li>
@@ -103,7 +103,7 @@ export default function ResumePage() {
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 앱·Supabase 백엔드·소개/공유 웹 페이지, App Store 심사 대응과 출시까지 진행."
+          summary="기획부터 App Store 출시까지 진행. 유실 없는 변경 단위 동기화, RLS 정책 61개, AI 추천 평가(요청에 맞음 97.9%)."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           links={[
@@ -111,16 +111,18 @@ export default function ResumePage() {
             { href: 'https://doit2app.github.io', label: '소개 사이트' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
-        >
-          <ul>
-            <li>동시에 고쳐도 유실되지 않고 두 번 전송돼도 결과가 같은 변경 단위 동기화를 설계하고 Jest로 검증</li>
-            <li>RLS 정책 61개로 권한 설계. AI 추천(Claude API)을 평가 세트 24개로 측정(요청에 맞음 97.9%, 첫 추천 8.9초)</li>
-          </ul>
-        </Project>
+        />
+        <Project
+          title="GoIt2 · AI 여행 일정 웹"
+          period="2026.11 – 현재 · 운영 중"
+          summary="조건 한 줄로 날짜별 동선을 그리는 AI 여행 일정 웹. 생성 26초 → 5.8초, DoIt2와 연동."
+          detail="goit"
+          links={[{ href: 'https://go-it-2.vercel.app', label: '사이트' }]}
+        />
         <Project
           title="Month · 복약 알림 앱"
           period="2026.10 – 현재 · 개발 중"
-          summary="앱을 열지 않아도 홈 화면 위젯이 날짜에 맞게 갱신되도록 Android 네이티브 모듈(Kotlin) 구현. Jest 테스트 66개와 CI로 검증."
+          summary="앱을 열지 않아도 날짜에 맞게 갱신되는 홈 화면 위젯(Kotlin 네이티브 모듈). Jest 66개와 CI로 검증."
           stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
           detail="month"
         />

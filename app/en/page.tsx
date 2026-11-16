@@ -117,7 +117,7 @@ export default function EnglishResumePage() {
         <Project
           title="DoIt2 · Shared bucket list app"
           period="2026.10 – Present · iOS released, Android planned"
-          summary="Planning, app, Supabase backend, intro and share web pages, App Store review and release."
+          summary="Planning to App Store release. Change-based sync that survives concurrent edits, 61 RLS policies, AI suggestions at 97.9% on-request in a 24-request eval."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           detailLabel={CASE}
@@ -126,17 +126,19 @@ export default function EnglishResumePage() {
             { href: 'https://doit2app.github.io', label: 'Website' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
-        >
-          <ul>
-            <li>Change-based sync that survives concurrent edits and repeated sends, verified with Jest</li>
-            <li>61 RLS policies restricting access to space members; OTA, forced updates and error collection</li>
-            <li>AI suggestions (Claude API) measured with a 24-request eval set: 97.9% on-request, 8.9 s to first item, about $0.001 per call</li>
-          </ul>
-        </Project>
+        />
+        <Project
+          title="GoIt2 · AI trip planner web"
+          period="2026.11 – Present · Live"
+          summary="Turns one line of trip conditions into day-by-day routes on a map. Generation 26 s → 5.8 s; linked with DoIt2."
+          detail="goit"
+          detailLabel={CASE}
+          links={[{ href: 'https://go-it-2.vercel.app', label: 'Website' }]}
+        />
         <Project
           title="Month · Medication reminder app"
           period="2026.10 – Present · In development"
-          summary="Android native module (Kotlin) so the home screen widget follows the date without opening the app; 66 Jest tests and CI."
+          summary="Home screen widget that follows the date without opening the app (Kotlin native module); 66 Jest tests and CI."
           stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
           detail="month"
           detailLabel={CASE}
