@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: '포트폴리오 (인쇄용)', robots
 export default async function PortfolioPrintPage() {
   const cases = await allCases();
   return (
-    <main className="page">
+    <main className="page folio">
       <PageHeader
         title="포트폴리오"
         lead="이영주 · 대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 프론트엔드 개발자"
