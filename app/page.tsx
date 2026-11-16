@@ -4,7 +4,7 @@ import { TopBar } from '@/components/TopBar';
 
 export default function ResumePage() {
   return (
-    <main className="page">
+    <main className="page resume">
       <TopBar
         links={['portfolio', 'career', 'lab']}
         switchTo={{ href: '/en', label: 'EN', name: 'English' }}
@@ -12,7 +12,7 @@ export default function ResumePage() {
       />
       <PageHeader
         title="이영주"
-        lead="대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 프론트엔드 개발자입니다."
+        lead="대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 프론트엔드 개발자입니다."
         links={['portfolio', 'career', 'lab']}
       />
 
@@ -103,7 +103,7 @@ export default function ResumePage() {
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 App Store 출시까지 진행. 유실 없는 변경 단위 동기화, RLS 정책 61개, AI 추천 평가(요청에 맞음 97.9%)."
+          summary="기획부터 앱·Supabase 백엔드, App Store 출시까지 혼자 진행."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           links={[
@@ -111,14 +111,25 @@ export default function ResumePage() {
             { href: 'https://doit2app.github.io', label: '소개 사이트' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
-        />
+        >
+          <ul>
+            <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계해 Jest로 검증, RLS 정책 61개로 권한 설계</li>
+            <li>AI 추천(Claude API)을 평가 세트 24개로 측정: 요청에 맞음 97.9%, 장소 실재 98.4%, 한 번 약 $0.001</li>
+          </ul>
+        </Project>
         <Project
           title="GoIt2 · AI 여행 일정 웹"
           period="2026.11 – 현재 · 운영 중"
-          summary="조건 한 줄로 날짜별 동선을 그리는 AI 여행 일정 웹. 생성 26초 → 5.8초, DoIt2와 연동."
+          summary="조건 한 줄로 날짜별 동선을 지도에 그리는 AI 여행 일정 웹. DoIt2와 연동."
+          stack="Next.js · Claude API · Supabase Edge Functions · Kakao API"
           detail="goit"
           links={[{ href: 'https://go-it-2.vercel.app', label: '사이트' }]}
-        />
+        >
+          <ul>
+            <li>AI가 고른 장소는 카카오 검색에서 이름·지역이 맞는 곳만 넣어 지어낸 장소가 지도에 오르지 않게 함</li>
+            <li>한 줄씩 받아 바로 확인하는 스트리밍과 병렬 조회로 1박 2일 생성 <b>26초 → 5.8초</b></li>
+          </ul>
+        </Project>
         <Project
           title="Month · 복약 알림 앱"
           period="2026.10 – 현재 · 개발 중"
@@ -134,7 +145,7 @@ export default function ResumePage() {
             ['주력', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               '경험',
-              'Next.js, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
+              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
             ],
           ]}
         />
@@ -144,13 +155,13 @@ export default function ResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0, Summa Cum Laude(최우등 졸업) · 2017.09 – 2021.06'],
-            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 (OSU 편입으로 제적)'],
+            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 (OSU 편입)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}
         />
       </Section>
 
-      <Section title="수상 · 학교 프로젝트">
+      <Section title="수상">
         <Project
           title="BeaverHacks Spring 2021 (OSU 해커톤, 주제 핀테크) 종합 3위 / 17팀"
           period="2021.04"
@@ -160,12 +171,6 @@ export default function ResumePage() {
             { href: 'https://devpost.com/software/kimchi-trading-bot', label: '수상 내역' },
             { href: 'https://github.com/epww1502/OSUHackathon-2021Sp', label: 'GitHub' },
           ]}
-        />
-        <Project
-          title="iOS Gesture Alphabet · OSU 졸업 프로젝트"
-          period="2021"
-          summary="기기를 움직이는 제스처를 알파벳으로 바꿔 입력하는 접근성 앱."
-          stack="Swift"
         />
       </Section>
     </main>

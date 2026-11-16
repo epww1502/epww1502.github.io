@@ -22,7 +22,7 @@ export default function CareerPage() {
       />
       <PageHeader
         title="경력기술서"
-        lead="이영주 · 대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 프론트엔드 개발자"
+        lead="이영주 · 대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 프론트엔드 개발자"
         links={['resume', 'portfolio']}
       />
 

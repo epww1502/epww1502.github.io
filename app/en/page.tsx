@@ -14,7 +14,7 @@ const CASE = 'Details (KR)';
 
 export default function EnglishResumePage() {
   return (
-    <main className="page" lang="en">
+    <main className="page resume" lang="en">
       <TopBar
         lang="en"
         links={['portfolio', 'career', 'lab']}
@@ -24,7 +24,7 @@ export default function EnglishResumePage() {
       <PageHeader
         lang="en"
         title="Youngjoo Lee"
-        lead="Frontend developer with 5 years of experience in large-scale rendering optimization and in shipping and operating apps."
+        lead="Frontend developer with 5 years of experience in large-scale rendering optimization, shipping and operating apps, and building AI features into products and measuring them."
         links={['portfolio', 'career', 'lab']}
       />
 
@@ -117,7 +117,7 @@ export default function EnglishResumePage() {
         <Project
           title="DoIt2 · Shared bucket list app"
           period="2026.10 – Present · iOS released, Android planned"
-          summary="Planning to App Store release. Change-based sync that survives concurrent edits, 61 RLS policies, AI suggestions at 97.9% on-request in a 24-request eval."
+          summary="Planning, app, Supabase backend and App Store release, solo."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           detailLabel={CASE}
@@ -126,15 +126,26 @@ export default function EnglishResumePage() {
             { href: 'https://doit2app.github.io', label: 'Website' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
-        />
+        >
+          <ul>
+            <li>Change-based sync that loses nothing under concurrent edits, verified with Jest; 61 RLS policies</li>
+            <li>AI suggestions (Claude API) measured with a 24-request eval: 97.9% on-request, 98.4% real places, about $0.001 per call</li>
+          </ul>
+        </Project>
         <Project
           title="GoIt2 · AI trip planner web"
           period="2026.11 – Present · Live"
-          summary="Turns one line of trip conditions into day-by-day routes on a map. Generation 26 s → 5.8 s; linked with DoIt2."
+          summary="Turns one line of trip conditions into day-by-day routes on a map; linked with DoIt2."
+          stack="Next.js · Claude API · Supabase Edge Functions · Kakao API"
           detail="goit"
           detailLabel={CASE}
           links={[{ href: 'https://go-it-2.vercel.app', label: 'Website' }]}
-        />
+        >
+          <ul>
+            <li>Only places confirmed by Kakao search (name and area match) go on the map, so made-up places never appear</li>
+            <li>Streaming one place per line and checking each as it arrives, in parallel: 2-day trip <b>26 s → 5.8 s</b></li>
+          </ul>
+        </Project>
         <Project
           title="Month · Medication reminder app"
           period="2026.10 – Present · In development"
@@ -151,7 +162,7 @@ export default function EnglishResumePage() {
             ['Core', 'TypeScript, React, React Native (Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               'Experience',
-              'Next.js, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
+              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
             ],
           ]}
         />
@@ -161,13 +172,13 @@ export default function EnglishResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · GPA 3.89/4.0, Summa Cum Laude · 2017.09 – 2021.06'],
-            ['KOREATECH', 'Computer Engineering · 2013.02 – 2018.07 (left to transfer to OSU)'],
+            ['KOREATECH', 'Computer Engineering · 2013.02 – 2018.07 (transferred to OSU)'],
             ['Languages · Military', 'Korean (native), English (conversational, 5 years abroad) · Military service completed (ROK Air Force)'],
           ]}
         />
       </Section>
 
-      <Section title="AWARDS · SCHOOL PROJECTS">
+      <Section title="AWARDS">
         <Project
           title="BeaverHacks Spring 2021 (OSU fintech hackathon) · 3rd of 17 teams"
           period="2021.04"
@@ -177,12 +188,6 @@ export default function EnglishResumePage() {
             { href: 'https://devpost.com/software/kimchi-trading-bot', label: 'Result' },
             { href: 'https://github.com/epww1502/OSUHackathon-2021Sp', label: 'GitHub' },
           ]}
-        />
-        <Project
-          title="iOS Gesture Alphabet · OSU capstone project"
-          period="2021"
-          summary="Accessibility app that turns device motion gestures into letters for text input."
-          stack="Swift"
         />
       </Section>
     </main>
