@@ -243,7 +243,7 @@ export default function CareerPage() {
       </Section>
 
       <Section title="개인 프로젝트">
-        <Project title="DoIt2 · 함께 쓰는 버킷리스트 앱" period="2026.10 – 현재 · iOS 출시, Android 출시 예정">
+        <Project title="DoIt2 · 함께 쓰는 버킷리스트 앱" period="2026.10 – 현재 · iOS·Android 출시">
           <Fields
             variant="meta"
             rows={[
@@ -253,6 +253,7 @@ export default function CareerPage() {
                 '링크',
                 <>
                   <a href="https://apps.apple.com/kr/app/id6826993862">App Store</a> ·{' '}
+                  <a href="https://play.google.com/store/apps/details?id=com.doit2.app">Google Play</a> ·{' '}
                   <a href="https://doit2app.github.io">소개 사이트</a> ·{' '}
                   <a href="https://github.com/epww1502/DoIt2">GitHub</a>
                 </>,

@@ -102,12 +102,13 @@ export default function ResumePage() {
       <Section title="개인 프로젝트">
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
-          period="2026.10 – 현재 · iOS 출시, Android 출시 예정"
-          summary="기획부터 앱·Supabase 백엔드, App Store 출시까지 혼자 진행."
-          stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
+          period="2026.10 – 현재 · iOS·Android 출시"
+          summary="기획부터 앱·Supabase 백엔드, App Store·Google Play 출시까지 혼자 진행."
+          stack="Expo SDK 58 · Supabase · Claude API · Jest"
           detail="doit"
           links={[
             { href: 'https://apps.apple.com/kr/app/id6826993862', label: 'App Store' },
+            { href: 'https://play.google.com/store/apps/details?id=com.doit2.app', label: 'Google Play' },
             { href: 'https://doit2app.github.io', label: '소개 사이트' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}

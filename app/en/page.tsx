@@ -116,13 +116,14 @@ export default function EnglishResumePage() {
       <Section title="PERSONAL PROJECTS">
         <Project
           title="DoIt2 · Shared bucket list app"
-          period="2026.10 – Present · iOS released, Android planned"
-          summary="Planning, app, Supabase backend and App Store release, solo."
+          period="2026.10 – Present · Released on iOS and Android"
+          summary="Planning, app, Supabase backend, App Store and Google Play release, solo."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           detailLabel={CASE}
           links={[
             { href: 'https://apps.apple.com/kr/app/id6826993862', label: 'App Store' },
+            { href: 'https://play.google.com/store/apps/details?id=com.doit2.app', label: 'Google Play' },
             { href: 'https://doit2app.github.io', label: 'Website' },
             { href: 'https://github.com/epww1502/DoIt2', label: 'GitHub' },
           ]}
