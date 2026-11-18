@@ -308,6 +308,27 @@ export default function CareerPage() {
             <li>Jest 단위 테스트 66개, PR마다 GitHub Actions CI</li>
           </ul>
         </Project>
+        <Project title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫" period="2026.11 – 현재 · macOS·Windows 배포">
+          <Fields
+            variant="meta"
+            rows={[
+              ['개요', '초대 코드로 같은 방에 들어온 친구들의 픽셀 펫이 화면 아래를 걸어 다니며 접속 상태를 보여 주고, 채팅·이모티콘·간식·쪽지를 주고받는 데스크톱 앱'],
+              ['기술', 'Tauri v2, Rust, React, TypeScript, Canvas, Supabase Realtime, GitHub Actions, Vitest'],
+              [
+                '링크',
+                <>
+                  <a href="https://github.com/epww1502/mochi-pet">GitHub</a> · <a href="https://github.com/epww1502/mochi-pet/releases/latest">다운로드</a>
+                </>,
+              ],
+            ]}
+          />
+          <ul>
+            <li>화면을 덮는 투명 창에서 펫·말풍선 영역만 클릭을 받게 함: React가 영역을 넘기고 Rust가 전역 커서 위치로 클릭 통과를 켜고 끔</li>
+            <li>Windows에서 펫은 접속 중인데 채팅만 안 오던 문제를 WebView2 원격 디버깅으로 추적, 끊긴 실시간 채널을 다시 만들고 다시 붙을 때 상태를 재전송</li>
+            <li>Realtime presence(접속 중)와 서버의 마지막 접속 시각을 합친 친구 목록, 받은 메시지 검사, 오프라인 쪽지는 서버 함수로만 읽고 쓰기</li>
+            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, 브랜치마다 두 OS 빌드 검사, Vitest 96개</li>
+          </ul>
+        </Project>
       </Section>
     </main>
   );
