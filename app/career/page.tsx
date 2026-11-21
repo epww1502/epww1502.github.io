@@ -63,7 +63,7 @@ export default function CareerPage() {
                 ['팀 구성', '프론트엔드 3명, 백엔드 2명, AI 2명'],
                 [
                   '기술',
-                  'Expo, React Native, TypeScript, TanStack Query, Zustand, NativeWind, Firebase Auth, EAS, AWS 클라우드(S3·CloudFront), GitHub Actions, PostHog',
+                  'Expo, React Native, TypeScript, TanStack Query, Zustand, NativeWind, Firebase Auth, EAS, AWS 클라우드(S3·CloudFront), GitHub Actions(CI/CD), PostHog',
                 ],
                 [
                   '서비스',
@@ -77,10 +77,10 @@ export default function CareerPage() {
             />
             <Label>주요 업무</Label>
             <ul>
-              <li>디자인 산출물 없이 기획과 개발을 함께 시작해 공통 컴포넌트와 테마·컬러 토큰을 먼저 만들고, 로그인 → 채팅 → 분석 결과 흐름을 기준으로 MVP 범위 정리</li>
-              <li>홈 대시보드, AI 채팅, 탐색 실시간 랭킹, 포트폴리오 매매·편집·복사, 마이페이지 개발. 추천 질문을 채팅에서 홈으로 옮기는 등 화면 흐름 개편</li>
+              <li>디자인 산출물 없이 기획과 개발을 함께 시작해 디자인 시스템(공통 컴포넌트와 테마·컬러 토큰)을 먼저 만들고, 로그인 → 채팅 → 분석 결과 흐름을 기준으로 MVP 범위 정리</li>
+              <li>홈 대시보드, AI 채팅, 탐색 실시간 랭킹, 포트폴리오 매매·편집·복사, 마이페이지 개발, 뉴스는 앱 내 웹뷰로 표시. 추천 질문을 채팅에서 홈으로 옮기는 등 화면 흐름 개편</li>
               <li>Kakao·Google·Apple 로그인과 계정 연결 해제를 포함한 탈퇴 구현. Android의 Apple 탈퇴는 웹에서 code와 id_token을 받아 딥링크로 넘기는 브릿지로 해결</li>
-              <li>Expo 한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
+              <li>Expo 한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시(크로스 브라우징 대응), v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
               <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 웹 배포와 OTA 발행 자동화</li>
               <li>2026.05부터 파트장으로 화면 디자인과 설계, 배포 일정 결정, 코드리뷰 전반, 프론트엔드 2명의 업무 일정 관리</li>
               <li>코드리뷰(동료 PR 265건 중 156건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 274개 작성</li>
@@ -126,6 +126,7 @@ export default function CareerPage() {
               <li>앱 버전을 iOS·Android·웹별로 등록하고, 지금 배포 중인 버전이 묻히지 않게 최신/이전 목록 분리</li>
               <li>TipTap 에디터 하나를 출력 형식만 바꿔 재사용(공지는 Markdown, 약관은 앱 렌더러에 맞춘 HTML)</li>
               <li>사용자·고객 지원 화면의 이메일·닉네임을 기본으로 마스킹하고 필요한 행만 열람</li>
+            <li>웹 표준과 접근성 적용: 용도에 맞는 태그, 입력마다 label 연결, 오류 상태는 aria-invalid, 버튼에 aria-label</li>
             </ul>
           </Project>
 
@@ -153,6 +154,7 @@ export default function CareerPage() {
               <li>로그인과 공통 컴포넌트 설계. 서버 오류를 쿼리 캐시에서 한곳으로 모아 코드별로 안내하고, 응답은 Zod로 검증</li>
               <li>husky·lint-staged로 커밋·push 전 lint와 타입 검사, main push 시 S3 배포와 CloudFront 캐시 무효화 자동화</li>
               <li>DTO·서비스 문서를 작성해 백엔드와 API 형식 합의</li>
+            <li>웹 표준·접근성과 크로스 브라우징을 고려해 서비스와 ADMIN 화면 구현</li>
             </ul>
             <Label>문제 해결</Label>
             <ul>
@@ -242,7 +244,7 @@ export default function CareerPage() {
         </Company>
       </Section>
 
-      <Section title="개인 프로젝트 · 1인 개발, AI 코딩 도구 활용">
+      <Section title="개인 프로젝트 · 1인 개발, 코딩 에이전트(Claude Code) 활용">
         <Project title="DoIt2 · 함께 쓰는 버킷리스트 앱" period="2026.10 – 현재 · iOS·Android 출시" detail="doit">
           <Fields
             variant="meta"
