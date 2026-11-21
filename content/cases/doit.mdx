@@ -2,7 +2,7 @@ export const meta = {
   title: 'DoIt2 · 함께 쓰는 버킷리스트 앱',
   tag: '개인 프로젝트 · 2026.10 – 현재 · iOS·Android 출시',
   summary:
-    '연인·친구·가족이 공간을 만들어 가고 싶은 곳과 해보고 싶은 것을 함께 모으고, 다녀온 뒤 사진과 후기를 남기는 앱입니다. 기획, 앱, Supabase 백엔드, App Store 심사 대응과 출시까지 2주 반 만에 진행했고, 이후 AI 추천과 여행 일정 웹 GoIt2 연동을 더했습니다(커밋 130개).',
+    '연인·친구·가족이 공간을 만들어 가고 싶은 곳과 해보고 싶은 것을 함께 모으고, 다녀온 뒤 사진과 후기를 남기는 앱입니다. 기획, 앱, Supabase 백엔드, App Store 심사 대응과 출시까지 2주 반 만에 진행했고, 이후 AI 추천과 여행 일정 웹 GoIt2 연동을 더했습니다(커밋 140개).',
   order: 6,
   metric: { value: 'RLS 정책 61개', label: '동시 수정에도 유실 없는 동기화와 서버 권한 설계' },
   stack: 'Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Claude API, Jest',
@@ -10,7 +10,7 @@ export const meta = {
 
 <Facts>
   <Fact label="역할">기획·설계·개발</Fact>
-  <Fact label="규모">DB 마이그레이션 41개, RLS 정책 61개<br />Edge Function 7개, Jest 테스트 190개(33개 파일)</Fact>
+  <Fact label="규모">DB 마이그레이션 43개, RLS 정책 61개<br />Edge Function 7개, Jest 테스트 251개(40개 파일)</Fact>
   <Fact label="스택">Expo SDK 58, Expo Router, NativeWind, Zustand, Supabase, Claude API, Jest</Fact>
   <Fact label="링크">[App Store](https://apps.apple.com/kr/app/id6826993862) · [Google Play](https://play.google.com/store/apps/details?id=com.doit2.app) · [소개 사이트](https://doit2app.github.io)<br />[github.com/epww1502/DoIt2](https://github.com/epww1502/DoIt2)</Fact>
 </Facts>
@@ -113,6 +113,8 @@ async function placeFound(it) {
 </Case>
 
 <Also title="그 외 작업">
+  - 인터넷이 잠깐 끊기면 새 계정으로 바뀌던 문제: 토큰 갱신이 네트워크로 실패했을 때는 새 계정을 만들지 않고, 계정 코드를 미리 만들어 두어 로그인이 사라져도 같은 계정으로 돌아가게 함
+  - 새 버전을 다 받으면 '다시 시작' 띠를 보여 주고, 쓰다가 돌아왔을 때 저절로 다시 켜지지 않게 함
   - 목표 날짜(하루 또는 기간): 캘린더에 넣기, 날씨 예보, 다녀온 다음 날 기록 알림, 다가오는 일정 모아보기
   - 같이 갈 날 달력: 멤버마다 가능한 날을 고르면 이어진 날을 한 블록으로 묶어, 내 날과 남의 날을 구분해 보여 줌
 </Also>

@@ -27,8 +27,9 @@ export function PageHeader({
       <h1>{title}</h1>
       <p className="lead">{lead}</p>
       <div className="contact">
-        {/* Filled in by private.js when printing a private copy, so React must leave its text alone. */}
-        <span className="print-only" data-phone suppressHydrationWarning />
+        {/* Filled in by private.js when printing a private copy. The empty dangerouslySetInnerHTML tells
+            React the contents are not its own, so hydration does not clear the number again. */}
+        <span className="print-only" data-phone suppressHydrationWarning dangerouslySetInnerHTML={{ __html: '' }} />
         <a href="mailto:epww1502@gmail.com">epww1502@gmail.com</a>
         <a href="https://github.com/epww1502">github.com/epww1502</a>
         {links.map((key) => (

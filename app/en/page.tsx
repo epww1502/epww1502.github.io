@@ -26,26 +26,38 @@ export default function EnglishResumePage() {
         title="Youngjoo Lee"
         lead="Frontend developer with 5 years of experience in large-scale rendering optimization, shipping and operating apps, and building AI features into products and measuring them."
         links={['portfolio', 'career', 'lab']}
-      />
+      >
+        <ul className="strengths">
+          <li>
+            <b>Large-scale rendering</b> · 100×100 chart render ~10,000ms → 100ms; frozen whole-sheet merge now within 2s
+          </li>
+          <li>
+            <b>Shipping and operations</b> · iOS, Android and web from one codebase, 5 production releases in 4 months
+          </li>
+          <li>
+            <b>Measuring AI features</b> · 240 suggestions scored: 97.9% on-request, 98.4% real places (personal project DoIt2)
+          </li>
+        </ul>
+      </PageHeader>
 
       <Section title="EXPERIENCE">
         <Company name="Gwanak Lab · AI fintech startup" when="2025.01 – Present · Frontend (frontend lead since 2026.05)">
           <Project
             title="GLAB · AI digital private banker app"
             period="2025.12 – Present"
-            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote half of the team's feature PRs (278) and reviewed 149."
+            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote 278 of the team's ~540 feature PRs and merged 149 teammates' PRs through code review."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
             detailLabel={CASE}
           >
             <ul>
-              <li>Started without designs: built shared components and theme tokens, then Home, AI chat, Explore and Portfolio</li>
-              <li>Limited the full-screen re-render on every AI chat streaming token to the last message</li>
-              <li>Fixed a race condition that froze the live ranking; the price animation renders only changing rows (29 → 3+ per digit)</li>
+              <li>Shipped iOS, Android and web (PWA) from one codebase: 5 releases in 4 months; OTA skips old builds</li>
+              <li>AI chat streaming re-rendered every message on each token; limited it to the last message</li>
+              <li>Fixed a race condition that froze the live ranking; price animation renders only changing rows (29 → 3+)</li>
               <li>Kakao, Google and Apple sign-in and account deletion; Apple deletion on Android solved with a web bridge</li>
-              <li>Shipped iOS, Android and web (PWA) from one codebase: 5 production releases in 4 months; OTA skips apps on another native version</li>
               <li>Set up S3 and CloudFront; automated web deploys for 3 environments and OTA publishing with GitHub Actions</li>
               <li>Designed and built the 21-screen operations admin web (scheduled notices, terms, app versions, data masking)</li>
+              <li>Started without designs: built shared components and theme tokens, then Home, AI chat, Explore and Portfolio</li>
             </ul>
             <p className="stack">
               Service <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
@@ -64,13 +76,13 @@ export default function EnglishResumePage() {
             detailLabel={CASE}
           >
             <ul>
-              <li>Fixed duplicate token refreshes and lost requests on simultaneous 401s: refresh once, then resend the waiting requests</li>
-              <li>Built every ADMIN screen (usage, credits, accounts, groups, notices, policies) and access control for 4 roles on schedule</li>
+              <li>Fixed duplicate token refreshes and lost requests on simultaneous 401s: refresh once, then resend</li>
+              <li>Built every ADMIN screen (usage, credits, accounts, groups, notices, policies) with 4-role access, on time</li>
               <li>Added permission limits, amount validation and a confirmation step to credit issuance</li>
               <li>Introduced pre-commit lint and type checks and automated S3 and CloudFront deploys</li>
               <li>
-                Unveiled at AI Festa (<a href="https://www.dt.co.kr/article/11674174">press</a>); opened as the Sandoll Cloud AI Studio beta (about 2,000
-                users)
+                Unveiled at AI Festa (<a href="https://www.dt.co.kr/article/11674174">press</a>); Sandoll Cloud AI Studio beta via LG CNS–Sandoll partnership
+                (~2,000 users)
               </li>
             </ul>
           </Project>
@@ -80,15 +92,15 @@ export default function EnglishResumePage() {
           <Project
             title="GAIA OFFICE Chart"
             period="2022.01 – 2025.01"
-            summary="Charts for the web office suite. From 2022.09, owned the whole chart feature and mentored new hires."
+            summary="Charts for the web office suite. From 2022.09, owned the whole chart feature and mentored about 5 new hires."
             stack="React · TypeScript · MobX · Victory"
             detail="chart"
             detailLabel={CASE}
           >
             <ul>
               <li>
-                Rendering per series instead of per data point cut components to 1/100: <b>large charts 10,000ms → 100ms</b>, 30×30 insert
-                11s → 2s
+                Rendering per series instead of per data point cut components from 10,000 to 100:{' '}
+                <b>100×100 chart render about 10,000ms → 100ms</b>, 30×30 insert 11s → 2s
               </li>
               <li>Designed the chart model and component tree, OOXML import/export, and error bars matching Excel's values</li>
               <li>Tested chart models, undo/redo commands and rendering hooks with Jest and React Testing Library (46 files)</li>
@@ -113,11 +125,10 @@ export default function EnglishResumePage() {
         </Company>
       </Section>
 
-      <Section title="PERSONAL PROJECTS">
+      <Section title="PERSONAL PROJECTS · SOLO, BUILT WITH AI CODING TOOLS">
         <Project
           title="DoIt2 · Shared bucket list app"
           period="2026.10 – Present · Released on iOS and Android"
-          summary="Planning, app, Supabase backend, App Store and Google Play release, solo."
           stack="Expo SDK 58 · Supabase · Zustand · Claude API · Jest"
           detail="doit"
           detailLabel={CASE}
@@ -130,7 +141,7 @@ export default function EnglishResumePage() {
         >
           <ul>
             <li>Change-based sync that loses nothing under concurrent edits, verified with Jest; 61 RLS policies</li>
-            <li>AI suggestions (Claude API) measured with a 24-request eval: 97.9% on-request, 98.4% real places, about $0.001 per call</li>
+            <li>AI suggestions (Claude API) measured with a 24-request eval: 97.9% on-request, 98.4% real places, ~$0.001/call</li>
           </ul>
         </Project>
         <Project
@@ -148,13 +159,21 @@ export default function EnglishResumePage() {
           </ul>
         </Project>
         <Project
-          title="Month · Medication reminder app"
-          period="2026.10 – Present · In development"
-          summary="Home screen widget that follows the date without opening the app (Kotlin native module); 66 Jest tests and CI."
-          stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
-          detail="month"
+          title="mochi-pet · Desktop pet shared with friends"
+          period="2026.11 – Present · Released on macOS and Windows"
+          stack="Tauri v2 · Rust · React · Supabase Realtime · Vitest"
+          detail="mochi"
           detailLabel={CASE}
-        />
+          links={[
+            { href: 'https://github.com/epww1502/mochi-pet', label: 'GitHub' },
+            { href: 'https://github.com/epww1502/mochi-pet/releases/latest', label: 'Download' },
+          ]}
+        >
+          <ul>
+            <li>Transparent full-screen window that takes clicks only on pets and bubbles (React areas + Rust global cursor)</li>
+            <li>One tag ships signed macOS (2 targets) and Windows builds with auto-updates; 102 Vitest tests</li>
+          </ul>
+        </Project>
       </Section>
 
       <Section title="SKILLS">
@@ -163,7 +182,7 @@ export default function EnglishResumePage() {
             ['Core', 'TypeScript, React, React Native (Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               'Experience',
-              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
+              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri (Rust), Java·SQL',
             ],
           ]}
         />
@@ -173,7 +192,7 @@ export default function EnglishResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · GPA 3.89/4.0, Summa Cum Laude · 2017.09 – 2021.06'],
-            ['KOREATECH', 'Computer Engineering · 2013.02 – 2018.07 (transferred to OSU)'],
+            ['KOREATECH', 'Computer Engineering · 2013.02 – 2018.07 · transferred to OSU while enrolled (2017.09)'],
             ['Languages · Military', 'Korean (native), English (conversational, 5 years abroad) · Military service completed (ROK Air Force)'],
           ]}
         />
