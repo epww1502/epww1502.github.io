@@ -41,13 +41,13 @@ export default function ResumePage() {
             detail="glab"
           >
             <ul>
-              <li>한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시, 4개월간 정식 릴리스 5회</li>
+              <li>한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시, 크로스 브라우징 대응, 4개월간 릴리스 5회</li>
               <li>AI 채팅 스트리밍 중 토큰마다 대화의 모든 메시지가 다시 그려지던 것을 마지막 메시지 1개로 한정</li>
               <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 최소 3행만 렌더링</li>
               <li>Kakao·Google·Apple 로그인과 탈퇴(계정 연결 해제) 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
               <li>S3·CloudFront 웹 인프라 구성, push 한 번으로 환경 3개 웹 배포와 OTA 발행, 새 빌드가 필요하면 OTA 생략</li>
-              <li>백오피스(운영 관리자 웹) 21개 화면을 React SPA로 설계·구현, API 연동 (공지 예약, 약관·버전 관리, 마스킹)</li>
-              <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
+              <li>백오피스(운영 관리자 웹) 21개 화면을 React SPA로 설계·구현, API 연동, 웹 표준·접근성(label·aria) 적용</li>
+              <li>디자인 산출물 없이 시작해 디자인 시스템(공통 컴포넌트, 테마·컬러 토큰)부터 구축, 뉴스는 앱 내 웹뷰로 표시</li>
             </ul>
             <p className="stack">
               서비스 <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
@@ -111,7 +111,7 @@ export default function ResumePage() {
         </Company>
       </Section>
 
-      <Section title="개인 프로젝트 · 1인 개발, AI 코딩 도구 활용">
+      <Section title="개인 프로젝트 · 1인 개발, 코딩 에이전트(Claude Code) 활용">
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS·Android 출시"
@@ -165,7 +165,7 @@ export default function ResumePage() {
             ['주력', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               '경험',
-              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS 클라우드(S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri(Rust), Java·SQL',
+              'Next.js, Claude API(LLM), MobX, Canvas, Firebase Auth, Supabase, EAS, GitHub Actions(CI/CD), AWS 클라우드(S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri(Rust), Java·SQL',
             ],
           ]}
         />

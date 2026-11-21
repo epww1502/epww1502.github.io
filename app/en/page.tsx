@@ -51,13 +51,13 @@ export default function EnglishResumePage() {
             detailLabel={CASE}
           >
             <ul>
-              <li>Shipped iOS, Android and a responsive web app (PWA) from one codebase: 5 releases in 4 months</li>
+              <li>Shipped iOS, Android and a responsive, cross-browser web app from one codebase: 5 releases in 4 months</li>
               <li>AI chat streaming re-rendered every message on each token; limited it to the last message</li>
               <li>Fixed a race condition that froze the live ranking; price animation renders only changing rows (29 → 3+)</li>
               <li>Kakao, Google and Apple sign-in and account deletion; Apple deletion on Android solved with a web bridge</li>
               <li>Set up S3 and CloudFront; one push deploys web to 3 environments and OTA, skipped if a native build is due</li>
-              <li>Designed and built the 21-screen back office as a React SPA (scheduled notices, terms, app versions, masking)</li>
-              <li>Started without designs: built shared components and theme tokens, then Home, AI chat, Explore and Portfolio</li>
+              <li>Designed and built the 21-screen back office as a React SPA, following web standards and accessibility (ARIA)</li>
+              <li>Started without designs: built a design system (components, theme tokens); news opens in an in-app WebView</li>
             </ul>
             <p className="stack">
               Service <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
@@ -125,7 +125,7 @@ export default function EnglishResumePage() {
         </Company>
       </Section>
 
-      <Section title="PERSONAL PROJECTS · SOLO, BUILT WITH AI CODING TOOLS">
+      <Section title="PERSONAL PROJECTS · SOLO, BUILT WITH A CODING AGENT (CLAUDE CODE)">
         <Project
           title="DoIt2 · Shared bucket list app"
           period="2026.10 – Present · Released on iOS and Android"
@@ -182,7 +182,7 @@ export default function EnglishResumePage() {
             ['Core', 'TypeScript, React, React Native (Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               'Experience',
-              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS cloud (S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri (Rust), Java·SQL',
+              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions (CI/CD), AWS cloud (S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri (Rust), Java·SQL',
             ],
           ]}
         />
