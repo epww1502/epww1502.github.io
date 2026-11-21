@@ -83,7 +83,7 @@ export default function CareerPage() {
               <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
               <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 웹 배포와 OTA 발행 자동화</li>
               <li>2026.05부터 파트장으로 화면 디자인과 설계, 배포 일정 결정, 코드리뷰 전반, 프론트엔드 2명의 업무 일정 관리</li>
-              <li>코드리뷰(동료 PR 267건 중 154건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 274개 작성</li>
+              <li>코드리뷰(동료 PR 265건 중 156건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 274개 작성</li>
             </ul>
             <Label>문제 해결</Label>
             <ul>
