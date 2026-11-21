@@ -45,7 +45,7 @@ export default function EnglishResumePage() {
           <Project
             title="GLAB · AI digital private banker app"
             period="2025.12 – Present"
-            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote 274 of the team's ~540 feature PRs and merged 154 teammates' PRs through code review."
+            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote 274 of the team's ~540 feature PRs and merged 156 teammates' PRs through code review."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
             detailLabel={CASE}
