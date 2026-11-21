@@ -14,7 +14,19 @@ export default function ResumePage() {
         title="이영주"
         lead="대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 프론트엔드 개발자입니다."
         links={['portfolio', 'career', 'lab']}
-      />
+      >
+        <ul className="strengths">
+          <li>
+            <b>대용량 렌더링</b> · 100×100 차트 렌더링 약 10,000ms → 100ms, 멈추던 시트 전체(약 170억 셀) 병합을 2초 안에 처리
+          </li>
+          <li>
+            <b>앱 출시·운영</b> · 한 코드베이스로 iOS·Android·웹 출시, 4개월간 정식 릴리스 5회, 빌드·OTA·웹 배포 자동화
+          </li>
+          <li>
+            <b>AI 기능 측정</b> · 추천 240개를 평가 세트로 채점해 요청 적합 97.9%, 장소 실재 98.4% (개인 프로젝트 DoIt2)
+          </li>
+        </ul>
+      </PageHeader>
 
       <Section title="경력">
         <Company
@@ -24,18 +36,18 @@ export default function ResumePage() {
           <Project
             title="GLAB · AI 디지털 PB 앱"
             period="2025.12 – 현재"
-            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 프론트엔드의 기획부터 빌드·배포·운영까지 맡고, 2026.05부터 파트장으로 배포 일정과 팀원 2명의 업무 관리. 팀 기능 PR의 절반(278개) 작성, 동료 PR 149건 리뷰."
+            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 프론트엔드의 기획부터 빌드·배포·운영까지 맡고, 2026.05부터 파트장으로 배포 일정과 팀원 2명의 업무 관리. 팀 기능 PR 약 540개 중 278개 작성, 코드리뷰로 동료 PR 149건 머지."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
           >
             <ul>
-              <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
-              <li>AI 채팅 스트리밍 중 토큰마다 일어나던 화면 전체 리렌더링을 마지막 메시지로 한정</li>
-              <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 바뀌는 구간(최소 3행)만 렌더링</li>
+              <li>한 코드베이스로 iOS·Android·웹(PWA) 출시, 4개월간 정식 릴리스 5회, 구버전 앱은 OTA 대상에서 제외</li>
+              <li>AI 채팅 스트리밍 중 토큰마다 대화의 모든 메시지가 다시 그려지던 것을 마지막 메시지 1개로 한정</li>
+              <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 최소 3행만 렌더링</li>
               <li>Kakao·Google·Apple 로그인과 탈퇴(계정 연결 해제) 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
-              <li>한 코드베이스로 iOS·Android·웹(PWA) 출시, 4개월간 정식 릴리스 5회. OTA는 네이티브 버전이 다른 앱을 제외해 구버전 크래시 방지</li>
               <li>S3·CloudFront 웹 인프라 구성, GitHub Actions로 환경 3개의 웹 배포와 OTA 발행 자동화</li>
               <li>운영 관리자 웹 21개 화면 설계·구현 및 API 연동 (공지 예약, 약관·앱 버전 관리, 개인정보 마스킹)</li>
+              <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
             </ul>
             <p className="stack">
               서비스 <a href="https://apps.apple.com/kr/app/id6761149761">App Store</a> ·{' '}
@@ -53,12 +65,12 @@ export default function ResumePage() {
             detail="cop"
           >
             <ul>
-              <li>토큰 만료 시 동시에 발생한 401로 갱신이 중복되고 요청이 유실되던 문제를, 갱신은 한 번만 하고 대기 요청을 다시 보내도록 해결</li>
+              <li>토큰 만료 시 동시에 발생한 401로 갱신이 중복되고 요청이 유실되던 문제를, 갱신 1회 후 대기 요청 재전송으로 해결</li>
               <li>사용 현황·크레딧 발급·계정·그룹·공지·정책 등 ADMIN 전 화면과 역할 4종별 접근 제어를 테스트 일정 안에 구현</li>
               <li>크레딧 발급에 권한 제한, 발급량 검증, 확인 단계를 넣어 운영 실수 방지</li>
               <li>커밋·push 전 lint·타입 검사와 S3·CloudFront 배포 자동화 도입</li>
               <li>
-                AI 페스타에서 공개되어 <a href="https://www.dt.co.kr/article/11674174">언론에 보도</a>, 산돌구름 AI Studio 베타로 오픈(이용자 약 2천 명)
+                AI 페스타에서 공개되어 <a href="https://www.dt.co.kr/article/11674174">언론에 보도</a>, LG CNS·산돌구름 협업으로 산돌구름 AI Studio 베타 오픈(이용자 약 2천 명)
               </li>
             </ul>
           </Project>
@@ -68,14 +80,14 @@ export default function ResumePage() {
           <Project
             title="GAIA OFFICE Chart"
             period="2022.01 – 2025.01"
-            summary="웹오피스 차트 개발. 2022.09 팀 개편 이후 차트 기능 전체의 개발·유지보수를 책임지고 신규 입사자 멘토링."
+            summary="웹오피스 차트 개발. 2022.09 팀 개편 이후 차트 기능 전체의 개발·유지보수를 책임지고 신규 입사자 약 5명 멘토링."
             stack="React · TypeScript · MobX · Victory"
             detail="chart"
           >
             <ul>
               <li>
-                데이터 포인트마다 그리던 렌더링을 계열 단위로 바꿔 컴포넌트 수를 1/100로 줄이고{' '}
-                <b>대용량 차트 렌더링 10,000ms → 100ms</b>, 30×30 차트 삽입 11초 → 2초
+                계열 단위 렌더링으로 컴포넌트 10,000개 → 100개,{' '}
+                <b>100×100 차트 렌더링 약 10,000ms → 100ms</b>, 30×30 삽입 11초 → 2초
               </li>
               <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, Excel과 같은 값이 나오는 오차 막대 구현</li>
               <li>차트 모델·명령(Undo/Redo)·렌더링 훅을 Jest와 React Testing Library로 테스트 (46개 파일)</li>
@@ -99,11 +111,10 @@ export default function ResumePage() {
         </Company>
       </Section>
 
-      <Section title="개인 프로젝트">
+      <Section title="개인 프로젝트 · 1인 개발, AI 코딩 도구 활용">
         <Project
           title="DoIt2 · 함께 쓰는 버킷리스트 앱"
           period="2026.10 – 현재 · iOS·Android 출시"
-          summary="기획부터 앱·Supabase 백엔드, App Store·Google Play 출시까지 혼자 진행."
           stack="Expo SDK 58 · Supabase · Claude API · Jest"
           detail="doit"
           links={[
@@ -132,12 +143,20 @@ export default function ResumePage() {
           </ul>
         </Project>
         <Project
-          title="Month · 복약 알림 앱"
-          period="2026.10 – 현재 · 개발 중"
-          summary="앱을 열지 않아도 날짜에 맞게 갱신되는 홈 화면 위젯(Kotlin 네이티브 모듈). Jest 66개와 CI로 검증."
-          stack="Expo SDK 58 · expo-widgets · Kotlin · SQLite · Jest · GitHub Actions"
-          detail="month"
-        />
+          title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫"
+          period="2026.11 – 현재 · macOS·Windows 배포"
+          stack="Tauri v2 · Rust · React · Supabase Realtime · Vitest"
+          detail="mochi"
+          links={[
+            { href: 'https://github.com/epww1502/mochi-pet', label: 'GitHub' },
+            { href: 'https://github.com/epww1502/mochi-pet/releases/latest', label: '다운로드' },
+          ]}
+        >
+          <ul>
+            <li>화면을 덮는 투명 창에서 펫·말풍선만 클릭을 받도록 React의 영역과 Rust의 전역 커서 위치로 클릭 통과 전환</li>
+            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, Vitest 102개</li>
+          </ul>
+        </Project>
       </Section>
 
       <Section title="기술">
@@ -146,7 +165,7 @@ export default function ResumePage() {
             ['주력', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               '경험',
-              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Kotlin, Java·SQL',
+              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri(Rust), Java·SQL',
             ],
           ]}
         />
@@ -156,7 +175,7 @@ export default function ResumePage() {
         <Fields
           rows={[
             ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0, Summa Cum Laude(최우등 졸업) · 2017.09 – 2021.06'],
-            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 (OSU 편입)'],
+            ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 · 재학 중 OSU로 편입(2017.09)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}
         />

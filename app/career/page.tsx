@@ -181,7 +181,7 @@ export default function CareerPage() {
               variant="meta"
               rows={[
                 ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반). NTIS 국가 R&D 과제(12859502) 참여'],
-                ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 멘토링'],
+                ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 약 5명 멘토링'],
                 ['팀 구성', '차트 담당 3명 → 2022.09 팀 개편 이후 1명(본인)'],
                 ['기술', 'React, TypeScript, MobX, Victory, Jest, React Testing Library'],
               ]}
@@ -294,20 +294,6 @@ export default function CareerPage() {
             <li>Jest 102개, Playwright E2E 19개(데스크톱·모바일), PR마다 GitHub Actions CI</li>
           </ul>
         </Project>
-        <Project title="Month · 복약 알림 앱" period="2026.10 – 현재 · 개발 중">
-          <Fields
-            variant="meta"
-            rows={[
-              ['개요', '약과 복용 시간을 등록하면 알림과 홈 화면 위젯에서 바로 복용을 기록하는 iOS·Android 앱'],
-              ['기술', 'Expo SDK 58, expo-widgets, Kotlin, SQLite, Jest, GitHub Actions'],
-            ]}
-          />
-          <ul>
-            <li>앱을 열지 않아도 날짜가 바뀌는 위젯: Android는 Kotlin 네이티브 모듈과 자정 알람, iOS는 0시 타임라인으로 처리</li>
-            <li>iOS 예약 알림 64개 제한과 Android 14 정확한 알람 권한에 맞춰 7일치를 날짜별로 예약</li>
-            <li>Jest 단위 테스트 66개, PR마다 GitHub Actions CI</li>
-          </ul>
-        </Project>
         <Project title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫" period="2026.11 – 현재 · macOS·Windows 배포">
           <Fields
             variant="meta"
@@ -326,7 +312,9 @@ export default function CareerPage() {
             <li>화면을 덮는 투명 창에서 펫·말풍선 영역만 클릭을 받게 함: React가 영역을 넘기고 Rust가 전역 커서 위치로 클릭 통과를 켜고 끔</li>
             <li>Windows에서 펫은 접속 중인데 채팅만 안 오던 문제를 WebView2 원격 디버깅으로 추적, 끊긴 실시간 채널을 다시 만들고 다시 붙을 때 상태를 재전송</li>
             <li>Realtime presence(접속 중)와 서버의 마지막 접속 시각을 합친 친구 목록, 받은 메시지 검사, 오프라인 쪽지는 서버 함수로만 읽고 쓰기</li>
-            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, 브랜치마다 두 OS 빌드 검사, Vitest 96개</li>
+            <li>맥에서 배율이 다른 외장 모니터의 펫이 클릭되지 않던 문제: 커서와 창 좌표가 서로 다른 모니터 배율로 곱해져 오는 것을 각자 배율로 되돌려 계산</li>
+            <li>방장 기능(친구 내보내기·방장 넘기기)과 메신저처럼 보는 대화 창, 친구 펫 끌어서 옮기기</li>
+            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, 브랜치마다 두 OS 빌드 검사, Vitest 102개</li>
           </ul>
         </Project>
       </Section>
