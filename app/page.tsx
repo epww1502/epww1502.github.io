@@ -36,7 +36,7 @@ export default function ResumePage() {
           <Project
             title="GLAB · AI 디지털 PB 앱"
             period="2025.12 – 현재"
-            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 프론트엔드의 기획부터 빌드·배포·운영까지 맡고, 2026.05부터 파트장으로 배포 일정과 팀원 2명의 업무 관리. 팀 기능 PR 약 540개 중 278개 작성, 코드리뷰로 동료 PR 149건 머지."
+            summary="개인 투자자용 AI 투자 상담 앱(2026.07 출시). 프론트엔드의 기획부터 빌드·배포·운영까지 맡고, 2026.05부터 파트장으로 배포 일정과 팀원 2명의 업무 관리. 팀 기능 PR 약 540개 중 274개 작성, 코드리뷰로 동료 PR 154건 머지."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
           >
@@ -125,7 +125,7 @@ export default function ResumePage() {
           ]}
         >
           <ul>
-            <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계해 Jest로 검증, RLS 정책 61개로 권한 설계</li>
+            <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계해 Jest로 검증, RLS 정책 58개로 권한 설계</li>
             <li>AI 추천(Claude API)을 평가 세트 24개로 측정: 요청에 맞음 97.9%, 장소 실재 98.4%, 한 번 약 $0.001</li>
           </ul>
         </Project>
