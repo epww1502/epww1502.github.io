@@ -191,7 +191,7 @@ export default function EnglishResumePage() {
       <Section title="EDUCATION · OTHER">
         <Fields
           rows={[
-            ['Oregon State University', 'Computer Science (Security) · GPA 3.89/4.0, Summa Cum Laude · 2017.09 – 2021.06'],
+            ['Oregon State University', 'Computer Science (Applied CS option, security focus) · GPA 3.89/4.0, Summa Cum Laude · 2017.09 – 2021.06'],
             ['KOREATECH', 'Computer Engineering · 2013.02 – 2018.07 · transferred to OSU while enrolled (2017.09)'],
             ['Languages · Military', 'Korean (native), English (conversational, 5 years abroad) · Military service completed (ROK Air Force)'],
           ]}
