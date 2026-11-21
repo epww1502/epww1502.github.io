@@ -20,7 +20,7 @@ export default function ResumePage() {
             <b>대용량 렌더링</b> · 100×100 차트 렌더링 약 10,000ms → 100ms, 멈추던 시트 전체(약 170억 셀) 병합을 2초 안에 처리
           </li>
           <li>
-            <b>앱 출시·운영</b> · 한 코드베이스로 iOS·Android·웹 출시, 4개월간 정식 릴리스 5회, 빌드·OTA·웹 배포 자동화
+            <b>앱 출시·운영</b> · iOS·Android·웹 3개 플랫폼을 출시해 운영, 릴리스 사이 수정은 심사 없이 OTA로 반영, 빌드·배포 자동화
           </li>
           <li>
             <b>AI 기능 측정</b> · 추천 240개를 평가 세트로 채점해 요청 적합 97.9%, 장소 실재 98.4% (개인 프로젝트 DoIt2)
@@ -45,7 +45,7 @@ export default function ResumePage() {
               <li>AI 채팅 스트리밍 중 토큰마다 대화의 모든 메시지가 다시 그려지던 것을 마지막 메시지 1개로 한정</li>
               <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 최소 3행만 렌더링</li>
               <li>Kakao·Google·Apple 로그인과 탈퇴(계정 연결 해제) 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
-              <li>S3·CloudFront 웹 인프라 구성, GitHub Actions로 환경 3개의 웹 배포와 OTA 발행 자동화</li>
+              <li>S3·CloudFront 웹 인프라 구성, push 한 번으로 환경 3개 웹 배포와 OTA 발행, 새 빌드가 필요하면 OTA 생략</li>
               <li>운영 관리자 웹 21개 화면 설계·구현 및 API 연동 (공지 예약, 약관·앱 버전 관리, 개인정보 마스킹)</li>
               <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
             </ul>
@@ -86,8 +86,8 @@ export default function ResumePage() {
           >
             <ul>
               <li>
-                계열 단위 렌더링으로 컴포넌트 10,000개 → 100개,{' '}
-                <b>100×100 차트 렌더링 약 10,000ms → 100ms</b>, 30×30 삽입 11초 → 2초
+                계열 단위 렌더링으로 바꿔{' '}
+                <b>100×100 차트 렌더링 약 10,000ms → 100ms</b>, 30×30 차트 삽입 11초 → 2초
               </li>
               <li>Chart 모델·컴포넌트 트리 설계, OOXML 기준 Import/Export, Excel과 같은 값이 나오는 오차 막대 구현</li>
               <li>차트 모델·명령(Undo/Redo)·렌더링 훅을 Jest와 React Testing Library로 테스트 (46개 파일)</li>
@@ -126,7 +126,7 @@ export default function ResumePage() {
         >
           <ul>
             <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계해 Jest로 검증, RLS 정책 58개로 권한 설계</li>
-            <li>AI 추천(Claude API)을 평가 세트 24개로 측정: 요청에 맞음 97.9%, 장소 실재 98.4%, 한 번 약 $0.001</li>
+            <li>AI 추천(Claude API)을 요청 24개 평가 세트로 규칙 검사와 다른 모델의 심사로 채점, 한 번 약 $0.001</li>
           </ul>
         </Project>
         <Project

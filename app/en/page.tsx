@@ -32,7 +32,7 @@ export default function EnglishResumePage() {
             <b>Large-scale rendering</b> · 100×100 chart render ~10,000ms → 100ms; frozen whole-sheet merge now within 2s
           </li>
           <li>
-            <b>Shipping and operations</b> · iOS, Android and web from one codebase, 5 production releases in 4 months
+            <b>Shipping and operations</b> · iOS, Android and web from one codebase; fixes ship by OTA without store review
           </li>
           <li>
             <b>Measuring AI features</b> · 240 suggestions scored: 97.9% on-request, 98.4% real places (personal project DoIt2)
@@ -55,7 +55,7 @@ export default function EnglishResumePage() {
               <li>AI chat streaming re-rendered every message on each token; limited it to the last message</li>
               <li>Fixed a race condition that froze the live ranking; price animation renders only changing rows (29 → 3+)</li>
               <li>Kakao, Google and Apple sign-in and account deletion; Apple deletion on Android solved with a web bridge</li>
-              <li>Set up S3 and CloudFront; automated web deploys for 3 environments and OTA publishing with GitHub Actions</li>
+              <li>Set up S3 and CloudFront; one push deploys web to 3 environments and OTA, skipped if a native build is due</li>
               <li>Designed and built the 21-screen operations admin web (scheduled notices, terms, app versions, data masking)</li>
               <li>Started without designs: built shared components and theme tokens, then Home, AI chat, Explore and Portfolio</li>
             </ul>
@@ -141,7 +141,7 @@ export default function EnglishResumePage() {
         >
           <ul>
             <li>Change-based sync that loses nothing under concurrent edits, verified with Jest; 58 RLS policies</li>
-            <li>AI suggestions (Claude API) measured with a 24-request eval: 97.9% on-request, 98.4% real places, ~$0.001/call</li>
+            <li>AI suggestions (Claude API) scored on a 24-request eval set by rules and a judge model; ~$0.001/call</li>
           </ul>
         </Project>
         <Project
