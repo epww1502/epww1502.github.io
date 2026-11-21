@@ -37,7 +37,7 @@ export default function CareerPage() {
         />
         <ul className="strengths">
           <li>
-            <b>대용량 렌더링 개선</b> · 차트 렌더링 10,000ms → 100ms, 멈추던 시트 전체(약 170억 셀) 병합을 2초 안에 처리
+            <b>대용량 렌더링 개선</b> · 100×100 차트 렌더링 약 10,000ms → 100ms, 멈추던 시트 전체(약 170억 셀) 병합을 2초 안에 처리
           </li>
           <li>
             <b>앱 출시와 운영</b> · Expo 한 코드베이스로 iOS·Android·웹 출시, 빌드·OTA·웹 배포 자동화와 스토어 심사 대응
@@ -204,7 +204,7 @@ export default function CareerPage() {
             </ul>
             <Label>성과</Label>
             <ul>
-              <li>100×100 차트 렌더링 10,000ms → 100ms, 30×30 차트 삽입 11초 → 2초</li>
+              <li>100×100 차트 렌더링 약 10,000ms → 100ms, 30×30 차트 삽입 11초 → 2초</li>
             </ul>
           </Project>
 
@@ -242,8 +242,8 @@ export default function CareerPage() {
         </Company>
       </Section>
 
-      <Section title="개인 프로젝트">
-        <Project title="DoIt2 · 함께 쓰는 버킷리스트 앱" period="2026.10 – 현재 · iOS·Android 출시">
+      <Section title="개인 프로젝트 · 1인 개발, AI 코딩 도구 활용">
+        <Project title="DoIt2 · 함께 쓰는 버킷리스트 앱" period="2026.10 – 현재 · iOS·Android 출시" detail="doit">
           <Fields
             variant="meta"
             rows={[
@@ -264,19 +264,12 @@ export default function CareerPage() {
             <li>여러 명이 동시에 고쳐도 유실되지 않도록 변경 단위로 기록해 서버 최신 상태 위에 다시 적용, Jest로 시나리오 검증</li>
             <li>RLS 정책 58개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
             <li>
-              AI 추천 도입: 담아 둔 목록과 사용자가 말한 조건으로 새 항목 5개를 장소·할 것까지 추천(Claude Haiku 5.5, Edge Function). 답은 JSON 스키마로 고정하고
-              장소는 카카오 검색에서 이름이 맞을 때만 표시, 스트리밍으로 진행 상황 표시
-            </li>
-            <li>
               AI 추천 평가: 요청 24개를 2번씩 보내 추천 240개를 규칙 검사와 다른 모델의 심사로 채점. 요청에 맞음 97.9%, 장소 실재 121/123, 첫 추천까지 8.9초, 한 번에
               약 $0.001. 조건이 여러 개인 요청(94.3%)을 다음 개선 대상으로 확인
             </li>
-            <li>OTA·강제 업데이트·오류 수집, 사진 크기 축소와 저장소 경로 기준 캐시</li>
-            <li>소개 사이트와 초대 링크·돌아보기 공유 웹 페이지 제작. 초대 페이지는 코드 추측 방어를 유지하려고 서버 조회 없이 구성하고, 공유 페이지는 고른 사진만 위치 정보를 뺀 사본으로 30일간 공개</li>
-            <li>GoIt2와 연동: 항목에서 여행 일정 짜기, 고잇투 일정을 장소마다 또는 여행 하나로 원하는 공간에 담기</li>
           </ul>
         </Project>
-        <Project title="GoIt2 · AI 여행 일정 웹" period="2026.11 – 현재 · 웹 서비스 운영 중">
+        <Project title="GoIt2 · AI 여행 일정 웹" period="2026.11 – 현재 · 웹 서비스 운영 중" detail="goit">
           <Fields
             variant="meta"
             rows={[
@@ -287,14 +280,11 @@ export default function CareerPage() {
           />
           <ul>
             <li>AI는 장소 이름과 이유만 정하고 좌표·주소는 카카오 장소 검색에서 이름과 지역이 맞는 곳으로만 채워, 지어낸 장소가 지도에 오르지 않게 함</li>
-            <li>모델이 한 줄에 장소 하나씩 쓰게 하고 줄이 오는 대로 장소 확인을 병렬로 시작해 1박 2일 생성 26초 → 5.8초(첫 장소 약 1초). 장소 수 규칙 때문에 늘어난 생각 시간(첫 줄 13.7초)은 생각을 끄고 해결</li>
-            <li>로그인 없는 공개 웹이라 API 키는 Edge Function 뒤에 두고, 허용 주소와 방문자별·전체 하루 한도로 비용 제한. 방문자는 서명한 해시로만 구분</li>
-            <li>카카오모빌리티로 차 구간의 실제 도로 시간과 주변 주차장, 날짜별 예보, 말로 고치기(바뀔 곳 미리보기), 공유 링크 미리보기 이미지</li>
-            <li>DoIt2 연동: 컴퓨터에서 열어도 담을 수 있게 중간 웹 페이지(QR·링크)를 두고, 두잇투 쪽은 공유 일정 읽기만 허용</li>
+            <li>모델이 한 줄에 장소 하나씩 쓰게 하고 줄이 오는 대로 장소 확인을 병렬로 시작해 1박 2일 생성 26초 → 5.8초(첫 장소 약 1초)</li>
             <li>Jest 102개, Playwright E2E 19개(데스크톱·모바일), PR마다 GitHub Actions CI</li>
           </ul>
         </Project>
-        <Project title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫" period="2026.11 – 현재 · macOS·Windows 배포">
+        <Project title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫" period="2026.11 – 현재 · macOS·Windows 배포" detail="mochi">
           <Fields
             variant="meta"
             rows={[
@@ -311,9 +301,6 @@ export default function CareerPage() {
           <ul>
             <li>화면을 덮는 투명 창에서 펫·말풍선 영역만 클릭을 받게 함: React가 영역을 넘기고 Rust가 전역 커서 위치로 클릭 통과를 켜고 끔</li>
             <li>Windows에서 펫은 접속 중인데 채팅만 안 오던 문제를 WebView2 원격 디버깅으로 추적, 끊긴 실시간 채널을 다시 만들고 다시 붙을 때 상태를 재전송</li>
-            <li>Realtime presence(접속 중)와 서버의 마지막 접속 시각을 합친 친구 목록, 받은 메시지 검사, 오프라인 쪽지는 서버 함수로만 읽고 쓰기</li>
-            <li>맥에서 배율이 다른 외장 모니터의 펫이 클릭되지 않던 문제: 커서와 창 좌표가 서로 다른 모니터 배율로 곱해져 오는 것을 각자 배율로 되돌려 계산</li>
-            <li>방장 기능(친구 내보내기·방장 넘기기)과 메신저처럼 보는 대화 창, 친구 펫 끌어서 옮기기</li>
             <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, 브랜치마다 두 OS 빌드 검사, Vitest 102개</li>
           </ul>
         </Project>
