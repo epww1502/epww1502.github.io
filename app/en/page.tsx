@@ -110,7 +110,7 @@ export default function EnglishResumePage() {
           <Project
             title="GAIA OFFICE Cell · Web spreadsheet"
             period="2022.06 – 2025.01"
-            summary="Number formats, merging and pivot tables for the web spreadsheet. Took part in an NTIS national R&D project."
+            summary="Number formats, merging and pivot tables. Researcher on a government (MSIT) R&D project (2022.06 – 2023.12)."
             stack="React · TypeScript · Canvas · Java"
             detail="cell"
             detailLabel={CASE}

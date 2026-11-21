@@ -52,7 +52,7 @@ export default function CareerPage() {
         <Company
           name="관악연구소"
           when="2025.01 – 현재 · GLAB팀 · 프론트엔드 (2026.05부터 파트장)"
-          summary="AI 기반 금융 의사결정 솔루션과 개인 투자 상담 앱 GLAB을 만드는 핀테크 스타트업(2023년 설립). 웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음."
+          summary="AI 기반 금융 의사결정 솔루션과 개인 투자 상담 앱 GLAB을 만드는 핀테크 스타트업(2023년 설립). 웹·앱 프론트엔드 개발. LG CNS 고객사 프로젝트(COP)를 마친 뒤 자사 서비스 GLAB을 개발했고, 2026.05부터 프론트엔드 파트장을 맡음. 중기부 R&D 과제(TIPS) 「정형/비정형 금융데이터 통합 3-Layer 의사결정 AI 인텔리전스 엔진 고도화」 참여연구원(2026.10 – 현재, 과제번호 2420034700)."
         >
           <Project title="GLAB · AI 디지털 PB 앱" period="2025.12 – 현재">
             <Fields
@@ -176,13 +176,13 @@ export default function CareerPage() {
         <Company
           name="티맥스가이아"
           when="2022.01 – 2025.01 · 연구원"
-          summary="웹오피스 GAIA OFFICE의 스프레드시트(Cell)와 차트(Chart) 프론트엔드 개발. 팀 구성 프론트엔드 6명, 백엔드 4명."
+          summary="웹오피스 GAIA OFFICE의 스프레드시트(Cell)와 차트(Chart) 프론트엔드 개발. 팀 구성 프론트엔드 6명, 백엔드 4명. 과기정통부 R&D 과제 「문서 데이터의 정보화 및 협업을 위한 지능형 문서 처리 플랫폼 기술」 참여연구원(2022.06 – 2023.12, 과제번호 1711152861·1711193911)."
         >
           <Project title="GAIA OFFICE Chart" period="2022.01 – 2025.01">
             <Fields
               variant="meta"
               rows={[
-                ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반). NTIS 국가 R&D 과제(12859502) 참여'],
+                ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반)'],
                 ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 약 5명 멘토링'],
                 ['팀 구성', '차트 담당 3명 → 2022.09 팀 개편 이후 1명(본인)'],
                 ['기술', 'React, TypeScript, MobX, Victory(D3 기반), Jest, React Testing Library'],
@@ -214,7 +214,7 @@ export default function CareerPage() {
             <Fields
               variant="meta"
               rows={[
-                ['개요', '웹오피스 스프레드시트. NTIS 국가 R&D 과제(12859502) 참여'],
+                ['개요', '웹오피스 스프레드시트'],
                 ['역할', '표시 형식·병합·피벗 테이블·그래픽 요소 개발과 유지보수'],
                 ['기술', 'React, TypeScript, Canvas, Java, SQL'],
               ]}
@@ -266,8 +266,7 @@ export default function CareerPage() {
             <li>여러 명이 동시에 고쳐도 유실되지 않도록 변경 단위로 기록해 서버 최신 상태 위에 다시 적용, Jest로 시나리오 검증</li>
             <li>RLS 정책 58개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
             <li>
-              AI 추천 평가: 요청 24개를 2번씩 보내 추천 240개를 규칙 검사와 다른 모델의 심사로 채점. 요청에 맞음 97.9%, 장소 실재 121/123, 첫 추천까지 8.9초, 한 번에
-              약 $0.001. 조건이 여러 개인 요청(94.3%)을 다음 개선 대상으로 확인
+              AI 추천 평가: 요청 24개를 2번씩 보내 추천 240개를 규칙 검사와 다른 모델의 심사로 채점. 요청에 맞음 97.9%, 장소 실재 121/123, 첫 추천까지 8.9초, 한 번에 약 $0.001
             </li>
           </ul>
         </Project>
@@ -275,8 +274,8 @@ export default function CareerPage() {
           <Fields
             variant="meta"
             rows={[
-              ['개요', '어디로, 누구와, 어떻게 가고 싶은지 한 줄로 쓰면 지도 위에 날짜별 동선을 그려 주는 여행 일정 웹. DoIt2와 이어 담아 둔 곳으로 일정을 짜고 다녀온 뒤 기록까지 잇는 것이 목표'],
-              ['기술', 'Next.js 16, React 19, Tailwind, Claude API, Supabase Edge Functions, Kakao Map·Local·Mobility, Jest, Playwright, Vercel'],
+              ['개요', '조건 한 줄로 지도 위에 날짜별 동선을 그려 주는 여행 일정 웹. DoIt2와 연동'],
+              ['기술', 'Next.js 16, React 19, Tailwind, Claude API, Supabase Edge Functions, Kakao Map·Local·Mobility, Vercel'],
               ['링크', <a href="https://go-it-2.vercel.app">go-it-2.vercel.app</a>],
             ]}
           />
@@ -290,7 +289,7 @@ export default function CareerPage() {
           <Fields
             variant="meta"
             rows={[
-              ['개요', '초대 코드로 같은 방에 들어온 친구들의 픽셀 펫이 화면 아래를 걸어 다니며 접속 상태를 보여 주고, 채팅·이모티콘·간식·쪽지를 주고받는 데스크톱 앱'],
+              ['개요', '같은 방 친구들의 픽셀 펫이 화면 아래를 걸어 다니며 접속 상태를 보여 주고 채팅·쪽지를 주고받는 데스크톱 앱'],
               ['기술', 'Tauri v2, Rust, React, TypeScript, Canvas, Supabase Realtime, GitHub Actions, Vitest'],
               [
                 '링크',
@@ -303,7 +302,7 @@ export default function CareerPage() {
           <ul>
             <li>화면을 덮는 투명 창에서 펫·말풍선 영역만 클릭을 받게 함: React가 영역을 넘기고 Rust가 전역 커서 위치로 클릭 통과를 켜고 끔</li>
             <li>Windows에서 펫은 접속 중인데 채팅만 안 오던 문제를 WebView2 원격 디버깅으로 추적, 끊긴 실시간 채널을 다시 만들고 다시 붙을 때 상태를 재전송</li>
-            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, 브랜치마다 두 OS 빌드 검사, Vitest 102개</li>
+            <li>태그 하나로 macOS 2종(서명·공증)·Windows 빌드와 서명된 자동 업데이트 배포, Vitest 102개</li>
           </ul>
         </Project>
       </Section>

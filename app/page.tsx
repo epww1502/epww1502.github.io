@@ -97,7 +97,7 @@ export default function ResumePage() {
           <Project
             title="GAIA OFFICE Cell · 웹 스프레드시트"
             period="2022.06 – 2025.01"
-            summary="웹오피스 스프레드시트의 표시 형식·병합·피벗 테이블 개발과 유지보수. NTIS 국가 R&D 과제 참여."
+            summary="웹오피스 스프레드시트의 표시 형식·병합·피벗 테이블 개발. 과기정통부 R&D 과제 참여연구원(2022.06 – 2023.12)."
             stack="React · TypeScript · Canvas · Java"
             detail="cell"
           >
