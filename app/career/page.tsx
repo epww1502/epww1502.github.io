@@ -22,7 +22,7 @@ export default function CareerPage() {
       />
       <PageHeader
         title="경력기술서"
-        lead="이영주 · 대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 프론트엔드 개발자"
+        lead="이영주 · 대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 웹 프론트엔드 개발자"
         links={['resume', 'portfolio']}
       />
 
@@ -43,7 +43,7 @@ export default function CareerPage() {
             <b>앱 출시와 운영</b> · Expo 한 코드베이스로 iOS·Android·웹 출시, 빌드·OTA·웹 배포 자동화와 스토어 심사 대응
           </li>
           <li>
-            <b>운영 도구와 공통 기반</b> · ADMIN·관리자 웹 설계, 인증·오류 처리 공통화, 팀 코드리뷰
+            <b>백오피스와 공통 기반</b> · 백오피스(ADMIN·관리자 웹)를 React SPA로 설계, 인증·오류 처리 공통화, 팀 코드리뷰
           </li>
         </ul>
       </Section>
@@ -63,7 +63,7 @@ export default function CareerPage() {
                 ['팀 구성', '프론트엔드 3명, 백엔드 2명, AI 2명'],
                 [
                   '기술',
-                  'Expo, React Native, TypeScript, TanStack Query, Zustand, NativeWind, Firebase Auth, EAS, AWS S3·CloudFront, GitHub Actions, PostHog',
+                  'Expo, React Native, TypeScript, TanStack Query, Zustand, NativeWind, Firebase Auth, EAS, AWS 클라우드(S3·CloudFront), GitHub Actions, PostHog',
                 ],
                 [
                   '서비스',
@@ -80,7 +80,7 @@ export default function CareerPage() {
               <li>디자인 산출물 없이 기획과 개발을 함께 시작해 공통 컴포넌트와 테마·컬러 토큰을 먼저 만들고, 로그인 → 채팅 → 분석 결과 흐름을 기준으로 MVP 범위 정리</li>
               <li>홈 대시보드, AI 채팅, 탐색 실시간 랭킹, 포트폴리오 매매·편집·복사, 마이페이지 개발. 추천 질문을 채팅에서 홈으로 옮기는 등 화면 흐름 개편</li>
               <li>Kakao·Google·Apple 로그인과 계정 연결 해제를 포함한 탈퇴 구현. Android의 Apple 탈퇴는 웹에서 code와 id_token을 받아 딥링크로 넘기는 브릿지로 해결</li>
-              <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
+              <li>Expo 한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
               <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 웹 배포와 OTA 발행 자동화</li>
               <li>2026.05부터 파트장으로 화면 디자인과 설계, 배포 일정 결정, 코드리뷰 전반, 프론트엔드 2명의 업무 일정 관리</li>
               <li>코드리뷰(동료 PR 265건 중 156건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 274개 작성</li>
@@ -110,11 +110,11 @@ export default function CareerPage() {
             </ul>
           </Project>
 
-          <Project title="GLAB 관리자 웹" period="2026.08 – 현재">
+          <Project title="GLAB 백오피스(관리자 웹)" period="2026.08 – 현재">
             <Fields
               variant="meta"
               rows={[
-                ['개요', 'GLAB 앱 운영용 관리자 웹. 사용자, 공지, 약관, 앱 버전, 추천 질문, 고객 지원 등 21개 화면'],
+                ['개요', 'GLAB 앱 운영용 백오피스(관리자 웹), React SPA. 사용자, 공지, 약관, 앱 버전, 추천 질문, 고객 지원 등 21개 화면'],
                 ['역할', '기획·설계·구현, API 연동'],
                 ['기술', 'Vite, React 19, React Router 7, Zustand, React Hook Form, Zod, TipTap'],
               ]}
@@ -137,7 +137,7 @@ export default function CareerPage() {
                   '개요',
                   '텍스트로 이미지를 만들고 배경 확장·제거, 부분 편집, 업스케일링, 이미지 속 텍스트 편집까지 하는 웹 서비스 (LG CNS 고객사 프로젝트)',
                 ],
-                ['역할', 'ADMIN 프론트엔드 전체 설계·구현, 서비스 프론트엔드 공통 기반과 배포 자동화'],
+                ['역할', '백오피스(ADMIN) 프론트엔드 전체 설계·구현(React SPA), 서비스 프론트엔드 공통 기반과 배포 자동화'],
                 ['팀 구성', '프론트엔드 3명, 백엔드 2명'],
                 [
                   '기술',
@@ -183,7 +183,7 @@ export default function CareerPage() {
                 ['개요', '웹오피스 문서에 들어가는 차트 (Victory 기반). NTIS 국가 R&D 과제(12859502) 참여'],
                 ['역할', '차트 모델·컴포넌트 설계, 2022.09 팀 개편 이후 차트 기능 전체 개발·유지보수, 신규 입사자 약 5명 멘토링'],
                 ['팀 구성', '차트 담당 3명 → 2022.09 팀 개편 이후 1명(본인)'],
-                ['기술', 'React, TypeScript, MobX, Victory, Jest, React Testing Library'],
+                ['기술', 'React, TypeScript, MobX, Victory(D3 기반), Jest, React Testing Library'],
               ]}
             />
             <Label>주요 업무</Label>
@@ -281,7 +281,7 @@ export default function CareerPage() {
           <ul>
             <li>AI는 장소 이름과 이유만 정하고 좌표·주소는 카카오 장소 검색에서 이름과 지역이 맞는 곳으로만 채워, 지어낸 장소가 지도에 오르지 않게 함</li>
             <li>모델이 한 줄에 장소 하나씩 쓰게 하고 줄이 오는 대로 장소 확인을 병렬로 시작해 1박 2일 생성 26초 → 5.8초(첫 장소 약 1초)</li>
-            <li>Jest 102개, Playwright E2E 19개(데스크톱·모바일), PR마다 GitHub Actions CI</li>
+            <li>공유 페이지는 Next.js SSR로 미리보기 생성. Jest 102개, Playwright E2E 19개(데스크톱·모바일), PR마다 CI</li>
           </ul>
         </Project>
         <Project title="mochi-pet · 친구들과 함께 쓰는 데스크톱 펫" period="2026.11 – 현재 · macOS·Windows 배포" detail="mochi">

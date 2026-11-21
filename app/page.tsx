@@ -12,7 +12,7 @@ export default function ResumePage() {
       />
       <PageHeader
         title="이영주"
-        lead="대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 프론트엔드 개발자입니다."
+        lead="대용량 렌더링 최적화, 앱 출시·운영, AI 기능을 제품에 넣고 측정까지 해 본 5년차 웹 프론트엔드 개발자입니다."
         links={['portfolio', 'career', 'lab']}
       >
         <ul className="strengths">
@@ -41,12 +41,12 @@ export default function ResumePage() {
             detail="glab"
           >
             <ul>
-              <li>한 코드베이스로 iOS·Android·웹(PWA) 출시, 4개월간 정식 릴리스 5회, 구버전 앱은 OTA 대상에서 제외</li>
+              <li>한 코드베이스로 iOS·Android와 모바일·태블릿 반응형 웹(PWA) 출시, 4개월간 정식 릴리스 5회</li>
               <li>AI 채팅 스트리밍 중 토큰마다 대화의 모든 메시지가 다시 그려지던 것을 마지막 메시지 1개로 한정</li>
               <li>실시간 랭킹이 로딩에 멈추던 경쟁 조건 수정, 시세 숫자 애니메이션은 자리당 29행 → 최소 3행만 렌더링</li>
               <li>Kakao·Google·Apple 로그인과 탈퇴(계정 연결 해제) 구현, Android의 Apple 탈퇴는 웹 브릿지로 해결</li>
               <li>S3·CloudFront 웹 인프라 구성, push 한 번으로 환경 3개 웹 배포와 OTA 발행, 새 빌드가 필요하면 OTA 생략</li>
-              <li>운영 관리자 웹 21개 화면 설계·구현 및 API 연동 (공지 예약, 약관·앱 버전 관리, 개인정보 마스킹)</li>
+              <li>백오피스(운영 관리자 웹) 21개 화면을 React SPA로 설계·구현, API 연동 (공지 예약, 약관·버전 관리, 마스킹)</li>
               <li>디자인 산출물 없이 시작해 공통 컴포넌트와 테마·컬러 토큰부터 만들고 홈·AI 채팅·탐색·포트폴리오 화면 구성</li>
             </ul>
             <p className="stack">
@@ -60,13 +60,13 @@ export default function ResumePage() {
           <Project
             title="LG CNS COP · 생성형 AI 이미지 편집 플랫폼"
             period="2025.01 – 2025.11"
-            summary="LG CNS 고객사 프로젝트. ADMIN 프론트엔드 전체를 설계·구현하고, 서비스 프론트엔드의 공통 기반을 구축."
+            summary="LG CNS 고객사 프로젝트(React SPA). 백오피스(ADMIN) 프론트엔드 전체와 서비스 프론트엔드의 공통 기반을 설계·구현."
             stack="React · TypeScript · TanStack Query · Zustand · Zod · Tailwind"
             detail="cop"
           >
             <ul>
               <li>토큰 만료 시 동시에 발생한 401로 갱신이 중복되고 요청이 유실되던 문제를, 갱신 1회 후 대기 요청 재전송으로 해결</li>
-              <li>사용 현황·크레딧 발급·계정·그룹·공지·정책 등 ADMIN 전 화면과 역할 4종별 접근 제어를 테스트 일정 안에 구현</li>
+              <li>사용 현황(필터·드릴다운·엑셀)·크레딧·계정·그룹·공지·정책 등 백오피스 전 화면과 역할 4종별 접근 제어 구현</li>
               <li>크레딧 발급에 권한 제한, 발급량 검증, 확인 단계를 넣어 운영 실수 방지</li>
               <li>커밋·push 전 lint·타입 검사와 S3·CloudFront 배포 자동화 도입</li>
               <li>
@@ -81,7 +81,7 @@ export default function ResumePage() {
             title="GAIA OFFICE Chart"
             period="2022.01 – 2025.01"
             summary="웹오피스 차트 개발. 2022.09 팀 개편 이후 차트 기능 전체의 개발·유지보수를 책임지고 신규 입사자 약 5명 멘토링."
-            stack="React · TypeScript · MobX · Victory"
+            stack="React · TypeScript · MobX · Victory(D3 기반)"
             detail="chart"
           >
             <ul>
@@ -105,7 +105,7 @@ export default function ResumePage() {
               <li>시트 전체(약 170억 셀) 병합 멈춤을 데이터 범위만 복사해 2초 안에 처리 (넓은 범위 10초 → 1.5초)</li>
               <li>명령마다 반복되던 Canvas 렌더링을 명령이 끝날 때 한 번으로 모아 렌더 호출 5회 → 1회</li>
               <li>표시 형식 기능에서 라이브러리가 지원하지 않는 한국 날짜·경과 시간·통화·소수점 규칙 구현</li>
-              <li>2년간 이슈 약 555건 처리(약 35%는 담당 기능 밖), 문서 자동 완성 TFT에서 구역 관리 구조와 DB 설계</li>
+              <li>2년간 이슈 약 555건 처리(약 35%는 담당 기능 밖), 문서 자동 완성 TFT에서 백엔드(Spring) 구조와 DB 설계</li>
             </ul>
           </Project>
         </Company>
@@ -125,14 +125,14 @@ export default function ResumePage() {
           ]}
         >
           <ul>
-            <li>여러 명이 동시에 고쳐도 유실되지 않는 변경 단위 동기화를 설계해 Jest로 검증, RLS 정책 58개로 권한 설계</li>
+            <li>앱과 Supabase 백엔드를 함께 개발: 동시 수정에도 유실 없는 변경 단위 동기화(Jest 검증), RLS 정책 58개</li>
             <li>AI 추천(Claude API)을 요청 24개 평가 세트로 규칙 검사와 다른 모델의 심사로 채점, 한 번 약 $0.001</li>
           </ul>
         </Project>
         <Project
           title="GoIt2 · AI 여행 일정 웹"
           period="2026.11 – 현재 · 운영 중"
-          summary="조건 한 줄로 날짜별 동선을 지도에 그리는 AI 여행 일정 웹. DoIt2와 연동."
+          summary="조건 한 줄로 날짜별 동선을 지도에 그리는 AI 여행 일정 웹. 공유 페이지는 Next.js SSR로 미리보기 생성, DoIt2와 연동."
           stack="Next.js · Claude API · Supabase Edge Functions · Kakao API"
           detail="goit"
           links={[{ href: 'https://go-it-2.vercel.app', label: '사이트' }]}
@@ -165,7 +165,7 @@ export default function ResumePage() {
             ['주력', 'TypeScript, React, React Native(Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               '경험',
-              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri(Rust), Java·SQL',
+              'Next.js, Claude API, MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS 클라우드(S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri(Rust), Java·SQL',
             ],
           ]}
         />
@@ -174,7 +174,7 @@ export default function ResumePage() {
       <Section title="학력 · 기타">
         <Fields
           rows={[
-            ['Oregon State University', 'Computer Science (Security) · 학점 3.89/4.0, Summa Cum Laude(최우등 졸업) · 2017.09 – 2021.06'],
+            ['Oregon State University', 'Computer Science (Security, 보안 전공) · 학점 3.89/4.0, Summa Cum Laude(최우등 졸업) · 2017.09 – 2021.06'],
             ['한국기술교육대학교', '컴퓨터공학 · 2013.02 – 2018.07 · 재학 중 OSU로 편입(2017.09)'],
             ['어학 · 병역', '영어 일상 회화 가능 (어학연수·유학 5년) · 공군 만기전역'],
           ]}

@@ -6,7 +6,7 @@ import './globals.css';
 
 const SITE = 'https://epww1502.github.io';
 const DESCRIPTION =
-  '대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 프론트엔드 개발자 이영주의 이력서, 포트폴리오, 경력기술서';
+  '대용량 렌더링 최적화와 앱 출시·운영 경험을 가진 5년차 웹 프론트엔드 개발자 이영주의 이력서, 포트폴리오, 경력기술서';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

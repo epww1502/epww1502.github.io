@@ -51,12 +51,12 @@ export default function EnglishResumePage() {
             detailLabel={CASE}
           >
             <ul>
-              <li>Shipped iOS, Android and web (PWA) from one codebase: 5 releases in 4 months; OTA skips old builds</li>
+              <li>Shipped iOS, Android and a responsive web app (PWA) from one codebase: 5 releases in 4 months</li>
               <li>AI chat streaming re-rendered every message on each token; limited it to the last message</li>
               <li>Fixed a race condition that froze the live ranking; price animation renders only changing rows (29 → 3+)</li>
               <li>Kakao, Google and Apple sign-in and account deletion; Apple deletion on Android solved with a web bridge</li>
               <li>Set up S3 and CloudFront; one push deploys web to 3 environments and OTA, skipped if a native build is due</li>
-              <li>Designed and built the 21-screen operations admin web (scheduled notices, terms, app versions, data masking)</li>
+              <li>Designed and built the 21-screen back office as a React SPA (scheduled notices, terms, app versions, masking)</li>
               <li>Started without designs: built shared components and theme tokens, then Home, AI chat, Explore and Portfolio</li>
             </ul>
             <p className="stack">
@@ -70,7 +70,7 @@ export default function EnglishResumePage() {
           <Project
             title="LG CNS COP · Generative AI image editing platform"
             period="2025.01 – 2025.11"
-            summary="Client project for LG CNS. Designed and built the entire ADMIN frontend and the shared base of the service frontend."
+            summary="LG CNS client project (React SPA). Built the whole back-office (ADMIN) frontend and the service's shared base."
             stack="React · TypeScript · TanStack Query · Zustand · Zod · Tailwind"
             detail="cop"
             detailLabel={CASE}
@@ -93,7 +93,7 @@ export default function EnglishResumePage() {
             title="GAIA OFFICE Chart"
             period="2022.01 – 2025.01"
             summary="Charts for the web office suite. From 2022.09, owned the whole chart feature and mentored about 5 new hires."
-            stack="React · TypeScript · MobX · Victory"
+            stack="React · TypeScript · MobX · Victory (built on D3)"
             detail="chart"
             detailLabel={CASE}
           >
@@ -147,7 +147,7 @@ export default function EnglishResumePage() {
         <Project
           title="GoIt2 · AI trip planner web"
           period="2026.11 – Present · Live"
-          summary="Turns one line of trip conditions into day-by-day routes on a map; linked with DoIt2."
+          summary="Turns one line of trip conditions into day-by-day routes on a map; shared pages use Next.js SSR; linked with DoIt2."
           stack="Next.js · Claude API · Supabase Edge Functions · Kakao API"
           detail="goit"
           detailLabel={CASE}
@@ -182,7 +182,7 @@ export default function EnglishResumePage() {
             ['Core', 'TypeScript, React, React Native (Expo), TanStack Query, Zustand, Tailwind/NativeWind'],
             [
               'Experience',
-              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS S3·CloudFront, PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri (Rust), Java·SQL',
+              'Next.js, Claude API (LLM integration and evals), MobX, Canvas, Firebase Auth, Supabase, EAS Build/Update, GitHub Actions, AWS cloud (S3·CloudFront), PostHog, Zod, React Hook Form, Jest, React Testing Library, Tauri (Rust), Java·SQL',
             ],
           ]}
         />
