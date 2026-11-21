@@ -83,12 +83,12 @@ export default function CareerPage() {
               <li>Expo 한 코드베이스로 iOS·Android·웹(PWA) 출시, v1.1 → v1.5까지 4개월간 정식 릴리스 5회. 운영·개발·디버그 환경 분리</li>
               <li>도메인·S3·CloudFront로 웹 인프라를 구성하고, GitHub Actions로 웹 배포와 OTA 발행 자동화</li>
               <li>2026.05부터 파트장으로 화면 디자인과 설계, 배포 일정 결정, 코드리뷰 전반, 프론트엔드 2명의 업무 일정 관리</li>
-              <li>코드리뷰(동료 PR 149건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 278개 작성</li>
+              <li>코드리뷰(동료 PR 267건 중 154건 머지), PR 템플릿 도입, 팀 기능 PR 약 540개 중 274개 작성</li>
             </ul>
             <Label>문제 해결</Label>
             <ul>
               <li>
-                <b>AI 채팅 스트리밍 리렌더링</b> · 토큰이 올 때마다 화면 전체가 다시 그려지던 것을, store 동기화를 건너뛰고 마지막 메시지만 그리도록 수정. 보이지 않는 채팅 화면은 렌더링을 멈춤
+                <b>AI 채팅 스트리밍 리렌더링</b> · 토큰이 올 때마다 대화의 모든 메시지가 다시 그려지던 것을, 동작하지 않던 throttle을 걷어내고 마지막 메시지만 그리도록 수정(store 갱신 건너뛰기는 팀원과 함께 적용). 보이지 않는 채팅 화면은 렌더링을 멈춤
               </li>
               <li>
                 <b>OTA와 구버전 앱</b> · 네이티브 코드가 다른 옛 앱이 새 번들을 받아 종료될 수 있어, 네이티브 버전이 다른 앱은 업데이트 대상에서 제외. 업데이트는 백그라운드에서 받아 복귀할 때 적용
@@ -164,7 +164,7 @@ export default function CareerPage() {
             <ul>
               <li>
                 AI 페스타에서 공개, <a href="https://www.dt.co.kr/article/11674174">디지털타임스 보도</a>.{' '}
-                <a href="https://www.sandollcloud.com/aistudio">산돌구름 AI Studio</a> 베타 오픈 (2025.09 – 12, 이용자 약 2천 명)
+                <a href="https://www.sandollcloud.com/aistudio">산돌구름 AI Studio</a> 베타 오픈 (LG CNS·산돌구름 협업, 2025.09 – 12, 이용자 약 2천 명)
               </li>
               <li>ADMIN 전체를 테스트 일정 안에 완료, 같은 인증·오류 처리 구조를 서비스와 ADMIN에 적용</li>
             </ul>
@@ -262,7 +262,7 @@ export default function CareerPage() {
           />
           <ul>
             <li>여러 명이 동시에 고쳐도 유실되지 않도록 변경 단위로 기록해 서버 최신 상태 위에 다시 적용, Jest로 시나리오 검증</li>
-            <li>RLS 정책 61개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
+            <li>RLS 정책 58개로 공간 멤버만 접근하도록 설계, App Store 심사에서 요구한 신고·차단 기능도 RLS로 추가</li>
             <li>
               AI 추천 도입: 담아 둔 목록과 사용자가 말한 조건으로 새 항목 5개를 장소·할 것까지 추천(Claude Haiku 5.5, Edge Function). 답은 JSON 스키마로 고정하고
               장소는 카카오 검색에서 이름이 맞을 때만 표시, 스트리밍으로 진행 상황 표시

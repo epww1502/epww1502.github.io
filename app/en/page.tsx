@@ -45,7 +45,7 @@ export default function EnglishResumePage() {
           <Project
             title="GLAB · AI digital private banker app"
             period="2025.12 – Present"
-            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote 278 of the team's ~540 feature PRs and merged 149 teammates' PRs through code review."
+            summary="AI investment advisory app for retail investors (launched 2026.07). Own the frontend from planning to release and operations; frontend lead since 2026.05 (release schedule, two teammates). Wrote 274 of the team's ~540 feature PRs and merged 154 teammates' PRs through code review."
             stack="Expo · React Native · TypeScript · TanStack Query · Zustand · NativeWind · Firebase Auth"
             detail="glab"
             detailLabel={CASE}
@@ -140,7 +140,7 @@ export default function EnglishResumePage() {
           ]}
         >
           <ul>
-            <li>Change-based sync that loses nothing under concurrent edits, verified with Jest; 61 RLS policies</li>
+            <li>Change-based sync that loses nothing under concurrent edits, verified with Jest; 58 RLS policies</li>
             <li>AI suggestions (Claude API) measured with a 24-request eval: 97.9% on-request, 98.4% real places, ~$0.001/call</li>
           </ul>
         </Project>
