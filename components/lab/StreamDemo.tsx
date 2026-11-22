@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useRef, useState, type ReactNode } from 'react';
+import { memo, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Segmented, Stat } from './LabPage';
 
 type Mode = 'before' | 'after';
@@ -77,6 +77,13 @@ function MessageView({ message }: { message: Message }) {
   const badge = useRef<HTMLSpanElement>(null);
   const renders = useRef(0);
 
+  // Strict Mode in development runs effects twice on mount; starting over on cleanup keeps that from counting as a redraw.
+  useEffect(
+    () => () => {
+      renders.current = 0;
+    },
+    [],
+  );
   // No dependency list: runs after every render of this message, so it can show that the render happened.
   useEffect(() => {
     renders.current += 1;
@@ -149,8 +156,18 @@ export function StreamDemo() {
     let sent = 0;
     let buffered = '';
     let worst = 0;
-    let last = performance.now();
+    let last = 0;
+    /** Frames to let pass before measuring: the conversation mounting, and coming back from a hidden tab, are not token redraws. */
+    let settle = 2;
     let frame = 0;
+    const onVisibility = () => {
+      settle = 2;
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    const stopWatching = () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
 
     const base = conversation(LENGTHS[length]);
     setMessages([
@@ -172,13 +189,14 @@ export function StreamDemo() {
     const show = () => {
       const { tokens: t, renders: r, worst: w } = readout.current;
       if (t) t.textContent = `${sent} / ${queue.length}`;
-      if (r) r.textContent = counter.renders.toLocaleString();
+      if (r) r.textContent = counter.renders.toLocaleString('ko-KR');
       if (w) w.textContent = `${Math.round(worst)}ms`;
     };
     // The longest gap between two frames: how long the page stood still at its worst.
     const watch = () => {
       const now = performance.now();
-      worst = Math.max(worst, now - last);
+      if (settle > 0) settle -= 1;
+      else worst = Math.max(worst, now - last);
       last = now;
       show();
       frame = requestAnimationFrame(watch);
@@ -208,14 +226,14 @@ export function StreamDemo() {
       buffered = '';
       // wait a moment so the last render is counted before the numbers stop
       const done = setTimeout(() => {
-        cancelAnimationFrame(frame);
+        stopWatching();
         show();
         setStreaming(false);
         stop.current = null;
       }, 120);
       stop.current = () => {
         clearTimeout(done);
-        cancelAnimationFrame(frame);
+        stopWatching();
         setStreaming(false);
         stop.current = null;
       };
@@ -223,13 +241,18 @@ export function StreamDemo() {
     stop.current = () => {
       clearInterval(tokenTimer);
       clearInterval(flushTimer);
-      cancelAnimationFrame(frame);
+      stopWatching();
       setStreaming(false);
       stop.current = null;
     };
   };
 
   const Item = mode === 'after' ? MemoMessage : MessageView;
+  // Built only when the messages change, so the button turning back on at the end does not redraw them once more.
+  const items = useMemo(
+    () => messages.map((message) => <Item key={`${epoch}-${message.id}`} message={message} />),
+    [messages, epoch, Item],
+  );
 
   return (
     <section className="lab-demo">
@@ -283,9 +306,7 @@ export function StreamDemo() {
           follow.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
         }}
       >
-        {messages.map((message) => (
-          <Item key={`${epoch}-${message.id}`} message={message} />
-        ))}
+        {items}
       </div>
       <p className="lab-result">
         메시지가 다시 그려지면 테두리가 잠깐 켜지고 횟수가 붙습니다. 답변을 받는 동안 위로 스크롤해 보세요.

@@ -45,4 +45,8 @@ export const DEMOS: Demo[] = [
   },
 ];
 
-export const demoBySlug = (slug: string) => DEMOS.find((demo) => demo.slug === slug)!;
+export const demoBySlug = (slug: string) => {
+  const demo = DEMOS.find((item) => item.slug === slug);
+  if (!demo) throw new Error(`No demo with the slug "${slug}" in lib/demos.ts`);
+  return demo;
+};
