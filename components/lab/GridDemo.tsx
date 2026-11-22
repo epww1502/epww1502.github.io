@@ -97,7 +97,8 @@ export function GridDemo() {
   const scroller = useRef<HTMLDivElement>(null);
   const sheet = useRef<Sheet | null>(null);
   const selection = useRef<Range>({ r1: 0, c1: 0, r2: 0, c2: 0 });
-  const backup = useRef<Backup | null>(null);
+  /** One entry per merge, newest last, so each merge can be undone in turn. */
+  const backups = useRef<Backup[]>([]);
   const palette = useRef<Palette | null>(null);
   const frame = useRef(0);
   const draws = useRef(0);
@@ -140,6 +141,9 @@ export function GridDemo() {
       node.width = Math.round(width * ratio);
       node.height = Math.round(height * ratio);
     }
+    // The canvas covers the scroller minus its scrollbars, so one canvas pixel is one pointer pixel.
+    node.style.width = `${width}px`;
+    node.style.height = `${height}px`;
     const ctx = node.getContext('2d')!;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.fillStyle = colors.bg;
@@ -331,7 +335,11 @@ export function GridDemo() {
   });
 
   const dragFrom = useRef<{ row: number; col: number } | null>(null);
+  /** What the last press came from. `click` is not a PointerEvent in every browser, so the press is what tells mouse from touch. */
+  const pressedWith = useRef('mouse');
   const onPointerDown = (event: React.PointerEvent) => {
+    pressedWith.current = event.pointerType;
+    dragFrom.current = null;
     if (job || event.pointerType !== 'mouse' || event.button !== 0) return;
     const cell = cellAt(event.clientX, event.clientY);
     if (!cell) return;
@@ -339,13 +347,13 @@ export function GridDemo() {
     select(rangeFrom(cell, cell));
   };
   const onPointerMove = (event: React.PointerEvent) => {
-    if (!dragFrom.current || event.buttons !== 1) return;
+    if (job || !dragFrom.current || event.buttons !== 1) return;
     const cell = cellAt(event.clientX, event.clientY);
     if (cell) select(rangeFrom(dragFrom.current, cell));
   };
   /** Touch: dragging scrolls, so a tap picks the cell. */
   const onClick = (event: React.MouseEvent) => {
-    const touch = (event.nativeEvent as PointerEvent).pointerType !== 'mouse';
+    const touch = pressedWith.current !== 'mouse';
     if (job || !touch) return;
     const cell = cellAt(event.clientX, event.clientY);
     if (cell) select(rangeFrom(cell, cell));
@@ -414,7 +422,9 @@ export function GridDemo() {
       }
     }
     const removed = data.merges.filter((m) => overlaps(m, range));
-    backup.current = { range, values, merges: removed };
+    // A copy, so undo can tell this merge from an earlier one over the same cells.
+    const merged = { ...range };
+    backups.current.push({ range: merged, values, merges: removed });
     afterStep();
 
     // 2. clear everything but the top-left value
@@ -423,7 +433,7 @@ export function GridDemo() {
     afterStep();
 
     // 3. record the merge as one range, not cell by cell
-    data.merges = [...data.merges.filter((m) => !overlaps(m, range)), range];
+    data.merges = [...data.merges.filter((m) => !overlaps(m, range)), merged];
     afterStep();
 
     // 4. the merged cell is centered (the drawing reads that from the merge itself)
@@ -435,17 +445,19 @@ export function GridDemo() {
 
     if (pending) draw();
     setCanUndo(true);
+    setFilled(data.cells.size);
     setResult({ label: `${rangeName(range)} 병합`, ms: performance.now() - started, draws: draws.current - before, visited });
   };
 
   const undo = () => {
     const data = sheet.current!;
-    const saved = backup.current;
-    if (!saved || job) return;
+    if (job) return;
+    const saved = backups.current.pop();
+    if (!saved) return;
     data.merges = [...data.merges.filter((m) => m !== saved.range), ...saved.merges];
     for (const [k, value] of saved.values) data.cells.set(k, value);
-    backup.current = null;
-    setCanUndo(false);
+    setCanUndo(backups.current.length > 0);
+    setFilled(data.cells.size);
     setResult(null);
     schedule();
   };

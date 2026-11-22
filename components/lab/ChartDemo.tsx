@@ -89,7 +89,7 @@ const Chart = memo(function Chart({ series, mode }: { series: Series[]; mode: Mo
 });
 
 const MODE_LABEL: Record<Mode, string> = { point: '포인트마다 그리기', series: '계열 단위로 그리기' };
-const ms = (value: number) => `${value < 10 ? value.toFixed(1) : Math.round(value).toLocaleString()}ms`;
+const ms = (value: number) => `${value < 10 ? value.toFixed(1) : Math.round(value).toLocaleString('ko-KR')}ms`;
 
 export function ChartDemo() {
   const [size, setSize] = useState<Size>('100');
@@ -137,13 +137,18 @@ export function ChartDemo() {
       setNodes(box.current?.querySelectorAll('svg *').length ?? 0);
       return;
     }
+    let timer: ReturnType<typeof setTimeout>;
     const frame = requestAnimationFrame(() => {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setTimes((prev) => ({ ...prev, [drawn.mode]: performance.now() - t0 }));
         setNodes(box.current?.querySelectorAll('svg *').length ?? 0);
       }, 0);
     });
-    return () => cancelAnimationFrame(frame);
+    // Both, so a run that was replaced before it finished cannot write its time into the next one.
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+    };
   }, [drawn]);
 
   const components = mode === 'point' ? count * count + count : count;
@@ -180,16 +185,16 @@ export function ChartDemo() {
 
       {count * count >= HEAVY_POINTS && (
         <p className="lab-result">
-          {(count * count).toLocaleString()}개 포인트입니다. 고치기 전 방식은 그리는 동안 화면이 몇 초 멈출 수 있고, 휴대폰에서는 더
+          {(count * count).toLocaleString('ko-KR')}개 포인트입니다. 고치기 전 방식은 그리는 동안 화면이 몇 초 멈출 수 있고, 휴대폰에서는 더
           오래 걸립니다.
         </p>
       )}
 
       <div className="stats">
         <Stat label={`${MODE_LABEL[mode]} · 그리는 데 걸린 시간`} value={times[mode] ? ms(times[mode]!) : '–'} accent />
-        <Stat label="데이터 포인트" value={(count * count).toLocaleString()} />
-        <Stat label="React 컴포넌트" value={components.toLocaleString()} />
-        <Stat label="SVG 요소" value={nodes.toLocaleString()} />
+        <Stat label="데이터 포인트" value={(count * count).toLocaleString('ko-KR')} />
+        <Stat label="React 컴포넌트" value={components.toLocaleString('ko-KR')} />
+        <Stat label="SVG 요소" value={nodes.toLocaleString('ko-KR')} />
       </div>
 
       <div className="lab-stage chart-stage" ref={box}>
@@ -207,12 +212,12 @@ export function ChartDemo() {
         <tbody>
           <tr>
             <td>고치기 전 · 포인트마다 컴포넌트 하나</td>
-            <td>{(count * count + count).toLocaleString()}</td>
+            <td>{(count * count + count).toLocaleString('ko-KR')}</td>
             <td>{times.point ? ms(times.point) : '아직 안 그려봤어요'}</td>
           </tr>
           <tr>
             <td>고친 뒤 · 계열 하나를 path 두 개로</td>
-            <td>{count.toLocaleString()}</td>
+            <td>{count.toLocaleString('ko-KR')}</td>
             <td>{times.series ? ms(times.series) : '아직 안 그려봤어요'}</td>
           </tr>
         </tbody>
